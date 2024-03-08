@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.shlifedev.ugs": "file:C:/Users/user/source/repos/100wodud/Sparta Bank/Assets/uni-google-sheets-main/src",
+    "com.shlifedev.ugs": "file:../Assets/uni-google-sheets-main/uni-google-sheets-main/src",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.21",

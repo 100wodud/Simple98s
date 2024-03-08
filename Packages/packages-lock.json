@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.shlifedev.ugs": {
-      "version": "file:C:/Users/user/source/repos/100wodud/Sparta Bank/Assets/uni-google-sheets-main/src",
+      "version": "file:../Assets/uni-google-sheets-main/uni-google-sheets-main/src",
       "depth": 0,
       "source": "local",
       "dependencies": {
