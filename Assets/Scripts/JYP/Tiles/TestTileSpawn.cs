@@ -6,12 +6,6 @@ using static UnityEditor.Progress;
 
 public class TestTileSpawn : MonoBehaviour
 {
-    void Awake()
-    {
-        //구글 시트 전 데이타 로드
-        UnityGoogleSheet.LoadAllData();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +23,13 @@ public class TestTileSpawn : MonoBehaviour
         }
         */
 
-        int row = Simple98.Maps.MapsList[1].Row;
-        int column = Simple98.Maps.MapsList[1].Column;
+        int row = DataManager.instance.maps[1].Row;
+        int column = DataManager.instance.maps[1].Column;
         int[,] array = new int[row, column];
         int row1 = 0;
         int column1 = 0;
         int i = 0;
-        foreach (int item in Simple98.Maps.MapsList[1].Map)
+        foreach (int item in DataManager.instance.maps[1].Map)
         {
             row1 = i % row;
             column1 = i / column;
@@ -46,13 +40,14 @@ public class TestTileSpawn : MonoBehaviour
 
         float x = 0;
         float y = 0;
+        const string path = "Prefabs/Tiles/";
 
-        for(int k = 0;  k < row; k++)
+        for (int k = 0;  k < row; k++)
         {
             x = 0;
             for(int l = 0; l < column; l++)
             {
-                Instantiate(Resources.Load("Prefabs/Tiles/" + Simple98.Tiles.TilesList[array[k, l]].localeID), new Vector3(x, y, 0), Quaternion.identity);
+                Instantiate(Resources.Load($"{path + DataManager.instance.tiles[array[k, l]].localeID}"), new Vector3(x, y, 0), Quaternion.identity);
                 x += 1;
             }
             y -= 1;
