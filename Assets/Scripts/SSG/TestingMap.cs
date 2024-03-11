@@ -14,18 +14,28 @@ public class TestingMap : Singleton<TestingMap>
     //지금은 오브젝트로 생성, 후에는 프리팹 데이터를 받아 생성하도록 구현
     private int[,] map = new int[,]
         {
-         {1,1,1,1,1,1,1,1,1,0,1,1},
-         {1,0,0,0,0,1,0,0,1,0,0,1},
-         {1,0,0,0,1,0,0,0,1,0,0,1},
-         {1,0,0,0,1,0,0,0,1,0,0,1},
-         {1,0,0,0,1,0,0,0,1,0,0,1},
-         {1,0,0,0,0,1,0,0,0,1,0,1}
+         {0,0,0,0,0,0,0,0,0,0,0,0},
+         {0,0,0,0,0,0,0,0,0,0,0,0},
+         {0,0,0,0,0,0,0,0,0,0,0,0},
+         {0,0,0,0,0,0,0,0,0,0,0,0},
+         {0,0,0,0,0,0,0,0,0,0,0,0},
+         {0,0,0,0,0,0,0,0,0,0,0,0}
         };
+    void MapData()
+    {
+        var Map = new List<int>()
+        {
+            
+        };
+        
+    }
+    
     
 
     private void Start()
     {
         StartMap();
+        //Debug.Log("디버그 어디감?");
     }    
     private void StartMap()
     {        
@@ -38,14 +48,14 @@ public class TestingMap : Singleton<TestingMap>
             for (int j=0;j< xpos; j++)//xypos
             {
                 //생성 데이터로  맵 관리
-                if (map[startpos - j, i] == 1)
+                if (map[startpos - j, i] == 0)
                 {
                     //오브젝트 데이터를 어떻게 받아서 맵을 생성시킬까>
                     
                     vector = new Vector3(i, j);
                     Instantiate(floor);//오브젝트데이터를 받아서 생성시키게 하기
                     floor.transform.position = vector;
-                    Debug.Log($"{floor.transform.position}");
+                    //Debug.Log($"{floor.transform.position}");
                 }
                 
             }          
