@@ -24,7 +24,7 @@ namespace DefaultTable
 
         static bool isLoaded = false;
         static string spreadSheetID = "1fKCxzgZVHmvRwEG9svYVFZzjZ9ByuCXREU92LIrFZTI"; // it is file id
-        static string sheetID = "1936303288"; // it is sheet id
+        static string sheetID = "1537271971"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
@@ -56,9 +56,8 @@ namespace DefaultTable
 
 /* Fields. */
 
-		public System.Int32 index;
-		public System.Int32 x;
-		public System.Int32 y;
+		public System.Int32 mapId;
+		public System.String stageName;
   
 
 #region fuctions
@@ -176,7 +175,7 @@ namespace DefaultTable
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.index, instance);
+                            Map.Add(instance.mapId, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
