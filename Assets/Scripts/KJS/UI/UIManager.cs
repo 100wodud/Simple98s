@@ -50,8 +50,4 @@ public class UIManager
         return popup;
     }
 
-    public void RemovePopup(UIPopup popup)
-    {
-        popups.Remove(popup);
-    }
 }

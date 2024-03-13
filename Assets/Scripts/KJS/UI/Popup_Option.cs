@@ -12,33 +12,42 @@ public class Popup_Option : UIPopup
     [SerializeField] private Image _masterImg;
     [SerializeField] private Image _bgmImage;
     [SerializeField] private Image _sfxImage;
+    [SerializeField] private int _setWidth = 1920; //가로
+    [SerializeField] private int _setHeight = 1080; //세로
+    [SerializeField] private bool _isWindow = true; //전체화면 여부
     //변경할 스프라이트
-    public Sprite onAudio;
-    public Sprite offAudio;
+    private Sprite _onAudio;
+    private Sprite _offAudio;
 
-    private string onResource = "Sprites/AudioOn";
-    private string offResource = "Sprites/AudioOff";
+    private string _onResource = "Sprites/AudioOn";
+    private string _offResource = "Sprites/AudioOff";
 
-    private bool _isMute = false; //음소거 체크
-
-    //private void Start()
+    private bool _isAllMute = false; //음소거 체크
+    private bool _isBgmMute = false; //전체음소거 체크
+    private bool _isSfxMute = false;
+    //public void Initialize() //초기화 메서드
     //{
-    //    onAudio = Resources.Load<Sprite>(onResource);
-    //    offAudio = Resources.Load<Sprite>(offResource);
+
     //}
 
     public override void Refresh()
     {
-        onAudio = Resources.Load<Sprite>(onResource);
-        offAudio = Resources.Load<Sprite>(offResource);
+        _onAudio = Resources.Load<Sprite>(_onResource);
+        _offAudio = Resources.Load<Sprite>(_offResource);
     }
+
+    //=====================오디오 설정=============================
+    //=================================================================
     //음소거 토글
-    private void OnMuteToggle(Image image, AudioSource audioSource)
+    private void OnMuteToggle(Image image, AudioSource audioSource,ref bool mute)
     {
-        _isMute = !_isMute; //뮤트확인
-        if (_isMute)
+        mute = mute ? false : true; //뮤트반전
+        Debug.Log("all" + _isAllMute);
+        Debug.Log("bgm" + _isBgmMute);
+        Debug.Log("sfx" + _isSfxMute);
+        if (mute == true)
         {
-            image.sprite = offAudio; //이미지변경
+            image.sprite = _offAudio; //이미지변경
             //전체볼륨 조절때문에 null 값이면 무시하기
             if (audioSource != null)
             {
@@ -47,7 +56,7 @@ public class Popup_Option : UIPopup
         }
         else
         {
-            image.sprite = onAudio;
+            image.sprite = _onAudio;
             if (audioSource != null)
             {
                 audioSource.mute = false;
@@ -58,7 +67,7 @@ public class Popup_Option : UIPopup
     {
         //전체볼륨 조절을 위해 리스너 음량을 조절
         AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
-        OnMuteToggle(_masterImg, null); //오디오소스는 비우기
+        OnMuteToggle(_masterImg, null,ref _isAllMute); //오디오소스는 비우기
 
     }
 
@@ -72,7 +81,7 @@ public class Popup_Option : UIPopup
             AudioSource bgmAudio = bgmObject.GetComponent<AudioSource>();
             if (bgmAudio != null)
             {
-                OnMuteToggle(_bgmImage, bgmAudio);
+                OnMuteToggle(_bgmImage, bgmAudio,ref _isBgmMute);
             }
         }
     }
@@ -87,7 +96,7 @@ public class Popup_Option : UIPopup
             AudioSource sfxAudio = sfxObject.GetComponent<AudioSource>();
             if (sfxAudio != null)
             {
-                OnMuteToggle(_sfxImage, sfxAudio);
+                OnMuteToggle(_sfxImage, sfxAudio,ref _isSfxMute);
             }
         }
     }
@@ -107,7 +116,58 @@ public class Popup_Option : UIPopup
         mixer.SetFloat("SFX", Mathf.Log10(sliderVal) * 20);
     }
 
-    public override void Hide()
+    //=====================디스플레이 설정=============================
+    //=================================================================
+
+    //해상도지정
+    public void SetResolution()
+    {
+        Debug.Log("가로: " + _setWidth);
+        Debug.Log("세로" + _setHeight);
+        Debug.Log("전체화면" + _isWindow);
+        Screen.SetResolution(_setWidth, _setHeight, _isWindow);
+    }
+
+    //창모드 드롭다운
+    public void setWindowMod(int val)
+    {
+        switch (val)
+        {
+            case 0:
+                _isWindow = true;
+                break;
+            case 1:
+                _isWindow = false;
+                break;
+        }
+        SetResolution();
+    }
+
+    //해상도 드롭다운
+    public void setResolutionVal(int val)
+    {
+        switch (val)
+        {
+            case 0:
+                _setWidth = 1920;
+                _setHeight = 1080;
+                break;
+            case 1:
+                _setWidth = 1600;
+                _setHeight = 900;
+                break;
+            case 2:
+                _setWidth = 1360;
+                _setHeight = 768;
+                break;
+            case 3:
+                _setWidth = 1280;
+                _setHeight = 720;
+                break;
+        }
+        SetResolution();
+    }
+    public override void Hide() //종료
     {
         base.Hide();
     }
