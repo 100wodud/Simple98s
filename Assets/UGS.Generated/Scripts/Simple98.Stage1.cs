@@ -17,39 +17,39 @@ using UnityEngine;
 namespace Simple98
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Tiles : ITable
+    public partial class Stage1 : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Tiles> loadedList, Dictionary<int, Tiles> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Stage1> loadedList, Dictionary<int, Stage1> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Ylf-d9OBmb2t_esyNy7AKowsPNL8i08OUpY9eYdxbRQ"; // it is file id
-        static string sheetID = "0"; // it is sheet id
+        static string sheetID = "66616453"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Tiles> TilesMap = new Dictionary<int, Tiles>();  
-        public static List<Tiles> TilesList = new List<Tiles>();   
+        public static Dictionary<int, Stage1> Stage1Map = new Dictionary<int, Stage1>();  
+        public static List<Stage1> Stage1List = new List<Stage1>();   
 
         /// <summary>
-        /// Get Tiles List 
+        /// Get Stage1 List 
         /// Auto Load
         /// </summary>
-        public static List<Tiles> GetList()
+        public static List<Stage1> GetList()
         {{
            if (isLoaded == false) Load();
-           return TilesList;
+           return Stage1List;
         }}
 
         /// <summary>
-        /// Get Tiles Dictionary, keyType is your sheet A1 field type.
+        /// Get Stage1 Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Tiles>  GetDictionary()
+        public static Dictionary<int, Stage1>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return TilesMap;
+           return Stage1Map;
         }}
 
     
@@ -57,8 +57,9 @@ namespace Simple98
 /* Fields. */
 
 		public System.Int32 index;
-		public System.String Type;
-		public System.String localeID;
+		public System.Int32 Row;
+		public System.Int32 Column;
+		public System.Int32 Tile;
   
 
 #region fuctions
@@ -69,7 +70,7 @@ namespace Simple98
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Tiles is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Stage1 is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -85,7 +86,7 @@ namespace Simple98
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Tiles>, Dictionary<int, Tiles>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Stage1>, Dictionary<int, Stage1>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -113,14 +114,14 @@ namespace Simple98
                
 
 
-    public static (List<Tiles> list, Dictionary<int, Tiles> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Tiles> Map = new Dictionary<int, Tiles>();
-            List<Tiles> List = new List<Tiles>();     
+    public static (List<Stage1> list, Dictionary<int, Stage1> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, Stage1> Map = new Dictionary<int, Stage1>();
+            List<Stage1> List = new List<Stage1>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Tiles).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Stage1).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Tiles"];
+            var sheet = jsonObject["Stage1"];
 
             foreach (var column in sheet.Keys)
             {
@@ -139,7 +140,7 @@ namespace Simple98
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Tiles instance = new Tiles();
+                            Stage1 instance = new Stage1();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -180,8 +181,8 @@ namespace Simple98
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            TilesList = List;
-                            TilesMap = Map;
+                            Stage1List = List;
+                            Stage1Map = Map;
                             isLoaded = true;
                         }
                     } 
@@ -191,10 +192,10 @@ namespace Simple98
 
  
 
-        public static void Write(Tiles data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Stage1 data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Tiles).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Stage1).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

@@ -8,9 +8,9 @@ namespace UGS
 #if UGS_SECURITY_MODE
       
 #else
-        public string ScriptURL = "https://script.google.com/macros/s/AKfycbxgiWukHAD3DqGm20f-mx1InkPXxr2GnrI46QXAqOYnlyacHCi0f8pqC5HA8D6rg9wM/exec";
-        public string ScriptPassword = "simple98";
-        public string GoogleFolderID = "1Y6sT4YbGvod_8R3f2GKJ2w3-CvPXYPac";
+        public string ScriptURL;
+        public string ScriptPassword = "default";
+        public string GoogleFolderID;
 #endif
         [HideInInspector]
         public string GenerateCodePath = "Assets/UGS.Generated/Scripts/";

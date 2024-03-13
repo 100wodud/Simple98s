@@ -59,7 +59,7 @@ namespace Simple98
 		public System.Int32 index;
 		public System.Int32 Row;
 		public System.Int32 Column;
-		public System.Array Map;
+		public System.String MapName;
   
 
 #region fuctions
