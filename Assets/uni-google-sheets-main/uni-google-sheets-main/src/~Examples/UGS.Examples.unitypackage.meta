@@ -1,4 +1,8 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/uni-google-sheets-main/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta
+guid: 000adf5159588dd409c70aaec02461dd
+DefaultImporter:
+=======
 <<<<<<<< HEAD:Assets/UGS.Generated/Resources/DefaultTable.json.meta
 guid: 49fe1878304651940bc4f07b56e18d0f
 TextScriptImporter:
@@ -7,6 +11,7 @@ guid: be4efabc2cd41f3428cb1df6c42eba35
 folderAsset: yes
 DefaultImporter:
 >>>>>>>> KJS:Assets/Scenes/KJS.meta
+>>>>>>> 48be602439b7fc42219117ea09924516f4f97e43:Assets/UGS.Generated/Resources/DefaultTable.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
