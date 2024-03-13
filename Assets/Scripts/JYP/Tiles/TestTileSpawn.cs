@@ -19,6 +19,7 @@ public class TestTileSpawn : MonoBehaviour
 
         foreach (var item in stage1)
         {
+            //타일 생성
             TileDataManager.Instance.InstantiateTile(item.Tile, item.Row, item.Column);
         }
     }
