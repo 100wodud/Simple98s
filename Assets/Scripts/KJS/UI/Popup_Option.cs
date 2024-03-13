@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using Unity.VisualScripting;
 
-public class AudioToggle : MonoBehaviour
+public class Popup_Option : UIPopup
 {
+    public AudioMixer mixer;
+
     //각오디오 이미지
-    public Image masterImage;
-    public Image bgmImage;
-    public Image sfxImage;
+    [SerializeField] private Image _masterImg;
+    [SerializeField] private Image _bgmImage;
+    [SerializeField] private Image _sfxImage;
     //변경할 스프라이트
     public Sprite onAudio;
     public Sprite offAudio;
 
+    private string onResource = "Sprites/AudioOn";
+    private string offResource = "Sprites/AudioOff";
+
     private bool _isMute = false; //음소거 체크
 
+    //private void Start()
+    //{
+    //    onAudio = Resources.Load<Sprite>(onResource);
+    //    offAudio = Resources.Load<Sprite>(offResource);
+    //}
+
+    public override void Refresh()
+    {
+        onAudio = Resources.Load<Sprite>(onResource);
+        offAudio = Resources.Load<Sprite>(offResource);
+    }
     //음소거 토글
     private void OnMuteToggle(Image image, AudioSource audioSource)
     {
@@ -43,9 +58,10 @@ public class AudioToggle : MonoBehaviour
     {
         //전체볼륨 조절을 위해 리스너 음량을 조절
         AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
-        OnMuteToggle(masterImage, null); //오디오소스는 비우기
+        OnMuteToggle(_masterImg, null); //오디오소스는 비우기
+
     }
-    
+
     public void BgmMute() //Bgm 음소거 버튼
     {
         //Bgm 오브젝트 찾기
@@ -56,7 +72,7 @@ public class AudioToggle : MonoBehaviour
             AudioSource bgmAudio = bgmObject.GetComponent<AudioSource>();
             if (bgmAudio != null)
             {
-                OnMuteToggle(bgmImage, bgmAudio);
+                OnMuteToggle(_bgmImage, bgmAudio);
             }
         }
     }
@@ -71,8 +87,28 @@ public class AudioToggle : MonoBehaviour
             AudioSource sfxAudio = sfxObject.GetComponent<AudioSource>();
             if (sfxAudio != null)
             {
-                OnMuteToggle(sfxImage, sfxAudio);
+                OnMuteToggle(_sfxImage, sfxAudio);
             }
         }
+    }
+
+
+    //소리 믹서 밸류값 조절
+    public void MasterControl(float sliderVal)
+    {
+        mixer.SetFloat("MASTER", Mathf.Log10(sliderVal) * 20);
+    }
+    public void BgmControl(float sliderVal)
+    {
+        mixer.SetFloat("BGM", Mathf.Log10(sliderVal) * 20);
+    }
+    public void SfxControl(float sliderVal)
+    {
+        mixer.SetFloat("SFX", Mathf.Log10(sliderVal) * 20);
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
     }
 }

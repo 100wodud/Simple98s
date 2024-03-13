@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UGS;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class TestTileSpawn : MonoBehaviour
 {
