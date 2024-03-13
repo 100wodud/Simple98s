@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-
+    //맵을 생성하는 기능을 담당하는 매니저
+    //데이터 매니저에 데이터를 저장시켜주기
+    //
     List<Map> map = new List<Map>();
     //Dictionary<int,Stage1> stage1= new Dictionary<int,Stage1>();
     public List<Stage1> stage1 = new List<Stage1>();
