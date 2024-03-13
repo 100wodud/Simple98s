@@ -18,7 +18,7 @@ public class UIPopup : MonoBehaviour
 
     public virtual void Hide()
     {
-        PopHide();
+        PopDestroy();
     }
 
     public void PopHide()
