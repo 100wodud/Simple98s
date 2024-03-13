@@ -14,53 +14,50 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace DefaultTable
+namespace Simple98
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Stage1 : ITable
+    public partial class Map : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Stage1> loadedList, Dictionary<int, Stage1> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Map> loadedList, Dictionary<int, Map> loadedDictionary);
 
         static bool isLoaded = false;
-        static string spreadSheetID = "1fKCxzgZVHmvRwEG9svYVFZzjZ9ByuCXREU92LIrFZTI"; // it is file id
-        static string sheetID = "58251075"; // it is sheet id
+        static string spreadSheetID = "1Ylf-d9OBmb2t_esyNy7AKowsPNL8i08OUpY9eYdxbRQ"; // it is file id
+        static string sheetID = "1299825829"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Stage1> Stage1Map = new Dictionary<int, Stage1>();  
-        public static List<Stage1> Stage1List = new List<Stage1>();   
+        public static Dictionary<int, Map> MapMap = new Dictionary<int, Map>();  
+        public static List<Map> MapList = new List<Map>();   
 
         /// <summary>
-        /// Get Stage1 List 
+        /// Get Map List 
         /// Auto Load
         /// </summary>
-        public static List<Stage1> GetList()
+        public static List<Map> GetList()
         {{
            if (isLoaded == false) Load();
-           return Stage1List;
+           return MapList;
         }}
 
         /// <summary>
-        /// Get Stage1 Dictionary, keyType is your sheet A1 field type.
+        /// Get Map Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Stage1>  GetDictionary()
+        public static Dictionary<int, Map>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return Stage1Map;
+           return MapMap;
         }}
 
     
 
 /* Fields. */
 
-		public System.Int32 mapid;
-		public System.Int32 mapKey;
-		public System.Int32 x;
-		public System.Int32 y;
-		public System.Int32 itemIndex;
+		public System.Int32 mapId;
+		public System.String stageName;
   
 
 #region fuctions
@@ -71,12 +68,12 @@ namespace DefaultTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Stage1 is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Map is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("DefaultTable"); 
+            string text = reader.ReadData("Simple98"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -87,7 +84,7 @@ namespace DefaultTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Stage1>, Dictionary<int, Stage1>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Map>, Dictionary<int, Map>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -115,14 +112,14 @@ namespace DefaultTable
                
 
 
-    public static (List<Stage1> list, Dictionary<int, Stage1> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Stage1> Map = new Dictionary<int, Stage1>();
-            List<Stage1> List = new List<Stage1>();     
+    public static (List<Map> list, Dictionary<int, Map> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, Map> Map = new Dictionary<int, Map>();
+            List<Map> List = new List<Map>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Stage1).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Map).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Stage1"];
+            var sheet = jsonObject["Map"];
 
             foreach (var column in sheet.Keys)
             {
@@ -141,7 +138,7 @@ namespace DefaultTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Stage1 instance = new Stage1();
+                            Map instance = new Map();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -178,12 +175,12 @@ namespace DefaultTable
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.mapid, instance);
+                            Map.Add(instance.mapId, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            Stage1List = List;
-                            Stage1Map = Map;
+                            MapList = List;
+                            MapMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -193,10 +190,10 @@ namespace DefaultTable
 
  
 
-        public static void Write(Stage1 data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Map data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Stage1).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Map).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

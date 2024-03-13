@@ -57,9 +57,8 @@ namespace Simple98
 /* Fields. */
 
 		public System.Int32 index;
-		public System.Int32 Type;
+		public System.String Type;
 		public System.String localeID;
-		public System.String IconName;
   
 
 #region fuctions
