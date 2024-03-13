@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ChangeWindow : MonoBehaviour
 {
-    private int _setWidth = 1920; //가로
-    private int _setHeight = 1080; //세로
-    private bool _isWindow = true; //전체화면 여부
+    [SerializeField] private int _setWidth = 1920; //가로
+    [SerializeField] private int _setHeight = 1080; //세로
+    [SerializeField] private bool _isWindow = true; //전체화면 여부
      
     private void Start()
     {
