@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerMovement2 : MonoBehaviour
     public Direction movingDir;
     [SerializeField] bool movingHorizontally = false, canCheck = false;
     [SerializeField] LayerMask obstacleMask;
-
+    public Transform surface;
 
     void Start()
     {
@@ -74,7 +75,26 @@ public class PlayerMovement2 : MonoBehaviour
                 }
             }
         }
+        RotateSurface();
+    }
 
+    private void RotateSurface()
+    {
+        switch (movingDir)
+        {
+            case Direction.Up:
+                surface.rotation = Quaternion.Euler(0, 0, 0); // 위쪽 이동일 때는 회전하지 않음
+                break;
+            case Direction.Down:
+                surface.rotation = Quaternion.Euler(0, 0, 180); // 아래쪽 이동일 때는 180도 회전
+                break;
+            case Direction.Right:
+                surface.rotation = Quaternion.Euler(0, 0, -90); // 오른쪽 이동일 때는 -90도 회전
+                break;
+            case Direction.Left:
+                surface.rotation = Quaternion.Euler(0, 0, 90); // 왼쪽 이동일 때는 90도 회전
+                break;
+        }
     }
 
     private void FixedUpdate()
