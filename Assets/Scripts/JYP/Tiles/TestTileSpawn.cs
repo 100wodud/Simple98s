@@ -23,13 +23,14 @@ public class TestTileSpawn : MonoBehaviour
 
         }
         */
+        DataManager.Instance.Initialize();
 
         const string path = "Prefabs/";
 
-        foreach (var item in DataManager.instance.stage1)
+        /*foreach (var item in DataManager.instance.stage1)
         {
             Instantiate(Resources.Load($"{path + DataManager.instance.tiles[item.Tile].Type + "/" + DataManager.instance.tiles[item.Tile].localeID}"), new Vector3(item.Row, -item.Column, 0), Quaternion.identity);
-        }
+        }*/
 
     }
 }
