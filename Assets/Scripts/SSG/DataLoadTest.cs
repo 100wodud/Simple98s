@@ -1,4 +1,3 @@
-using DefaultTable;
 using System.Collections;
 using System.Collections.Generic;
 using UGS;
@@ -8,8 +7,8 @@ public class DataLoadTest : MonoBehaviour
 {
     int[,] map;
     private void Awake()
-    {
-        UnityGoogleSheet.LoadAllData();
+    {       
+        
     }
     private void Start()
     {

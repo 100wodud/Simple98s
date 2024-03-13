@@ -13,39 +13,14 @@ public class DataManager : Singleton<DataManager>
     //맵,
     //싱글톤 투입
     //맵 데이터매니저
-    public MapDataManager Map;
-    public List<Tiles> tiles = new List<Tiles>();
-    public List<Maps> maps = new List<Maps>();
-
     
+    public List<Tiles> tiles = new List<Tiles>();
+    public Dictionary<int, Maps> Map = new Dictionary<int, Maps>();
     public void Initialize()//초기화
     {
-
-        //Map = 
-    }
-    //void Awake()
-    //{
-
-    //    //구글 시트 맵 불러오기
-    //    UnityGoogleSheet.LoadAllData();//각각 매니저에서 로드
-
-    //    if (instance != null) //이미 존재하면
-    //    {
-    //        Destroy(gameObject); //두개 이상이니 삭제
-    //        return;
-    //    }
-    //    instance = this; //자신을 인스턴스로
-    //    DontDestroyOnLoad(gameObject); //씬 이동해도 사라지지않게
-    //    Map=
-    //}
-
-    //public Data data = new Data();
-
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    tiles = Simple98.Tiles.TilesList;
-    //    maps = Simple98.Maps.MapsList;
-
-    //}
+        UnityGoogleSheet.Load<Maps>();
+        UnityGoogleSheet.Load<Tiles>();
+        Map = Maps.MapsMap;
+        tiles = Tiles.TilesList;
+    }   
 }

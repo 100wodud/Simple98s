@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UGS;
 using UnityEditor;
 using UnityEngine;
 public enum TileType
@@ -30,26 +31,36 @@ public class TestingMap : Singleton<TestingMap>
     //    {
     //        {0,0,0,0, }
     //    };       
-        
+
     //}
-    void SpawnMap()
+    //void SpawnMap()//맵매니저에서 사용하라는 듯
+    //{
+    //    foreach(var map in MapManager.Instance.)
+    //    {
+    //        if(map.itemIndex==0)
+    //        {
+    //            Instantiate(floor);
+    //            floor.transform.position = new Vector3(map.x, map.y);
+    //            Debug.Log($"생성했다 x:{map.x}y:{map.y}");
+    //        }
+    //    }
+    //}  
+    private void Awake()
     {
-        foreach(var map in MapManager.Instance.stage1)
-        {
-            if(map.itemIndex==0)
-            {
-                Instantiate(floor);
-                floor.transform.position = new Vector3(map.x, map.y);
-                Debug.Log($"생성했다 x:{map.x}y:{map.y}");
-            }
-        }
-    }  
-    
+        
+        DataManager.Instance.Initialize();
+    }
 
     private void Start()
     {
         //StartMap();
-        SpawnMap();
+        //SpawnMap();
+        foreach (var Map in DataManager.Instance.Map)
+        {
+            Debug.Log($"{Map.Key},{Map.Value.MapName}");
+            
+        }
+        
         
     }    
     //private void StartMap()
