@@ -47,7 +47,6 @@ public class TestingMap : Singleton<TestingMap>
     //}  
     private void Awake()
     {
-        
         DataManager.Instance.Initialize();
     }
  
