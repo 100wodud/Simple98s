@@ -348,8 +348,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 727176713493274827}
-        m_TargetAssemblyTypeName: ChangeWindow, Assembly-CSharp
+      - m_Target: {fileID: 3592164428886340295}
+        m_TargetAssemblyTypeName: Popup_Option, Assembly-CSharp
         m_MethodName: setWindowMod
         m_Mode: 0
         m_Arguments:
@@ -4401,9 +4401,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 727176713493274827}
-        m_TargetAssemblyTypeName: ChangeWindow, Assembly-CSharp
-        m_MethodName: ChangeWindowVal
+      - m_Target: {fileID: 3592164428886340295}
+        m_TargetAssemblyTypeName: Popup_Option, Assembly-CSharp
+        m_MethodName: setResolutionVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5090,7 +5090,6 @@ GameObject:
   - component: {fileID: 5549990061851679405}
   - component: {fileID: 6755580609932662149}
   - component: {fileID: 3510065900956807699}
-  - component: {fileID: 727176713493274827}
   - component: {fileID: 3592164428886340295}
   m_Layer: 5
   m_Name: Popup_Option
@@ -5113,7 +5112,7 @@ RectTransform:
   m_Children:
   - {fileID: 6155894301198941941}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5183,21 +5182,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &727176713493274827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8068582673867162123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd4b18e1dcd86549a979cf92f5fd3c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _setWidth: 1920
-  _setHeight: 1080
-  _isWindow: 1
 --- !u!114 &3592164428886340295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,8 +5198,9 @@ MonoBehaviour:
   _masterImg: {fileID: 3810221848097199374}
   _bgmImage: {fileID: 243195290805094912}
   _sfxImage: {fileID: 5197345133433898420}
-  onAudio: {fileID: 0}
-  offAudio: {fileID: 0}
+  _setWidth: 1920
+  _setHeight: 1080
+  _isWindow: 1
 --- !u!1 &8284500911784719583
 GameObject:
   m_ObjectHideFlags: 0
