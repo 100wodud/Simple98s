@@ -15,13 +15,13 @@ public class TestTileSpawn : MonoBehaviour
     { 
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
-        stage1 = Stage1.Stage1List;
+        UnityGoogleSheet.Load<Stage3>();
     }
     void Start()
     {
         DataManager.Instance.Initialize();
 
-        foreach (var item in GetClassList(1))
+        foreach (var item in GetClassList(3))
         {
             InstantiateTile(item.tile, item.x, item.y);
         }
@@ -46,7 +46,14 @@ public class TestTileSpawn : MonoBehaviour
                     test.Add(a);
                 }
                 return test;
-            // case 3, 4, 5에 대해서도 같은 방식으로 처리합니다.
+            case 3:
+                foreach (var item in Stage3.Stage3List)
+                {
+                    a = new MapStage(item.Row, item.Column, item.Tile);
+                    test.Add(a);
+                }
+                return test;
+            // case 4, 5에 대해서도 같은 방식으로 처리합니다.
             default:
                 Console.WriteLine("Invalid choice");
                 return null;
