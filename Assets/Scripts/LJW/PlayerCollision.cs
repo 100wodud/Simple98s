@@ -5,7 +5,7 @@ using System.Collections;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
         if(collision.transform.tag == "Obstacle")
         {
