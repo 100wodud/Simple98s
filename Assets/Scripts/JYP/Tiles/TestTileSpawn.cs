@@ -63,7 +63,7 @@ public class TestTileSpawn : MonoBehaviour
     public void InstantiateTile(int index, int x, int y)
     {
         const string path = "Prefabs/";
-        Tiles tile = DataManager.Instance.tileDataManager.GetTile(index);
+        Tiles tile = DataManager.Instance.TileData.GetTile(index);
         Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity);
     }
 }
