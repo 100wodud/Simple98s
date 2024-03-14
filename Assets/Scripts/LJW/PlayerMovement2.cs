@@ -25,7 +25,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (movingHorizontally)
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1, obstacleMask))
+            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 2, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 2, obstacleMask))
             {
                 canCheck = true;
             }
@@ -36,7 +36,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
         else
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 1, obstacleMask))
+            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 2, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 2, obstacleMask))
             {
                 canCheck = true;
             }
@@ -83,16 +83,16 @@ public class PlayerMovement2 : MonoBehaviour
         switch (movingDir)
         {
             case Direction.Up:
-                surface.rotation = Quaternion.Euler(0, 0, 0); // 위쪽 이동일 때는 회전하지 않음
+                surface.rotation = Quaternion.Euler(0, 0, 0);
                 break;
             case Direction.Down:
-                surface.rotation = Quaternion.Euler(0, 0, 180); // 아래쪽 이동일 때는 180도 회전
+                surface.rotation = Quaternion.Euler(0, 0, 180);
                 break;
             case Direction.Right:
-                surface.rotation = Quaternion.Euler(0, 0, -90); // 오른쪽 이동일 때는 -90도 회전
+                surface.rotation = Quaternion.Euler(0, 0, -90);
                 break;
             case Direction.Left:
-                surface.rotation = Quaternion.Euler(0, 0, 90); // 왼쪽 이동일 때는 90도 회전
+                surface.rotation = Quaternion.Euler(0, 0, 90);
                 break;
         }
     }
