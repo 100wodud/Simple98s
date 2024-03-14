@@ -5,12 +5,12 @@ using UGS;
 
 public class DataManager : Singleton<DataManager>
 {
-    public TileDatas tileDataManager = new();
+    public TileDatas TileData = new();
     public MapDatas MapData = new ();
     
     public void Initialize()
     {
-        tileDataManager.Initialize();
+        TileData.Initialize();
         MapData.Initialize();
     }           
 }
