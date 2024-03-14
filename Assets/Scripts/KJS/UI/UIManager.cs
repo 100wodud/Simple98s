@@ -1,14 +1,25 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 public class UIManager
 {
 
-    public static UIManager Instance;
-    private void Awake()
+    private static UIManager _instance;
+    public static UIManager Instance
     {
-        Instance = this;
+        get
+        {
+            if (null == _instance)
+            {
+                _instance = new UIManager();
+            }
+            return _instance;
+        }
     }
+   //private static UIManager _singleton = new UIManager();
+    //public static UIManager Get() { return _singleton; }
+    //public static bool Has() { return _singleton != null; }
 
     private List<UIPopup> popups = new List<UIPopup>();
 

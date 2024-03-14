@@ -13,15 +13,23 @@ public class UIPopup : MonoBehaviour
 
     public virtual void Hide()
     {
-        PopDestroy();
+        PopHide();
+    }
+    public virtual void Show()
+    {
+        PopShow();
     }
 
-    public void PopHide()
+    private void PopShow()
+    {
+        gameObject.SetActive(true);
+    }
+    private void PopHide()
     {
         gameObject.SetActive(false);
     }
 
-    public void PopDestroy()
+    private void PopDestroy()
     {
         Destroy(gameObject);
     }

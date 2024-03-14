@@ -172,4 +172,9 @@ public class Popup_Option : UIPopup
     {
         base.Hide();
     }
+
+    public override void Show()
+    {
+        base.Show();
+    }
 }
