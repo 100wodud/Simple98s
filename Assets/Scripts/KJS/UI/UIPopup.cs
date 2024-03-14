@@ -7,23 +7,30 @@ using UnityEngine.UI;
 
 public class UIPopup : MonoBehaviour
 {
-    public virtual void Awake()
-    {
-        Refresh();
-    }
-
     public virtual void Refresh()
     {
     }
 
     public virtual void Hide()
     {
-        PopExit();
+        PopHide();
+    }
+    public virtual void Show()
+    {
+        PopShow();
     }
 
-    public void PopExit()
+    private void PopShow()
     {
-        UIManager.Get().RemovePopup(this); 
+        gameObject.SetActive(true);
+    }
+    private void PopHide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void PopDestroy()
+    {
         Destroy(gameObject);
     }
 }
