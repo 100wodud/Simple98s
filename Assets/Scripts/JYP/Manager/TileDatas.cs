@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UGS;
 
-public class TileDataManager
+public class TileDatas
 {
 
     public void Initialize ()
