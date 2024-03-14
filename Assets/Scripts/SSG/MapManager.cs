@@ -1,3 +1,4 @@
+using Simple98;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +7,7 @@ using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-    [SerializeField] private GameObject Tile;
-    [SerializeField] private string mapId;
+     
     
     //맵을 생성하는 기능을 담당하는 매니저
     //데이터 매니저에 데이터를 저장시켜주기
@@ -22,12 +22,18 @@ public class MapManager : Singleton<MapManager>
         
     }
     
-    public void MakeStage(string mapId)
+    public void MakeStage(int mapStage)
     {
-        foreach(var map in DataManager.Instance.MapData.stage1)
+        foreach (var item in DataManager.Instance.MapData.GetStageList(mapStage))
         {
-            Instantiate(Tile);
-            Tile.transform.position = new Vector3(map.Value.Row, map.Value.Column);
+            InstantiateTile(item.tile, item.x, item.y);
         }
+    }
+
+    private void InstantiateTile(int index, int x, int y)
+    {
+        const string path = "Prefabs/";
+        Tiles tile = DataManager.Instance.tileDataManager.GetTile(index);
+        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity);
     }
 }
