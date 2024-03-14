@@ -25,10 +25,11 @@ public class Popup_Option : UIPopup
     private bool _isAllMute = false; //음소거 체크
     private bool _isBgmMute = false; //전체음소거 체크
     private bool _isSfxMute = false;
-    //public void Initialize() //초기화 메서드
-    //{
 
-    //}
+    public void Initialize() //초기화 메서드
+    {
+        Refresh();
+    }
 
     public override void Refresh()
     {

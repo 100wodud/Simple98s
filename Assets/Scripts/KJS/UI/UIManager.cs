@@ -4,15 +4,17 @@ using UnityEngine;
 public class UIManager
 {
 
-    private static UIManager _singleton = new UIManager();
-    public static UIManager Get() { return _singleton; }
-    public static bool Has() { return _singleton != null; }
+    public static UIManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private List<UIPopup> popups = new List<UIPopup>();
 
     public UIPopup ShowPopup(string popupname)
     {
-        var obj = Resources.Load("Popups/" + popupname, typeof(GameObject)) as GameObject;
+        var obj = Resources.Load($"Popups/{popupname}", typeof(GameObject)) as GameObject;
         if (!obj)
         {
             Debug.LogWarning("Failed to ShowPopup({0})");
@@ -26,20 +28,12 @@ public class UIManager
         return ShowPopup(typeof(T).Name) as T;
     }
 
-    public UIPopup ShowPopupWithPrefab(GameObject prefab, string popupName)
+    private UIPopup ShowPopupWithPrefab(GameObject prefab, string popupName)
     {
-        var obj = InstantiatePrefab(prefab);
+        var obj = GameObject.Instantiate(prefab);
         return ShowPopup(obj, popupName);
     }
 
-    //private GameObject Instantiate(GameObject prefab)
-    //{
-    //    throw new NotImplementedException();
-    //}
-    private GameObject InstantiatePrefab(GameObject prefab)
-    {
-        return GameObject.Instantiate(prefab);
-    }
 
     public UIPopup ShowPopup(GameObject obj, string popupname)
     {

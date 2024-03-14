@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TitleMenu : MonoBehaviour
 {
-    private UIManager _manager = UIManager.Get();
+   //private UIManager _manager = UIManager.Get();
    public void OnClickOption()
     {
-       _manager.ShowPopup<Popup_Option>();
+        UIManager.Instance.ShowPopup<Popup_Option>().Initialize();
     }
 
     public void GameExit() //게임종료

@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class UIPopup : MonoBehaviour
 {
-    public virtual void Awake()
-    {
-        Refresh();
-    }
-
     public virtual void Refresh()
     {
     }
