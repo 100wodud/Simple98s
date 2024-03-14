@@ -57,8 +57,6 @@ namespace Simple98
 /* Fields. */
 
 		public System.Int32 index;
-		public System.Int32 Row;
-		public System.Int32 Column;
 		public System.String MapName;
   
 
