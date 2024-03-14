@@ -9,8 +9,9 @@ public class PlayerCollision : MonoBehaviour
     {
         if(collision.transform.tag == "Obstacle")
         {
-            HealthSystem.health--;
-            if(HealthSystem.health < 0)
+            PlayerHealth.health--;
+            Debug.Log("Player health: " + PlayerHealth.health);
+            if (PlayerHealth.health < 0)
             {
                 Debug.Log("Gameover");
             }
