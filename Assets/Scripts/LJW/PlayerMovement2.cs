@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerMovement2 : MonoBehaviour
     public Direction movingDir;
     [SerializeField] bool movingHorizontally = false, canCheck = false;
     [SerializeField] LayerMask obstacleMask;
-
+    public Transform surface;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (movingHorizontally)
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1, obstacleMask))
+            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 2, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 2, obstacleMask))
             {
                 canCheck = true;
             }
@@ -35,7 +36,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
         else
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 1, obstacleMask))
+            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 2, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 2, obstacleMask))
             {
                 canCheck = true;
             }
@@ -74,7 +75,26 @@ public class PlayerMovement2 : MonoBehaviour
                 }
             }
         }
+        RotateSurface();
+    }
 
+    private void RotateSurface()
+    {
+        switch (movingDir)
+        {
+            case Direction.Up:
+                surface.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            case Direction.Down:
+                surface.rotation = Quaternion.Euler(0, 0, 180);
+                break;
+            case Direction.Right:
+                surface.rotation = Quaternion.Euler(0, 0, -90);
+                break;
+            case Direction.Left:
+                surface.rotation = Quaternion.Euler(0, 0, 90);
+                break;
+        }
     }
 
     private void FixedUpdate()
