@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 76f1de7e4c8b94241915ef2dad9fccd9
+guid: bf9b591fe42d3db47bfce1d9e5eba4d1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Heart2_0
+      name: Heart_Full
       rect:
         serializedVersion: 2
         x: 18
@@ -131,7 +131,7 @@ TextureImporter:
         width: 19
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
         width: 19
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart2_2
+      name: Heart_Empty
       rect:
         serializedVersion: 2
         x: 62
@@ -173,7 +173,7 @@ TextureImporter:
         width: 19
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Heart2_0: -1671148035
       Heart2_1: -94204812
-      Heart2_2: -513622221
+      Heart_Empty: -513622221
+      Heart_Full: -1671148035
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
