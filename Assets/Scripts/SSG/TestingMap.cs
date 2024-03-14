@@ -50,19 +50,7 @@ public class TestingMap : Singleton<TestingMap>
         
         DataManager.Instance.Initialize();
     }
-
-    private void Start()
-    {
-        //StartMap();
-        //SpawnMap();
-        foreach (var Map in DataManager.Instance.Map)
-        {
-            Debug.Log($"{Map.Key},{Map.Value.MapName}");
-            
-        }
-        
-        
-    }    
+ 
     //private void StartMap()
     //{        
     //    Vector3 vector;
