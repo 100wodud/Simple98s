@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ObstacleTiles : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject Needle;
+    Vector3 pos; //현재위치
+    float delta = 0.25f; // 좌(우)로 이동가능한 (y)최대값
+    float speed = 1.0f; // 이동속도
+    private float yStartPosition; // 시작위치
+
+
+
+
+    void Awake()
     {
-        
+        pos = transform.position;
+        Debug.Log(pos);
+        yStartPosition = Needle.transform.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Vector3 vector = pos;
+        vector.y = yStartPosition + delta * Mathf.Sin(Time.time * speed);
+        Needle.transform.position = vector;
     }
 }

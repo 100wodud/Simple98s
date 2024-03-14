@@ -2,7 +2,6 @@ using Simple98;
 using System.Collections;
 using System.Collections.Generic;
 using UGS;
-using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
@@ -14,13 +13,10 @@ public class DataManager : Singleton<DataManager>
     //ΩÃ±€≈Ê ≈ı¿‘
     //∏  µ•¿Ã≈Õ∏≈¥œ¿˙
     
-    public List<Tiles> tiles = new List<Tiles>();
-    public Dictionary<int, Maps> Map = new Dictionary<int, Maps>();
+    public TileDataManager tileDataManager = new ();
+
     public void Initialize()//√ ±‚»≠
     {
-        UnityGoogleSheet.Load<Maps>();
-        UnityGoogleSheet.Load<Tiles>();
-        Map = Maps.MapsMap;
-        tiles = Tiles.TilesList;
+        tileDataManager.Initialize();
     }   
 }

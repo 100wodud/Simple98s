@@ -56,11 +56,10 @@ namespace Simple98
 
 /* Fields. */
 
-		public System.Int32 mapid;
-		public System.Int32 mapKey;
-		public System.Int32 x;
-		public System.Int32 y;
-		public System.Int32 itemIndex;
+		public System.Int32 index;
+		public System.Int32 Row;
+		public System.Int32 Column;
+		public System.Int32 Tile;
   
 
 #region fuctions
@@ -178,7 +177,7 @@ namespace Simple98
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.mapid, instance);
+                            Map.Add(instance.index, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
