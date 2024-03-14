@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class UIPopup : MonoBehaviour
 {
-    public virtual void Refresh()
-    {
-    }
 
     public virtual void Hide()
     {

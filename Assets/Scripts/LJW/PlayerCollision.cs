@@ -5,16 +5,23 @@ using System.Collections;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private HpControll hpControll;
+
+    private void Start()
     {
-        if(collision.transform.tag == "Obstacle")
+        hpControll = FindObjectOfType<HpControll>();
+    }
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    {
+        if (collision.transform.tag == "Obstacle")
         {
-            HealthSystem.health--;
-            if(HealthSystem.health < 0)
+            PlayerHealth.health--;
+            hpControll.HpMinus();
+            Debug.Log("Player health: " + PlayerHealth.health);
+            if (PlayerHealth.health <= 0)
             {
                 Debug.Log("Gameover");
             }
         }
     }
-
 }

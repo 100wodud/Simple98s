@@ -31,7 +31,7 @@ public class Popup_Option : UIPopup
         Refresh();
     }
 
-    public override void Refresh()
+    private void Refresh()
     {
         _onAudio = Resources.Load<Sprite>(_onResource);
         _offAudio = Resources.Load<Sprite>(_offResource);
