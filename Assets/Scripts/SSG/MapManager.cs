@@ -26,6 +26,8 @@ public class MapManager : Singleton<MapManager>
         {
             InstantiateTile(item.tile, item.x, item.y);
         }
+        Vector3 playerPos = DataManager.Instance.MapData.GetStageData(mapStage).PlayerPos;
+        Instantiate(Resources.Load("Prefabs/Player/Player"), playerPos, Quaternion.identity);
     }
 
     private void InstantiateTile(int index, int x, int y)
