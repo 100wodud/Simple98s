@@ -11,46 +11,54 @@ using static UnityEditor.Progress;
 
 public class MapDatas
 {
-    private Dictionary<int, List<StageData>> stageDct=new();
-    //private List<Maps> maps=Maps.MapsList;
-    
+    private Dictionary<int, List<StageValue>> stageDct=new();
+    private Dictionary<int, Maps> maps= new();
     public void Initialize()
     {
-        //UnityGoogleSheet.Load<Maps>();
+        UnityGoogleSheet.Load<Maps>();
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
         UnityGoogleSheet.Load<Stage3>();        
-        LoadStage();   
+        LoadStage();
+        maps = Maps.MapsMap;
+        Debug.Log(maps[1].PlayerPos);
     }
+
     public void LoadStage()
     {
-        StageData stage;
-        List<StageData> stage1 = new List<StageData>();        
+        StageValue stage;
+        List<StageValue> stage1 = new List<StageValue>();        
         foreach (var item in Stage1.Stage1List)
         {
-            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage = new StageValue(item.Row, item.Column, item.Tile);
             stage1.Add(stage);           
         }
         stageDct.Add(1, stage1);        
-        List<StageData> stage2 = new List<StageData>();
+        List<StageValue> stage2 = new List<StageValue>();
         foreach (var item in Stage2.Stage2List)
         {
-            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage = new StageValue(item.Row, item.Column, item.Tile);
             stage2.Add(stage);
         }
         stageDct.Add(2, stage2);
-        List<StageData> stage3 = new List<StageData>();
+        List<StageValue> stage3 = new List<StageValue>();
         foreach (var item in Stage3.Stage3List)
         {
-            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage = new StageValue(item.Row, item.Column, item.Tile);
             stage3.Add(stage);
         }
         stageDct.Add(3, stage3);
     }
-    public List<StageData> GetStageList(int StageIndex)
+    public List<StageValue> GetStageList(int StageIndex)
     {
         return stageDct[StageIndex];
     }
+
+    public Maps GetStageData(int StageIndex)
+    {
+        return maps[StageIndex];
+    }
+
     //private void SetStage<T>(int stageId,List<T> stageList)
     //{
     //    List<Stages> stage = new List<Stages>();
