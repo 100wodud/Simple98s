@@ -20,7 +20,7 @@ public class Health_UI : UIPopup
         _heartSprite = Resources.Load<SpriteAtlas>("Sprites/HP");
         _maxHp = hearts.Length;
     }
-    public void Damage()
+    public void Damage()  //체력풀이거나 0이하면 고정
     {
         if (PlayerHealth.health > _maxHp)
         {
@@ -33,7 +33,7 @@ public class Health_UI : UIPopup
 
         HpImage(PlayerHealth.health);
     }
-    public void HpImage(int hp)
+    public void HpImage(int hp)  //체력 계산후 이미지 출력
     {
         for (int i = 0; i < hearts.Length; i++)
         {

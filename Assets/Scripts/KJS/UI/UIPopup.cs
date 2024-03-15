@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class UIPopup : MonoBehaviour
@@ -16,7 +17,10 @@ public class UIPopup : MonoBehaviour
     {
         PopShow();
     }
-
+    public virtual void Destroy()
+    {
+        PopDestroy();
+    }
     private void PopShow()
     {
         gameObject.SetActive(true);

@@ -19,6 +19,19 @@ public class Popup_Option : UIPopup
     private Sprite _onAudio;
     private Sprite _offAudio;
 
+    private GameObject _bgmObject;
+    private GameObject _sfxObject;
+
+    private Button _masterBtn;
+    private Button _bgmBtn;
+    private Button _sfxBtn;
+    private Button _displayBtn;
+    private Button _audioBtn;
+    private Button _exitBtn;
+
+    private AudioSource _bgmSource;
+    private AudioSource _sfxSource;
+
     private string _onResource = "Sprites/AudioOn";
     private string _offResource = "Sprites/AudioOff";
 
@@ -35,8 +48,30 @@ public class Popup_Option : UIPopup
     {
         _onAudio = Resources.Load<Sprite>(_onResource);
         _offAudio = Resources.Load<Sprite>(_offResource);
+        _bgmObject = GameObject.Find("BgmAudio");
+        _sfxObject = GameObject.Find("SfxAudio");
+        _bgmSource = _bgmObject.GetComponent<AudioSource>();
+        _sfxSource = _sfxObject.GetComponent<AudioSource>();
+        GameObject icon = GameObject.Find("Icon");
+        GameObject select = GameObject.Find("SelectOption");
+        GameObject op = GameObject.Find("Option");
+        _masterBtn = icon.transform.GetChild(0).GetComponent<Button>();
+        _bgmBtn = icon.transform.GetChild(1).GetComponent<Button>();
+        _sfxBtn = icon.transform.GetChild(2).GetComponent<Button>();
+        _displayBtn = select.transform.GetChild(0).GetComponent<Button>();
+        _audioBtn = select.transform.GetChild(1).GetComponent<Button>();
+        _exitBtn = op.transform.GetChild(2).GetComponent<Button>();
+        PopBtnSet();
     }
-
+    private void PopBtnSet() //버튼 onClick 추가
+    {
+        _masterBtn.onClick.AddListener(_sfxSource.Play);
+        _bgmBtn.onClick.AddListener(_sfxSource.Play);
+        _sfxBtn.onClick.AddListener(_sfxSource.Play);
+        _displayBtn.onClick.AddListener(_sfxSource.Play);
+        _audioBtn.onClick.AddListener(_sfxSource.Play);
+        _exitBtn.onClick.AddListener(_sfxSource.Play);
+    }
     //=====================오디오 설정=============================
     //=================================================================
     //음소거 토글
@@ -74,32 +109,12 @@ public class Popup_Option : UIPopup
 
     public void BgmMute() //Bgm 음소거 버튼
     {
-        //Bgm 오브젝트 찾기
-        GameObject bgmObject = GameObject.Find("BgmAudio");
-        if (bgmObject != null)
-        {
-            //오디오 소스 컴포넌트
-            AudioSource bgmAudio = bgmObject.GetComponent<AudioSource>();
-            if (bgmAudio != null)
-            {
-                OnMuteToggle(_bgmImage, bgmAudio,ref _isBgmMute);
-            }
-        }
+        OnMuteToggle(_bgmImage, _bgmSource, ref _isBgmMute);
     }
 
     public void SfxMute() //Sfx 음소거 버튼
     {
-        //Sfx 오브젝트 찾기
-        GameObject sfxObject = GameObject.Find("SfxAudio");
-        if (sfxObject != null)
-        {
-            //오디오 소스 컴포넌트
-            AudioSource sfxAudio = sfxObject.GetComponent<AudioSource>();
-            if (sfxAudio != null)
-            {
-                OnMuteToggle(_sfxImage, sfxAudio,ref _isSfxMute);
-            }
-        }
+        OnMuteToggle(_sfxImage, _sfxSource, ref _isSfxMute);
     }
 
 
@@ -176,5 +191,9 @@ public class Popup_Option : UIPopup
     public override void Show()
     {
         base.Show();
+    }
+    public override void Destroy()
+    {
+        base.Destroy();
     }
 }

@@ -287,6 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 180082835}
+  - component: {fileID: 180082836}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -311,6 +312,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180082836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180082833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801adaceba60184ca8b9f8f8a9d2811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &260277361
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +540,7 @@ GameObject:
   - component: {fileID: 294608711}
   - component: {fileID: 294608710}
   m_Layer: 5
-  m_Name: Option
+  m_Name: OptionBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,6 +614,18 @@ MonoBehaviour:
       - m_Target: {fileID: 11783221}
         m_TargetAssemblyTypeName: TitleMenu, Assembly-CSharp
         m_MethodName: OnClickOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1650659514}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -753,7 +778,7 @@ GameObject:
   - component: {fileID: 1358434087}
   - component: {fileID: 1358434086}
   m_Layer: 5
-  m_Name: Start
+  m_Name: StartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,7 +848,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1358434087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1650659514}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1358434087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,10 +942,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 907286859205156369, guid: 3288dab085cd53240b54c4208a689476, type: 2}
   m_audioClip: {fileID: 8300000, guid: 83ccc8a46d2316645bcc0645747c1822, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1266,7 +1303,7 @@ GameObject:
   - component: {fileID: 2081711647}
   - component: {fileID: 2081711646}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: ExitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1337,6 +1374,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1650659514}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11783221}
         m_TargetAssemblyTypeName: TitleMenu, Assembly-CSharp
         m_MethodName: GameExit
