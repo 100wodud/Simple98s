@@ -5093,7 +5093,7 @@ GameObject:
   - component: {fileID: 3592164428886340295}
   m_Layer: 5
   m_Name: Popup_Option
-  m_TagString: Untagged
+  m_TagString: Sfx
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5112,7 +5112,7 @@ RectTransform:
   m_Children:
   - {fileID: 6155894301198941941}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

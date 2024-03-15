@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private HpControll hpControll;
+    private GameUIControll hpControll;
 
     private void Start()
     {
-        hpControll = FindObjectOfType<HpControll>();
+        hpControll = FindObjectOfType<GameUIControll>();
     }
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
