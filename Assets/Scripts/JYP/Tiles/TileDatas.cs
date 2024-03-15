@@ -5,7 +5,7 @@ using UGS;
 
 public class TileDatas
 {
-
+    //데이터 저장해놓기
     public void Initialize ()
     {
         UnityGoogleSheet.Load<Tiles>();
@@ -20,7 +20,7 @@ public class TileDatas
     }
 
 
-    public List<Tiles> GetAllTiles()
+    public List<Tiles> GetAllTiles()//그냥리턴
     {
         List<Tiles> allTiles = new List<Tiles>();
 

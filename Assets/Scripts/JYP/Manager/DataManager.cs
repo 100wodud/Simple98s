@@ -6,7 +6,7 @@ using UGS;
 public class DataManager : Singleton<DataManager>
 {
     public TileDatas TileData = new();
-    public MapDatas MapData = new ();
+    public MapDatas MapData = new();
     
     public void Initialize()
     {
