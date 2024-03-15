@@ -24,8 +24,9 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("Contact Count: " + contactCount);
-        if (contactCount >= 3)
+        Debug.Log("Velocity: " + rb.velocity.magnitude);
+
+        if (rb.velocity.magnitude == 0)
         {
             if (movingHorizontally)
             {
@@ -49,38 +50,34 @@ public class PlayerMovement2 : MonoBehaviour
                     canCheck = false;
                 }
             }
-        }
-        else
-        {
-            canCheck = false;
-        }
-        if (canCheck)
-        {
-            if (Input.GetAxisRaw("Horizontal") != 0)
+            if (canCheck)
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                if (Input.GetAxisRaw("Horizontal") != 0)
+                {
+                    rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
-                if (Input.GetAxisRaw("Horizontal") > 0)
-                {
-                    movingDir = Direction.Right;
+                    if (Input.GetAxisRaw("Horizontal") > 0)
+                    {
+                        movingDir = Direction.Right;
+                    }
+                    else
+                    {
+                        movingDir = Direction.Left;
+                    }
                 }
-                else
+                else if (Input.GetAxisRaw("Vertical") != 0)
                 {
-                    movingDir = Direction.Left;
-                }
-            }
-            else if (Input.GetAxisRaw("Vertical") != 0)
-            {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                movingHorizontally = false;
+                    rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                    movingHorizontally = false;
 
-                if (Input.GetAxisRaw("Vertical") > 0)
-                {
-                    movingDir = Direction.Up;
-                }
-                else
-                {
-                    movingDir = Direction.Down;
+                    if (Input.GetAxisRaw("Vertical") > 0)
+                    {
+                        movingDir = Direction.Up;
+                    }
+                    else
+                    {
+                        movingDir = Direction.Down;
+                    }
                 }
             }
         }
@@ -126,20 +123,4 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            contactCount++;
-        }
-    }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            contactCount--;
-        }
-    }
 }
