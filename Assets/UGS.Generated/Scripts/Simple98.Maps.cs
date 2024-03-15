@@ -58,6 +58,7 @@ namespace Simple98
 
 		public System.Int32 index;
 		public System.String MapName;
+		public UnityEngine.Vector3 PlayerPos;
   
 
 #region fuctions
