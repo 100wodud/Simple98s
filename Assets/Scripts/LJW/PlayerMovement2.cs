@@ -16,6 +16,7 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] bool movingHorizontally = false, canCheck = false;
     [SerializeField] LayerMask obstacleMask;
     public Transform surface;
+    private int contactCount = 0;
 
     void Start()
     {
@@ -23,27 +24,35 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void Update()
     {
-        if (movingHorizontally)
+        Debug.Log("Contact Count: " + contactCount);
+        if (contactCount >= 3)
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1, obstacleMask))
+            if (movingHorizontally)
             {
-                canCheck = true;
+                if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1, obstacleMask))
+                {
+                    canCheck = true;
+                }
+                else
+                {
+                    canCheck = false;
+                }
             }
             else
             {
-                canCheck = false;
+                if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 1, obstacleMask))
+                {
+                    canCheck = true;
+                }
+                else
+                {
+                    canCheck = false;
+                }
             }
         }
         else
         {
-            if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 1, obstacleMask))
-            {
-                canCheck = true;
-            }
-            else
-            {
-                canCheck = false;
-            }
+            canCheck = false;
         }
         if (canCheck)
         {
@@ -75,6 +84,7 @@ public class PlayerMovement2 : MonoBehaviour
                 }
             }
         }
+
         RotateSurface();
     }
 
@@ -113,6 +123,23 @@ public class PlayerMovement2 : MonoBehaviour
             case Direction.Left:
                 rb.velocity = new Vector2(-speed * Time.fixedDeltaTime, 0);
                 break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            contactCount++;
+        }
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            contactCount--;
         }
     }
 }
