@@ -12,15 +12,18 @@ using static UnityEditor.Progress;
 public class MapDatas
 {
     private Dictionary<int, List<StageValue>> stageDct=new();
-    //private List<Maps> maps=Maps.MapsList;
+    private Dictionary<int, Maps> maps= new();
     public void Initialize()
     {
-        //UnityGoogleSheet.Load<Maps>();
+        UnityGoogleSheet.Load<Maps>();
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
         UnityGoogleSheet.Load<Stage3>();        
-        LoadStage();   
+        LoadStage();
+        maps = Maps.MapsMap;
+        Debug.Log(maps[1].PlayerPos);
     }
+
     public void LoadStage()
     {
         StageValue stage;
@@ -50,6 +53,12 @@ public class MapDatas
     {
         return stageDct[StageIndex];
     }
+
+    public Maps GetStageData(int StageIndex)
+    {
+        return maps[StageIndex];
+    }
+
     //private void SetStage<T>(int stageId,List<T> stageList)
     //{
     //    List<Stages> stage = new List<Stages>();
