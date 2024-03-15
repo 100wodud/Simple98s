@@ -11,8 +11,9 @@ using static UnityEditor.Progress;
 
 public class MapDatas
 {
-    private Dictionary<int, List<StageValue>> stageDct=new();
+    private Dictionary<int, List<StageData>> stageDct=new();
     //private List<Maps> maps=Maps.MapsList;
+    
     public void Initialize()
     {
         //UnityGoogleSheet.Load<Maps>();
@@ -23,30 +24,30 @@ public class MapDatas
     }
     public void LoadStage()
     {
-        StageValue stage;
-        List<StageValue> stage1 = new List<StageValue>();        
+        StageData stage;
+        List<StageData> stage1 = new List<StageData>();        
         foreach (var item in Stage1.Stage1List)
         {
-            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage = new StageData(item.Row, item.Column, item.Tile);
             stage1.Add(stage);           
         }
         stageDct.Add(1, stage1);        
-        List<StageValue> stage2 = new List<StageValue>();
+        List<StageData> stage2 = new List<StageData>();
         foreach (var item in Stage2.Stage2List)
         {
-            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage = new StageData(item.Row, item.Column, item.Tile);
             stage2.Add(stage);
         }
         stageDct.Add(2, stage2);
-        List<StageValue> stage3 = new List<StageValue>();
+        List<StageData> stage3 = new List<StageData>();
         foreach (var item in Stage3.Stage3List)
         {
-            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage = new StageData(item.Row, item.Column, item.Tile);
             stage3.Add(stage);
         }
         stageDct.Add(3, stage3);
     }
-    public List<StageValue> GetStageList(int StageIndex)
+    public List<StageData> GetStageList(int StageIndex)
     {
         return stageDct[StageIndex];
     }
