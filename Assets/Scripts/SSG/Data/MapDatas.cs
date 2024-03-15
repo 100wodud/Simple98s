@@ -7,52 +7,65 @@ using System.Linq;
 using UGS;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class MapDatas
 {
-    //여기서 데이터를 할당을 안시키고도 그 데이터 값을 사용할 수 있는 방법이 뭐가 있을까
-    //바로 그 
-    //스테이지 데이터? 상속
-    
+    private Dictionary<int, List<StageValue>> stageDct=new();
+    //private List<Maps> maps=Maps.MapsList;
     public void Initialize()
     {
+        //UnityGoogleSheet.Load<Maps>();
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
-        UnityGoogleSheet.Load<Stage3>();
+        UnityGoogleSheet.Load<Stage3>();        
+        LoadStage();   
     }
-    public List<MapStage> GetStageList(int choice)
+    public void LoadStage()
     {
-        List<MapStage> stageList = new List<MapStage>();
-        MapStage stage;
-        switch (choice)
+        StageValue stage;
+        List<StageValue> stage1 = new List<StageValue>();        
+        foreach (var item in Stage1.Stage1List)
         {
-            case 1:
-                foreach (var item in Stage1.Stage1List)
-                {
-                    stage = new MapStage(item.Row, item.Column, item.Tile);
-                    stageList.Add(stage);
-                }
-                return stageList;
-            case 2:
-                foreach (var item in Stage2.Stage2List)
-                {
-                    stage = new MapStage(item.Row, item.Column, item.Tile);
-                    stageList.Add(stage);
-                }
-                return stageList;
-            case 3:
-                foreach (var item in Stage3.Stage3List)
-                {
-                    stage = new MapStage(item.Row, item.Column, item.Tile);
-                    stageList.Add(stage);
-                }
-                return stageList;
-            // case 4, 5에 대해서도 같은 방식으로 처리합니다.
-            default:
-                Console.WriteLine("Invalid choice");
-                return null;
+            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage1.Add(stage);           
         }
+        stageDct.Add(1, stage1);        
+        List<StageValue> stage2 = new List<StageValue>();
+        foreach (var item in Stage2.Stage2List)
+        {
+            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage2.Add(stage);
+        }
+        stageDct.Add(2, stage2);
+        List<StageValue> stage3 = new List<StageValue>();
+        foreach (var item in Stage3.Stage3List)
+        {
+            stage = new StageValue(item.Row, item.Column, item.Tile);
+            stage3.Add(stage);
+        }
+        stageDct.Add(3, stage3);
     }
+    public List<StageValue> GetStageList(int StageIndex)
+    {
+        return stageDct[StageIndex];
+    }
+    //private void SetStage<T>(int stageId,List<T> stageList)
+    //{
+    //    List<Stages> stage = new List<Stages>();
+    //    Stages stageValue;
+    //    int row;
+    //    int column;
+    //    int tile;
+    //    foreach(var item in stageList)
+    //    {
+    //        stage1 = new Stages(item.Row, item.Column, item.Tile);
+    //        stage.Add(stage1);
+    //    }
+    //    stages.Add(stageId, stage);
+    //}
+
+
 
 
 }
