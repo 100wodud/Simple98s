@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {    
-    private void Awake()
+    protected override void Awake()
     {
         DataManager.Instance.Initialize();
         MapManager.Instance.MakeStage(2);
