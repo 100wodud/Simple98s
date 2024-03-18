@@ -7,6 +7,10 @@ TagManager:
   - Pop
   - Obstacle
   - Clear
+  - Coin
+  - Star1
+  - Star2
+  - Star3
   layers:
   - Default
   - TransparentFX

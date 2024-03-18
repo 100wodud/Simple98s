@@ -16,7 +16,6 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] bool movingHorizontally = false, canCheck = false;
     [SerializeField] LayerMask obstacleMask;
     public Transform surface;
-    private int contactCount = 0;
 
     void Start()
     {
@@ -24,8 +23,6 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("Velocity: " + rb.velocity.magnitude);
-
         if (rb.velocity.magnitude == 0)
         {
             if (movingHorizontally)

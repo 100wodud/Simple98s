@@ -22,9 +22,29 @@ public class PlayerCollision : MonoBehaviour
                 Debug.Log("Gameover");
             }
         }
-        else if (collision.transform.tag == "Clear")
+        else if(collision.transform.tag == "Clear")
         {
             Debug.Log("Clear");
+        }
+
+        if (collision.tag == "Coin")
+        {
+            LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
+            Destroy(collision.gameObject);
+            lv.coin++;
+        }
+
+        if (collision.CompareTag("Star1") || collision.CompareTag("Star2") || collision.CompareTag("Star3"))
+        {
+            LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
+            Destroy(collision.gameObject);
+            lv.coin += 10;
+            if (collision.CompareTag("Star1"))
+                lv.star1 = true;
+            else if (collision.CompareTag("Star2"))
+                lv.star2 = true;
+            else if (collision.CompareTag("Star3"))
+                lv.star3 = true;
         }
     }
 
@@ -40,6 +60,5 @@ public class PlayerCollision : MonoBehaviour
                 Debug.Log("Gameover");
             }
         }
-
     }
 }
