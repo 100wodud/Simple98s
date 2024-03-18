@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
@@ -22,5 +23,20 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
             }
             return _instance;
         }
+    }
+
+    protected static bool DontDestroy = true;
+    protected virtual void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this as T;
+            if (DontDestroy) DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this as T)
+        {
+            Destroy(gameObject);
+        }
+        else if (DontDestroy) { DontDestroyOnLoad(gameObject); }
     }
 }
