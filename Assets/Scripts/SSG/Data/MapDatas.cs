@@ -20,35 +20,35 @@ public class MapDatas
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
         UnityGoogleSheet.Load<Stage3>();        
-        LoadStage();
-        maps = Maps.MapsMap;
-        Debug.Log(maps[1].PlayerPos);
+        LoadStage();              
     }
 
     public void LoadStage()
     {
         StageData stage;
+
+        maps = Maps.MapsMap;
         List<StageData> stage1 = new List<StageData>();        
         foreach (var item in Stage1.Stage1List)
         {
             stage = new StageData(item.Row, item.Column, item.Tile);
             stage1.Add(stage);           
         }
-        stageDct.Add(1, stage1);        
+        stageDct.Add(maps[1].index, stage1);        
         List<StageData> stage2 = new List<StageData>();
         foreach (var item in Stage2.Stage2List)
         {
             stage = new StageData(item.Row, item.Column, item.Tile);
             stage2.Add(stage);
         }
-        stageDct.Add(2, stage2);
+        stageDct.Add(maps[2].index, stage2);
         List<StageData> stage3 = new List<StageData>();
         foreach (var item in Stage3.Stage3List)
         {
             stage = new StageData(item.Row, item.Column, item.Tile);
             stage3.Add(stage);
         }
-        stageDct.Add(3, stage3);
+        stageDct.Add(maps[3].index, stage3);
     }
     public List<StageData> GetStageList(int StageIndex)
     {
