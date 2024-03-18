@@ -16,7 +16,6 @@ public class ObstacleTiles : MonoBehaviour
     void Awake()
     {
         pos = transform.position;
-        Debug.Log(pos);
         yStartPosition = Needle.transform.position.y;
     }
 
