@@ -23,9 +23,9 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void Update()
     {
-        if (rb.velocity.magnitude == 0)
+        if (rb.velocity.magnitude == 0) //정지 상태일때만 작동
         {
-            if (movingHorizontally)
+            if (movingHorizontally) // 수평 이동
             {
                 if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1, obstacleMask))
                 {
@@ -36,7 +36,7 @@ public class PlayerMovement2 : MonoBehaviour
                     canCheck = false;
                 }
             }
-            else
+            else // 수직 이동
             {
                 if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 1, obstacleMask) || Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 1, obstacleMask))
                 {
@@ -78,7 +78,6 @@ public class PlayerMovement2 : MonoBehaviour
                 }
             }
         }
-
         RotateSurface();
     }
 
@@ -119,5 +118,4 @@ public class PlayerMovement2 : MonoBehaviour
                 break;
         }
     }
-
 }
