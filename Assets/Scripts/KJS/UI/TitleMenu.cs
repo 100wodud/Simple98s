@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TitleMenu : MonoBehaviour
 {
-    //private UIManager _manager = UIManager.Instance;
     private Popup_Option _option;
 
     public void OnClickOption()
