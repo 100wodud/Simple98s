@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -19,12 +20,13 @@ public class BuildingCreator : Singleton<BuildingCreator>
     Vector3Int currentGridPosition;
     Vector3Int lastGridPosition;
 
-    protected override void Awake()
+    public List<StageData> makeStage = new List<StageData>();
+
+    private void Awake()
     {
-        base.Awake();
         playerInput = new PlayerInput();
         _camera = Camera.main;
-
+        DataManager.Instance.Initialize();
     }
 
     private void OnEnable()
@@ -59,7 +61,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void Update()
     {
-        // if something is selected - show preview
+        // 타일 선택시 미리보여주기
         if (selectedObj != null)
         {
             Vector3 pos = _camera.ScreenToWorldPoint(mousePos);
@@ -100,9 +102,8 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void UpdatePreview()
     {
-        // Remove old tile if existing
+        // 전 타일 삭제
         previewMap.SetTile(lastGridPosition, null);
-        // Set current tile to current mouse positions tile
         previewMap.SetTile(currentGridPosition, tileBase);
     }
 
@@ -113,8 +114,12 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void DrawItem()
     {
-        // TODO: automatically select tilemap
         defaultMap.SetTile(currentGridPosition, tileBase);
+        StageData stage = new StageData(currentGridPosition.x, -currentGridPosition.y, selectedObj.Index);
+        //리스트 안 중복 좌표 제거
+        makeStage.RemoveAll(s => (s.x == currentGridPosition.x & s.y == -currentGridPosition.y));
+        makeStage.Add(stage);
+        Debug.Log(makeStage.Count);
     }
 
 }

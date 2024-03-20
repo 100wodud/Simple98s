@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SungyuScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/JYP/CustomStageScene.unity
+    guid: 552ad10f99e507a409fca510c47e2fee
+  - enabled: 1
+    path: Assets/Scenes/JYP/CustomStageListScene.unity
+    guid: 7b5a9cf9038d36f4c9316adb6bac752a
+  - enabled: 1
+    path: Assets/Scenes/JYP/CustomScene.unity
+    guid: db0a79d123a26b541b2736c5b852c310
+  - enabled: 1
+    path: Assets/Scenes/JYP/MakerScene.unity
+    guid: 8c33a2c04d31e1e4ab46beabc3b6254f
   m_configObjects: {}
