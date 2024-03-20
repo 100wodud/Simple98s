@@ -20,21 +20,23 @@ public class MapManager : Singleton<MapManager>
     
     public void MakeStage(int mapStage)
     {
+        GameObject Map = new GameObject("Map");
         //플레이어 생성 함수
         //부모오브젝트맵
+        const string path = "Prefabs/Player/Player";
         foreach (var item in DataManager.Instance.MapData.GetStageList(mapStage))
         {
-            InstantiateTile(item.tile, item.x, item.y);
+            InstantiateTile(item.tile, item.x, item.y, Map);
         }
         Vector3 playerPos = DataManager.Instance.MapData.GetStageData(mapStage).PlayerPos;
-        Instantiate(Resources.Load("Prefabs/Player/Player"), playerPos, Quaternion.identity);
+        Instantiate(Resources.Load(path), playerPos, Quaternion.identity);
     }
 
-    private void InstantiateTile(int index, int x, int y)
+    private void InstantiateTile(int index, int x, int y, GameObject ParentMap)
     {
         //부모오브젝트로 감싸기
         const string path = "Prefabs/";       
         Tiles tile = DataManager.Instance.TileData.GetTile(index);
-        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity);
+        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity,ParentMap.transform);
     }
 }
