@@ -10,6 +10,4 @@ public class LevelVariable : MonoBehaviour
     {
         coin = 0;
     }
-
-   
 }
