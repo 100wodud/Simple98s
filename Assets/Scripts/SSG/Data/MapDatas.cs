@@ -23,7 +23,7 @@ public class MapDatas
         LoadStage();              
     }
 
-    public void LoadStage()
+    private void LoadStage()
     {
         StageData stage;
 
@@ -50,7 +50,7 @@ public class MapDatas
         }
         stageDct.Add(maps[3].index, stage3);
     }
-    public List<StageData> GetStageList(int StageIndex)
+    public List<StageData> GetStageList(int StageIndex)//저장된 데이터를 얻을 수 있는시스템
     {
         return stageDct[StageIndex];
     }
@@ -58,7 +58,7 @@ public class MapDatas
     public Maps GetStageData(int StageIndex)
     {
         return maps[StageIndex];
-    }
+    }    
 
     //private void SetStage<T>(int stageId,List<T> stageList)
     //{
