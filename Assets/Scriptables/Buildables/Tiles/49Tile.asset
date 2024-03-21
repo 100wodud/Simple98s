@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c5c73b8b0bfdcc4ab08b62b82ee761c, type: 3}
-  m_Name: 02Tile
+  m_Name: 49Tile
   m_EditorClassIdentifier: 
-  index: 2
+  index: 49
   category: 1
-  tileBase: {fileID: 11400000, guid: 511377cc0210903489c9143461c6788a, type: 2}
+  tileBase: {fileID: 11400000, guid: 60a1f231564a74e4b933706e85825420, type: 2}
