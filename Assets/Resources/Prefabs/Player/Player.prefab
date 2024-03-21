@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1587352331491101588}
   - component: {fileID: 3181351068415000792}
   - component: {fileID: 8170775639302730760}
-  - component: {fileID: 6142171472533326150}
+  - component: {fileID: 4219953410702263097}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1348933360, guid: b0d37ef6d10a65c42908f699b05a5607, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64342de1e5576a441965f709a64f6728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6142171472533326150
+--- !u!114 &4219953410702263097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
