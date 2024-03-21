@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65814a9c254a5d4daf750c5e69dbb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 300
   coinUI: {fileID: 1449024833}
   shopItemsSO:
   - {fileID: 11400000, guid: fffe111e183b21f439413440911824c6, type: 2}
@@ -249,6 +249,7 @@ MonoBehaviour:
   - {fileID: 1686215587}
   - {fileID: 1303091342}
   - {fileID: 2095421397}
+  skinManager: {fileID: 0}
 --- !u!1001 &133446258
 PrefabInstance:
   m_ObjectHideFlags: 0

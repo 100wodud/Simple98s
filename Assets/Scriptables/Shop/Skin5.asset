@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd77cd6dfc9355438afcbc7890a3d60, type: 3}
   m_Name: Skin5
   m_EditorClassIdentifier: 
-  title: 
-  description: 
-  baseCost: 0
+  title: skin5
+  description: sadasdsa
+  baseCost: 120
+  playerSkin: {fileID: -1484611498, guid: d648fad4cc573ce4ab5778e20113c5cb, type: 3}
+  skinID: 5

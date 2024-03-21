@@ -8,4 +8,6 @@ public class ShopItemSO : ScriptableObject
     public string title;
     public string description;
     public int baseCost;
+    public Sprite playerSkin;
+    public int skinID; // 스킨의 고유 ID
 }

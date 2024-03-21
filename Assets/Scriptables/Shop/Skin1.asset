@@ -15,3 +15,5 @@ MonoBehaviour:
   title: Skin1
   description: 1
   baseCost: 100
+  playerSkin: {fileID: 1348933360, guid: d648fad4cc573ce4ab5778e20113c5cb, type: 3}
+  skinID: 1
