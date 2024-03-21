@@ -119,7 +119,6 @@ public class BuildingCreator : Singleton<BuildingCreator>
         //리스트 안 중복 좌표 제거
         makeStage.RemoveAll(s => (s.x == currentGridPosition.x & s.y == -currentGridPosition.y));
         makeStage.Add(stage);
-        Debug.Log(makeStage.Count);
     }
 
 }
