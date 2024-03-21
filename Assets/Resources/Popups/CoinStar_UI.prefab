@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 3354157912867450134}
   - component: {fileID: 8782343397975800032}
   - component: {fileID: 9013309321633965027}
+  - component: {fileID: 4483542152971137693}
   m_Layer: 5
   m_Name: CoinStar_UI
   m_TagString: Untagged
@@ -467,6 +468,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4483542152971137693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623586438540320051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53024ebc895b23479526043f9db54ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageStarDataArray:
+  - {fileID: 11400000, guid: 089351feb21db9f41b3b09ce6c55757f, type: 2}
+  - {fileID: 11400000, guid: 5bce78b2b16e83347a0bce0e451abdbb, type: 2}
+  _coinTxt: {fileID: 8010619077435018299}
+  _starTxt: {fileID: 1620029691868394028}
 --- !u!1 &9210394845586099352
 GameObject:
   m_ObjectHideFlags: 0
