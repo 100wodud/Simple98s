@@ -8,16 +8,25 @@ using UnityEngine.UI;
 
 public class CustomMapManager : Singleton<CustomMapManager>
 {
+    private int CustomStageNum;
+    Vector3 playerPos;
     public void MakeCustomStage(int mapStage)
     {
         //플레이어 생성 함수
         //부모오브젝트맵
+        const string path = "Prefabs/Player/Player";
         foreach (var item in DataManager.Instance.CustomMapData.GetCustomStage(mapStage))
         {
-            InstantiateTile(item.tile, item.x, item.y);
+            if(item.tile == 48)
+            {
+                playerPos = new Vector3(item.x, item.y, 0);
+            }
+            else
+            {
+                InstantiateTile(item.tile, item.x, item.y);
+            }
         }
-        //Vector3 playerPos = DataManager.Instance.MapData.GetStageData(mapStage).PlayerPos;
-        //Instantiate(Resources.Load("Prefabs/Player/Player"), playerPos, Quaternion.identity);
+        Instantiate(Resources.Load(path), playerPos, Quaternion.identity);
     }
 
     private void InstantiateTile(int index, int x, int y)
@@ -45,11 +54,20 @@ public class CustomMapManager : Singleton<CustomMapManager>
             Button button = obj.GetComponent<Button>(); // 버튼 컴포넌트 가져오기
             button.onClick.AddListener(() =>
             {
-                Debug.Log(stageKey);
-                MakeCustomStage(stageKey);
+                CustomStageNum = stage.Key;
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                SceneManager.LoadScene("CustomStageScene");
             }
             );
             y -= 50;
         }
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        int stageKey = CustomStageNum;
+        DataManager.Instance.Initialize();
+        MakeCustomStage(stageKey);
     }
 }
