@@ -51,4 +51,9 @@ public class Popup_StageClear : UIPopup
             _starImages[i].gameObject.SetActive(i < stars); // 별 개수에 따라 이미지 활성화/비활성화
         }
     }
+
+    public void BackStage()
+    {
+        SceneLoader.Instance.GotoStoryScene();
+    }
 }
