@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Player health: " + PlayerHealth.health);
             if (PlayerHealth.health <= 0)
             {
-                Debug.Log("Gameover");
+                IsGameOver();
             }
         }
         else if(collision.transform.tag == "Clear")
@@ -59,7 +60,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Player health: " + PlayerHealth.health);
             if (PlayerHealth.health <= 0)
             {
-                Debug.Log("Gameover");
+                IsGameOver();
             }
         }
     }
@@ -76,5 +77,13 @@ public class PlayerCollision : MonoBehaviour
             popup_StageClear.Initialize();
             popup_StageClear.UpdateStar(StageManager.Instance.stageindex-1);
         }
+    }
+
+    private void IsGameOver()
+    {
+        PlayerHealth.health = 5;
+        coinStar_UI.SetStarsForStage(StageManager.Instance.stageindex - 1, 0);
+        coinStar_UI.UpdateCoin(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
