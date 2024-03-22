@@ -19,7 +19,7 @@ public class MapManager : Singleton<MapManager>
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            SceneController.Instance.LoadScene("StageScene");
+            SceneLoadManager.Instance.LoadScene("StageScene");
         }
     }
     public void MakeStage(int mapStage)
