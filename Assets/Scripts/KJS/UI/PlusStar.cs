@@ -7,7 +7,7 @@ public class PlusStar : MonoBehaviour
 {
 
     private Popup_StageSelect popup_StageSelect;
-    private Popup_StageClear Popup_StageClear;
+    private Popup_StageClear popup_StageClear;
     private CoinStar_UI coinStar_UI;
 
     private StageStarData stageStarData; // 스테이지 별 정보를 저장할 변수
@@ -55,15 +55,15 @@ public class PlusStar : MonoBehaviour
     }
     public void OnClickClear()
     {
-        if (popup_StageSelect != null)
+        if (popup_StageClear != null)
         {
             return;
         }
         else
         {
-            Popup_StageClear = UIManager.Instance.ShowPopup<Popup_StageClear>();
-            Popup_StageClear.Initialize();
-            Popup_StageClear.UpdateStar(_stageLevel);
+            popup_StageClear = UIManager.Instance.ShowPopup<Popup_StageClear>();
+            popup_StageClear.Initialize();
+            popup_StageClear.UpdateStar(_stageLevel);
         }
     }
     public void PlusCoin()
@@ -78,7 +78,7 @@ public class PlusStar : MonoBehaviour
     }
     public void ExitBtn()
     {
-        Popup_StageClear.Destroy();
+        popup_StageClear.Destroy();
     }
     public void SelectStageOne()
     {

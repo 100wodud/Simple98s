@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private GameUIControll hpControll;
+    private Popup_StageClear popup_StageClear;
+    private CoinStar_UI coinStar_UI;
 
     private void Start()
     {
         hpControll = FindObjectOfType<GameUIControll>();
+        coinStar_UI = FindObjectOfType<CoinStar_UI>();
     }
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
@@ -25,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
         else if(collision.transform.tag == "Clear")
         {
             Debug.Log("Clear");
+            IsClear();
         }
 
         if (collision.tag == "Coin")
@@ -32,6 +36,7 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
             lv.coin++;
+            coinStar_UI.UpdateCoin(lv.coin);
         }
 
         if (collision.tag == "Star")
@@ -39,6 +44,8 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
             lv.star++;
+            coinStar_UI.SetStarsForStage(StageManager.Instance.stageindex-1, lv.star);
+            coinStar_UI.UpdateStars();
         }
 
     }
@@ -54,6 +61,20 @@ public class PlayerCollision : MonoBehaviour
             {
                 Debug.Log("Gameover");
             }
+        }
+    }
+
+    private void IsClear()
+    {
+        if (popup_StageClear != null)
+        {
+            return;
+        }
+        else
+        {
+            popup_StageClear = UIManager.Instance.ShowPopup<Popup_StageClear>();
+            popup_StageClear.Initialize();
+            popup_StageClear.UpdateStar(StageManager.Instance.stageindex-1);
         }
     }
 }
