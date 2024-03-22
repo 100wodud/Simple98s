@@ -332,7 +332,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1074115155990599500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 261814656208989436}
+        m_TargetAssemblyTypeName: UIPopup, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2279517274677583731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1113,7 @@ GameObject:
   - component: {fileID: 6884473639296152010}
   - component: {fileID: 2177571438909925652}
   - component: {fileID: 3603959555687808948}
+  - component: {fileID: 261814656208989436}
   m_Layer: 5
   m_Name: Popup_StageClear
   m_TagString: Untagged
@@ -1122,7 +1135,7 @@ RectTransform:
   m_Children:
   - {fileID: 7174264220499499588}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1192,6 +1205,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &261814656208989436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620794220208893127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49d12f63298bae4d9d3c6aeeca5e866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _starImages:
+  - {fileID: 190599622061488813}
+  - {fileID: 2342938978272250661}
+  - {fileID: 673403735426200026}
+  stageStarDataArray:
+  - {fileID: 11400000, guid: 089351feb21db9f41b3b09ce6c55757f, type: 2}
+  - {fileID: 11400000, guid: 5bce78b2b16e83347a0bce0e451abdbb, type: 2}
+  - {fileID: 11400000, guid: 7954a87d26b0640479b23de273920cb7, type: 2}
 --- !u!1 &8305287665214647601
 GameObject:
   m_ObjectHideFlags: 0

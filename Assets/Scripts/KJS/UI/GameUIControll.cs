@@ -7,13 +7,32 @@ using TMPro;
 
 public class GameUIControll : MonoBehaviour
 {
+    [SerializeField] private int _coin = 0;
     private Health_UI _hp;
     private Popup_PauseBtn _pause;
+    private CoinStar_UI coinStar_UI;
+
 
     public void Start()
     {
         SpawnHp();
+        coinStar_UI = FindObjectOfType<CoinStar_UI>();
+        CoinUI();
         SpawnPauseBtn();
+    }
+    private void CoinUI()
+    {
+        if (coinStar_UI != null)
+        {
+            return;
+        }
+        else
+        {
+            coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
+            coinStar_UI.Initialize();
+            coinStar_UI.UpdateCoin(_coin);
+            coinStar_UI.UpdateStars();
+        }
     }
 
     private void SpawnPauseBtn() //일시정지메뉴

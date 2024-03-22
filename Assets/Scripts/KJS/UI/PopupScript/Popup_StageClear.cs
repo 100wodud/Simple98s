@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Popup_StageSelect : UIPopup
+public class Popup_StageClear : UIPopup
 {
-    [SerializeField]private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
+    [SerializeField] private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
     public StageStarData[] stageStarDataArray; // 각 스테이지의 별 정보를 담을 배열
-
     public void Initialize() //초기화 메서드
     {
         Refresh();
@@ -16,12 +15,6 @@ public class Popup_StageSelect : UIPopup
     {
 
     }
-
-    public void StageSceneMove()
-    {
-        SceneLoader.Instance.GotoStageScene();
-    }
-    // 스테이지에서 얻은 별 개수를 설정하는 함수
     public void SetStarsForStage(int stageIndex, int stars)
     {
         stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars); // 최대 별 개수를 초과하지 않도록 제한
@@ -43,7 +36,6 @@ public class Popup_StageSelect : UIPopup
         }
         PlayerPrefs.Save(); // 변경 사항 저장
     }
-
     public void UpdateStar(int s)
     {
         UpdateStarsUI(s); // 스테이지 1에 대한 별 정보를 가져와서 UI에 표시

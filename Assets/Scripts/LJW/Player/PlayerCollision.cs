@@ -39,8 +39,8 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
             lv.star++;
-            
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
