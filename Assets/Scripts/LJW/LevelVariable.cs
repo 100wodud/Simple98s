@@ -5,9 +5,10 @@ using UnityEngine;
 public class LevelVariable : MonoBehaviour
 {
     public int coin = 0;
-    public bool star1, star2, star3;
+    public int star = 0;
     void Start()
     {
         coin = 0;
+        star = 0;
     }
 }

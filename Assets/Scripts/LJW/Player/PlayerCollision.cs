@@ -34,18 +34,13 @@ public class PlayerCollision : MonoBehaviour
             lv.coin++;
         }
 
-        if (collision.CompareTag("Star1") || collision.CompareTag("Star2") || collision.CompareTag("Star3"))
+        if (collision.tag == "Star")
         {
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
-            lv.coin += 10;
-            if (collision.CompareTag("Star1"))
-                lv.star1 = true;
-            else if (collision.CompareTag("Star2"))
-                lv.star2 = true;
-            else if (collision.CompareTag("Star3"))
-                lv.star3 = true;
+            lv.star++;
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
