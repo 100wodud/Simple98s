@@ -59,7 +59,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
                 SceneManager.LoadScene("CustomStageScene");
             }
             );
-            y -= 50;
+            y -= 100;
         }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
