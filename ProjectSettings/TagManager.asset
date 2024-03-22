@@ -8,10 +8,11 @@ TagManager:
   - Obstacle
   - Clear
   - Coin
-  - Star1
-  - Star2
-  - Star3
   - LvGen
+  - Star
+  - Star3
+  - Star2
+  - Star1
   layers:
   - Default
   - TransparentFX
