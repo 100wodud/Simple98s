@@ -20,7 +20,6 @@ public class PlusStar : MonoBehaviour
     {
         popup_StageSelect = FindObjectOfType<Popup_StageSelect>();
         coinStar_UI = FindObjectOfType<CoinStar_UI>();
-        CoinUI();
     }
 
     private void CoinUI()

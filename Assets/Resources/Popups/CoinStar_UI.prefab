@@ -426,7 +426,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &8782343397975800032
 MonoBehaviour:
@@ -483,6 +483,7 @@ MonoBehaviour:
   stageStarDataArray:
   - {fileID: 11400000, guid: 089351feb21db9f41b3b09ce6c55757f, type: 2}
   - {fileID: 11400000, guid: 5bce78b2b16e83347a0bce0e451abdbb, type: 2}
+  - {fileID: 11400000, guid: 7954a87d26b0640479b23de273920cb7, type: 2}
   _coinTxt: {fileID: 8010619077435018299}
   _starTxt: {fileID: 1620029691868394028}
 --- !u!1 &9210394845586099352

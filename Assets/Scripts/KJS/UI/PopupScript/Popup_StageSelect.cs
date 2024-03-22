@@ -17,6 +17,10 @@ public class Popup_StageSelect : UIPopup
 
     }
 
+    public void StageSceneMove()
+    {
+        SceneLoader.Instance.GotoStageScene();
+    }
     // 스테이지에서 얻은 별 개수를 설정하는 함수
     public void SetStarsForStage(int stageIndex, int stars)
     {

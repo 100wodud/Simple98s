@@ -9,7 +9,6 @@ public class CoinStar_UI : UIPopup
     [SerializeField] private StageStarData[] stageStarDataArray;
     [SerializeField] private TextMeshProUGUI _coinTxt;
     [SerializeField] private TextMeshProUGUI _starTxt;
-    private int _coin = 0;
     private int _star;
     
 
