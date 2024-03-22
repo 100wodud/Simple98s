@@ -9,6 +9,6 @@ public class GameManager : Singleton<GameManager>
     {
         DataManager.Instance.Initialize();
         //MapManager.Instance.MakeStage(StageManager.Instance.stageindex);
-        MapManager.Instance.MakeStage(3);
+        //MapManager.Instance.MakeStage(3);
     }
 }
