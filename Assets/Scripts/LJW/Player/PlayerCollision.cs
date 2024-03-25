@@ -28,8 +28,11 @@ public class PlayerCollision : MonoBehaviour
         }
         else if(collision.transform.tag == "Clear")
         {
+            LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Debug.Log("Clear");
             IsClear();
+            StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, lv.star);
+            coinStar_UI.UpdateAllStars();
         }
 
         if (collision.tag == "Coin")
@@ -45,8 +48,7 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
             lv.star++;
-            coinStar_UI.SetStarsForStage(StageManager.Instance.stageindex-1, lv.star);
-            coinStar_UI.UpdateStars();
+            coinStar_UI.UpdateStageStar(lv.star);
         }
 
     }
@@ -82,7 +84,7 @@ public class PlayerCollision : MonoBehaviour
     private void IsGameOver()
     {
         PlayerHealth.health = 5;
-        coinStar_UI.SetStarsForStage(StageManager.Instance.stageindex - 1, 0);
+        StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, 0);
         coinStar_UI.UpdateCoin(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

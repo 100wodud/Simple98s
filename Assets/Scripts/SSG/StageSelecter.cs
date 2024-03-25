@@ -34,13 +34,13 @@ public class StageSelecter : MonoBehaviour
             popup_StageSelect.Destroy();
             popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
             popup_StageSelect.Initialize();
-            popup_StageSelect.UpdateStar(selectStageIndex-1);
+            popup_StageSelect.UpdateStarImage(selectStageIndex-1);
         }
         else
         {
             popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
             popup_StageSelect.Initialize();
-            popup_StageSelect.UpdateStar(selectStageIndex-1);
+            popup_StageSelect.UpdateStarImage(selectStageIndex-1);
         }
 
     }

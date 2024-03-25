@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Popup_Exit : UIPopup
+public class Popup_ExitStage : UIPopup
 {
     private GameObject _sfxObject;
     private AudioSource _btnSound;
@@ -29,11 +29,8 @@ public class Popup_Exit : UIPopup
     }
     public void isExitYes()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        Resume();
+        SceneLoader.Instance.GotoStoryScene();
     }
     public override void Destroy()
     {

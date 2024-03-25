@@ -31,7 +31,7 @@ public class GameUIControll : MonoBehaviour
             coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
             coinStar_UI.Initialize();
             coinStar_UI.UpdateCoin(_coin);
-            coinStar_UI.UpdateStars();
+            coinStar_UI.UpdateAllStars();
         }
     }
 
