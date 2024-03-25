@@ -39,9 +39,4 @@ public class Popup_Exit : UIPopup
     {
         base.Destroy();
     }
-    private void Resume()
-    {
-        Time.timeScale = 1f;
-        Hide();
-    }
 }
