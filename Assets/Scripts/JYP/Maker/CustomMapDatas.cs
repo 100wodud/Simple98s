@@ -1,53 +1,43 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Enumeration;
 using UnityEngine;
 
 public class CustomMapDatas
 {
-    private Dictionary<int, List<StageData>> customMaps = new();
-    string filePath = Directory.GetCurrentDirectory();
+    private Dictionary<string, List<StageData>> customMaps = new();
+    string filePath;
     public void Initialize()
     {
+        filePath = Application.persistentDataPath;
+
         //JSON파일 로드 후 customMaps에 저장
         if (File.Exists($"{filePath}/CustomMapDatas.json"))
         {
-            customMaps = JsonConvert.DeserializeObject<Dictionary<int, List<StageData>>>(File.ReadAllText($"{filePath}/CustomMapDatas.json"));
+            customMaps = JsonConvert.DeserializeObject<Dictionary<string, List<StageData>>>(File.ReadAllText($"{filePath}/CustomMapDatas.json"));
         }
     }
-    public void SaveCustomStage()
+    public void SaveCustomStage(string stageName)
     {
-        bool canSave = true;
-        int playerTile = BuildingCreator.Instance.makeStage.FindAll(item => item.tile == 48).Count;
-
-        if (playerTile == 0 ){
-            Debug.Log("플레이어 타일을 하나 이상 넣으시오");
-            canSave = false;
-        } else if (playerTile > 1)
+        if (File.Exists($"{filePath}/CustomMapDatas.json"))
         {
-            Debug.Log("플레이어 타일을 하나만 넣으시오");
-            canSave = false;
+            customMaps = JsonConvert.DeserializeObject<Dictionary<string, List<StageData>>>(File.ReadAllText($"{filePath}/CustomMapDatas.json"));
         }
-
-        if (canSave)
-        {
-            if (File.Exists($"{filePath}/CustomMapDatas.json"))
-            {
-                customMaps = JsonConvert.DeserializeObject<Dictionary<int, List<StageData>>>(File.ReadAllText($"{filePath}/CustomMapDatas.json"));
-            }
-            int num = customMaps.Count + 1;
-            customMaps.Add(num, BuildingCreator.Instance.makeStage);
-            string data = JsonConvert.SerializeObject(customMaps);
-            File.WriteAllText($"{filePath}/CustomMapDatas.json", data);
-        }
+        int num = customMaps.Count + 1;
+        customMaps.Add(stageName, BuildingCreator.Instance.makeStage);
+        string data = JsonConvert.SerializeObject(customMaps);
+        File.WriteAllText($"{filePath}/CustomMapDatas.json", data);
+        ScreenCapture.CaptureScreenshot($"{filePath}/{stageName}.png");
+        SceneLoader.Instance.GotoCustomScene();
     }
 
-    public List<StageData> GetCustomStage(int StageIndex)
+    public List<StageData> GetCustomStage(string stageName)
     {
-        return customMaps[StageIndex];
+        return customMaps[stageName];
     }
 
-    public Dictionary<int, List<StageData>> GetCustomStageList()
+    public Dictionary<string, List<StageData>> GetCustomStageList()
     {
         return customMaps;
     }
