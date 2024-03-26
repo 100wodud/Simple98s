@@ -19,6 +19,7 @@ public class Health_UI : UIPopup
     {
         _heartSprite = Resources.Load<SpriteAtlas>("Sprites/HP");
         _maxHp = hearts.Length;
+        PlayerHealth.health = _maxHp;
     }
     public void Damage()  //체력풀이거나 0이하면 고정
     {
