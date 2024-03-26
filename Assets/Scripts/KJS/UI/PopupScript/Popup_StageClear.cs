@@ -42,10 +42,8 @@ public class Popup_StageClear : UIPopup
     }
 
     // 스테이지 선택 화면 UI에 별을 표시하는 함수
-    private void UpdateStarsUI(int stageIndex)
+    private void UpdateStarsUI(int stars)
     {
-        int stars = GetStarsForStage(stageIndex); // 스테이지 별 정보 가져오기
-
         for (int i = 0; i < _starImages.Length; i++)
         {
             _starImages[i].gameObject.SetActive(i < stars); // 별 개수에 따라 이미지 활성화/비활성화

@@ -32,6 +32,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Clear");
             IsClear();
             StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, lv.star);
+            popup_StageClear.UpdateStar(lv.star);
             coinStar_UI.UpdateAllStars();
         }
 
