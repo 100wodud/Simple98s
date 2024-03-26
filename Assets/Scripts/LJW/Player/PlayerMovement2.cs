@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum Direction
 {
-    Up, Down, Left, Right
+    Stop, Up, Down, Left, Right
 }
 
 public class PlayerMovement2 : MonoBehaviour
