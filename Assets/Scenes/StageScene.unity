@@ -506,9 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  star1: 0
-  star2: 0
-  star3: 0
+  star: 0
 --- !u!4 &1711724188
 Transform:
   m_ObjectHideFlags: 0

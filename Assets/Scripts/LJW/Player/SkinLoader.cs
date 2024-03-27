@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkinLoader : MonoBehaviour
 {
-    public SpriteRenderer playerSR;
+    [SerializeField] private SpriteRenderer playerSR;
 
     private void Awake()
     {

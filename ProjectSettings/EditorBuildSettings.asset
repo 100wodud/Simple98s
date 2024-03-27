@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/MapScene.unity
     guid: 5542379d1e7cff54c9560866bb34bfa5
+  - enabled: 1
+    path: Assets/Scenes/MenuScene 1.unity
+    guid: f24d138cdf432d74aaf3a45db80d7d78
+  - enabled: 1
+    path: Assets/Scenes/LJW/ShopScene.unity
+    guid: ee83d4bacd309124681a91f382d25fb9
   m_configObjects: {}

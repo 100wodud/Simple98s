@@ -1,13 +1,23 @@
+//using Simple98;
 using System.Collections;
 using System.Collections.Generic;
+//using UGS;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "shopMenu", menuName = "Scriptable objects/New Shop item", order = 1)]
+[System.Serializable, CreateAssetMenu(fileName = "New Skin", menuName = "Create new SKin")]
 public class ShopItemSO : ScriptableObject
 {
-    public string title;
-    public string description;
-    public int baseCost;
-    public Sprite playerSkin;
-    public int skinID; // 스킨의 고유 ID
+    //public void Initialize()
+    //{
+    //    UnityGoogleSheet.Load<Shop>();
+    //}
+    public enum SkinIDs { red, blue, green }
+    [SerializeField] private SkinIDs skinID;
+    public SkinIDs _skinID { get { return skinID; } }
+
+    [SerializeField] private Sprite skinSprite;
+    public Sprite _skinSprite { get { return skinSprite; } }
+
+    [SerializeField] private int skinPrice;
+    public int _skinPrice { get { return skinPrice; } }
 }

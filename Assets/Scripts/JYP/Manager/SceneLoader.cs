@@ -50,4 +50,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("CustomStageListScene");
     }
+
+
+    public void GotoShopScene()
+    {
+        SceneManager.LoadScene("ShopScene");
+    }
 }
