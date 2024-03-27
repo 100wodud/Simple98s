@@ -1,13 +1,7 @@
-using GoogleSheet;
+
 using Simple98;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UGS;
-using UnityEditor.SceneManagement;
-using UnityEngine;
-using static UnityEditor.Progress;
 
 public class MapDatas
 {

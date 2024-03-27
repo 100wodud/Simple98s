@@ -9,8 +9,6 @@ public class PlusStar : MonoBehaviour
     private Popup_StageSelect popup_StageSelect;
     private Popup_StageClear popup_StageClear;
     private CoinStar_UI coinStar_UI;
-
-    private StageStarData stageStarData; // 스테이지 별 정보를 저장할 변수
     [SerializeField] private int _coin = 0;
     private int _stageLevel = 0;
 
@@ -33,7 +31,7 @@ public class PlusStar : MonoBehaviour
             coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
             coinStar_UI.Initialize();
             coinStar_UI.UpdateCoin(_coin);
-            coinStar_UI.UpdateStars();
+            coinStar_UI.UpdateAllStars();
         }
     }
     public void OnClickStage()
@@ -43,13 +41,13 @@ public class PlusStar : MonoBehaviour
             popup_StageSelect.Destroy();
             popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
             popup_StageSelect.Initialize();
-            popup_StageSelect.UpdateStar(_stageLevel);
+            popup_StageSelect.UpdateStarImage(_stageLevel);
         }
         else
         {
             popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
             popup_StageSelect.Initialize();
-            popup_StageSelect.UpdateStar(_stageLevel);
+            popup_StageSelect.UpdateStarImage(_stageLevel);
         }
 
     }
@@ -101,28 +99,24 @@ public class PlusStar : MonoBehaviour
     }
     public void SetZeroStar()
     {
-        popup_StageSelect.SetStarsForStage(_stageLevel, 0);
-        popup_StageSelect.UpdateStar(_stageLevel);
-        coinStar_UI.UpdateStars();
+        StarManager.Instance.SetStarsForStage(_stageLevel, 0);
+        coinStar_UI.UpdateAllStars();
     }
 
     public void SetOneStar()
     {
-        popup_StageSelect.SetStarsForStage(_stageLevel, 1);
-        popup_StageSelect.UpdateStar(_stageLevel);
-        coinStar_UI.UpdateStars();
+        StarManager.Instance.SetStarsForStage(_stageLevel, 1);
+        coinStar_UI.UpdateAllStars();
     }
     public void SetTwoStar()
     {
-        popup_StageSelect.SetStarsForStage(_stageLevel, 2);
-        popup_StageSelect.UpdateStar(_stageLevel);
-        coinStar_UI.UpdateStars();
+        StarManager.Instance.SetStarsForStage(_stageLevel, 2);
+        coinStar_UI.UpdateAllStars();
     }
     public void SetThreeStar()
     {
-        popup_StageSelect.SetStarsForStage(_stageLevel, 3);
-        popup_StageSelect.UpdateStar(_stageLevel);
-        coinStar_UI.UpdateStars();
+        StarManager.Instance.SetStarsForStage(_stageLevel, 3);
+        coinStar_UI.UpdateAllStars();
     }
     
 }

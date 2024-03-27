@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class CoinStar_UI : UIPopup
 {
-    [SerializeField] private StageStarData[] stageStarDataArray;
     [SerializeField] private TextMeshProUGUI _coinTxt;
     [SerializeField] private TextMeshProUGUI _starTxt;
-    private int _star;
-    
+    [SerializeField] private Image[] _starImages;
+
 
     public void Initialize() //초기화 메서드
     {
@@ -18,17 +18,22 @@ public class CoinStar_UI : UIPopup
     }
     private void Refresh()
     {
-        GetAllStars();
+        StarManager.Instance.StarArrayLoad();
+        StarManager.Instance.GetAllStars();
     }
 
     public void UpdateCoin(int c)
     {
         RefreshCoin(c);
     }
-    public void UpdateStars()
+    public void UpdateAllStars()
     {
-        GetAllStars();
-        RefreshStars(_star);
+        StarManager.Instance.GetAllStars();
+        RefreshStars(StarManager.Instance.starCount);
+    }
+    public void UpdateStageStar(int star)
+    {
+        RefreshStarsIcon(star);
     }
     private void RefreshCoin(int coin)
     {
@@ -38,33 +43,12 @@ public class CoinStar_UI : UIPopup
     {
         _starTxt.text = star.ToString();
     }
-    // 스테이지에서 얻은 별 개수를 불러오는 함수
-    public int GetStarsForStage(int stageIndex)
+    private void RefreshStarsIcon(int star)
     {
-        return stageStarDataArray[stageIndex].starsEarned;
-    }
-    public void SetStarsForStage(int stageIndex, int stars)
-    {
-        stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars); // 최대 별 개수를 초과하지 않도록 제한
-        SaveStars(); // 저장
-    }
-    // 저장된 별 개수를 불러오는 함수
-    private void SaveStars()
-    {
-        for (int i = 0; i < stageStarDataArray.Length; i++)
+        for (int i = 0; i < _starImages.Length; i++)
         {
-            PlayerPrefs.SetInt("StarsForStage_" + i, stageStarDataArray[i].starsEarned);
-        }
-        PlayerPrefs.Save(); // 변경 사항 저장
-    }
-    private void GetAllStars()
-    {
-        _star = 0;
-        for(int i = 0; i < stageStarDataArray.Length; i++)
-        {
-            _star += stageStarDataArray[i].starsEarned;
+            _starImages[i].gameObject.SetActive(i < star); // 별 개수에 따라 이미지 활성화/비활성화
         }
     }
-
 }
 

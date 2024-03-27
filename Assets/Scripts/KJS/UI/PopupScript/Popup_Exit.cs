@@ -20,6 +20,7 @@ public class Popup_Exit : UIPopup
         GameObject pop = GameObject.Find("isExitWindow");
         _yesBtn = pop.transform.GetChild(1).GetComponent<Button>();
         _noBtn = pop.transform.GetChild(2).GetComponent<Button>();
+        PopBtnSet();
     }
     private void PopBtnSet()
     {
@@ -38,5 +39,4 @@ public class Popup_Exit : UIPopup
     {
         base.Destroy();
     }
-
 }

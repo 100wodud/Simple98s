@@ -1,16 +1,19 @@
 using Simple98;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CustomMapManager : Singleton<CustomMapManager>
 {
-    private int CustomStageNum;
+    private string CustomStageName;
     Vector3 playerPos;
-    public void MakeCustomStage(int mapStage)
+    string filePath;
+    public void MakeCustomStage(string mapStage)
     {
         //플레이어 생성 함수
         //부모오브젝트맵
@@ -19,7 +22,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
         {
             if(item.tile == 48)
             {
-                playerPos = new Vector3(item.x, item.y, 0);
+                playerPos = new Vector3(item.x, -item.y, 0);
             }
             else
             {
@@ -39,22 +42,36 @@ public class CustomMapManager : Singleton<CustomMapManager>
 
     public void CustomStageList()
     {
-        Dictionary<int, List<StageData>> stageData = new();
+        filePath = Application.persistentDataPath;
+
+        Dictionary<string, List<StageData>> stageData = new();
         stageData = DataManager.Instance.CustomMapData.GetCustomStageList();
         float y = 450;
-        Canvas canvas = FindObjectOfType<Canvas>();
-        const string buttonPath = "Prefabs/Test/Button";
+        const string buttonPath = "Prefabs/StageList/UI_ListStage";
         GameObject buttonPrefab = Resources.Load(buttonPath) as GameObject;
-        foreach (KeyValuePair<int, List<StageData>> stage in stageData)
+
+        GameObject contents = GameObject.Find("Contents");
+        foreach (KeyValuePair<string, List<StageData>> stage in stageData)
         {
-            GameObject obj = Instantiate(buttonPrefab, canvas.transform);
-            RectTransform rectTransform = obj.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(0, y);
-            int stageKey = stage.Key;
-            Button button = obj.GetComponent<Button>(); // 버튼 컴포넌트 가져오기
+            GameObject instance = Instantiate(buttonPrefab);
+            instance.transform.SetParent(contents.transform, false);
+
+            string stageKey = stage.Key;
+            Image image = instance.GetComponentInChildren<Image>();
+
+            if (File.Exists($"{filePath}/{stageKey}.png"))
+            {
+                byte[] byteTexture = System.IO.File.ReadAllBytes($"{filePath}/{stageKey}.png");
+                Texture2D texture = new Texture2D(0, 0);
+                texture.LoadImage(byteTexture);
+                Rect rect = new Rect(0, 0, texture.width, texture.height);
+                image.sprite = Sprite.Create(texture, rect, new Vector2(0, 0));
+            }
+
+            Button button = instance.GetComponent<Button>(); // 버튼 컴포넌트 가져오기
             button.onClick.AddListener(() =>
             {
-                CustomStageNum = stage.Key;
+                CustomStageName = stage.Key;
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 SceneManager.LoadScene("CustomStageScene");
             }
@@ -66,7 +83,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
-        int stageKey = CustomStageNum;
+        string stageKey = CustomStageName;
         DataManager.Instance.Initialize();
         MakeCustomStage(stageKey);
     }

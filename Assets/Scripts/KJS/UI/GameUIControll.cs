@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameUIControll : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class GameUIControll : MonoBehaviour
 
     public void Start()
     {
-        SpawnHp();
-        coinStar_UI = FindObjectOfType<CoinStar_UI>();
-        CoinUI();
+        if (SceneManager.GetActiveScene().name == "StageScene")
+        {
+            SpawnHp();
+            coinStar_UI = FindObjectOfType<CoinStar_UI>();
+            CoinUI();
+        }
         SpawnPauseBtn();
     }
     private void CoinUI()
@@ -31,7 +35,7 @@ public class GameUIControll : MonoBehaviour
             coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
             coinStar_UI.Initialize();
             coinStar_UI.UpdateCoin(_coin);
-            coinStar_UI.UpdateStars();
+            coinStar_UI.UpdateAllStars();
         }
     }
 
