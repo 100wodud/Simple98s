@@ -10,6 +10,5 @@ public class StageManager : Singleton<StageManager>
     //스테이지 맵을 생성하는 일?
     public int stageindex;
     public int coin = 10;
-    public bool clearStage = true;
     public int star = 2;
 }

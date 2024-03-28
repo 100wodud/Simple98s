@@ -9,5 +9,6 @@ public class StageStarData : ScriptableObject
     public int starsEarned; // 얻은 별 개수
     public int bestStar;
     public int recordStar;
+    public bool isClear;
 }
 

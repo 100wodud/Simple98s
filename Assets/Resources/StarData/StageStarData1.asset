@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: StageStarData1
   m_EditorClassIdentifier: 
   maxStars: 3
-  starsEarned: 0
+  starsEarned: 3
+  bestStar: 3
+  recordStar: 0
+  isClear: 1

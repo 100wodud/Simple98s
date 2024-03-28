@@ -32,8 +32,10 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Clear");
             IsClear();
             StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, lv.star);
+            StarManager.Instance.stageStarDataArray[StageManager.Instance.stageindex-1].isClear = true;
             popup_StageClear.UpdateStar(lv.star);
             coinStar_UI.UpdateAllStars();
+            SaveStageJson.Instance.SaveStageData(StageManager.Instance.stageindex, StarManager.Instance.stageStarDataArray[StageManager.Instance.stageindex - 1]);
         }
 
         if (collision.tag == "Coin")
