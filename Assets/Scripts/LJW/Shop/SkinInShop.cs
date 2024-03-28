@@ -7,7 +7,7 @@ using TMPro;
 public class SkinInShop : MonoBehaviour
 {
     [SerializeField] private ShopItemSO skinInfo;
-    //public ShopItemSO _skinInfo { get { return skinInfo; } }
+    public ShopItemSO _skinInfo { get { return skinInfo; } }
 
     [SerializeField] private Image skinImage;
     [SerializeField] private TextMeshProUGUI buttonText;
@@ -18,13 +18,13 @@ public class SkinInShop : MonoBehaviour
     {
         skinImage.sprite = skinInfo._skinSprite;
 
-        //if (isFreeSkin)
-        //{
-        //    if (PlayerMoney.instance.TryRemoveMoney(0))
-        //    {
-        //        PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
-        //    }
-        //}
+        if (isFreeSkin)
+        {
+            if (PlayerMoney.instance.TryRemoveMoney(0)) // fix - Ç×»ó true 
+            {
+                PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
+            }
+        }
 
         IsSkinUnlocked();
     }
@@ -47,7 +47,7 @@ public class SkinInShop : MonoBehaviour
         if (isSkinUnlocked)
         {
             //equip
-            SkinManager.instance.EquipSkin(skinInfo);
+            SkinManager.instance.EquipSkin(this);
         }
         else
         {
