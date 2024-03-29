@@ -44,14 +44,13 @@ public class CustomMapManager : Singleton<CustomMapManager>
     {
         filePath = Application.persistentDataPath;
 
-        Dictionary<string, List<StageData>> stageData = new();
+        Dictionary<string, CustomData> stageData = new();
         stageData = DataManager.Instance.CustomMapData.GetCustomStageList();
-        float y = 450;
         const string buttonPath = "Prefabs/StageList/UI_ListStage";
         GameObject buttonPrefab = Resources.Load(buttonPath) as GameObject;
 
         GameObject contents = GameObject.Find("Contents");
-        foreach (KeyValuePair<string, List<StageData>> stage in stageData)
+        foreach (KeyValuePair<string, CustomData> stage in stageData)
         {
             GameObject instance = Instantiate(buttonPrefab);
             instance.transform.SetParent(contents.transform, false);
@@ -59,9 +58,9 @@ public class CustomMapManager : Singleton<CustomMapManager>
             string stageKey = stage.Key;
             Image image = instance.GetComponentInChildren<Image>();
 
-            if (File.Exists($"{filePath}/{stageKey}.png"))
+            if (File.Exists($"{filePath}/{stageKey}/{stageKey}.png"))
             {
-                byte[] byteTexture = System.IO.File.ReadAllBytes($"{filePath}/{stageKey}.png");
+                byte[] byteTexture = System.IO.File.ReadAllBytes($"{filePath}/{stageKey}/{stageKey}.png");
                 Texture2D texture = new Texture2D(0, 0);
                 texture.LoadImage(byteTexture);
                 Rect rect = new Rect(0, 0, texture.width, texture.height);
@@ -76,7 +75,6 @@ public class CustomMapManager : Singleton<CustomMapManager>
                 SceneManager.LoadScene("CustomStageScene");
             }
             );
-            y -= 100;
         }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

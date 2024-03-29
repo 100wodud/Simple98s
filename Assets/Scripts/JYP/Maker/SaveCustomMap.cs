@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
+using Newtonsoft.Json;
+using System.Security.Cryptography.X509Certificates;
+using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class SaveCustomMap : MonoBehaviour
 {
@@ -57,4 +62,34 @@ public class SaveCustomMap : MonoBehaviour
         }
     }
 
+    public void LoadCustomButton()
+    {
+        BuildingCreator.Instance.ResetItem();
+        List<StageData> stages = OpenFileStage();
+        if (stages != null && stages.Count > 0)
+        {
+            foreach (var stage in stages)
+            {
+                BuildingCreator.Instance.LoadDrawItem(stage);
+            }
+        }
+    }
+
+
+    private List<StageData> OpenFileStage()
+    {
+        string filePath = Application.persistentDataPath;
+        string extension = ".json";
+        var path = UnityEditor.EditorUtility.OpenFilePanel("Open Stage JSON", filePath, extension.Replace(".", ""));
+        List<StageData> stages = new List<StageData>();
+        try
+        {
+            stages = JsonConvert.DeserializeObject<List<StageData>>(File.ReadAllText(path));
+            Debug.Log(stages.Count);
+        } catch
+        {
+            Debug.Log("맞지않는 JSON");
+        }
+        return stages;
+    }
 }

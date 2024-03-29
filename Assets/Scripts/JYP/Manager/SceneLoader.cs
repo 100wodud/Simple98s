@@ -44,7 +44,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void GotoMakerScene()
     {
-        SceneManager.LoadScene("MakerTestScene");
+        SceneManager.LoadScene("MakerScene");
     }
     public void GotoCustomMapListScene()
     {
