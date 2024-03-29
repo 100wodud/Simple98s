@@ -11,7 +11,7 @@ public class BuildingObjectData : Singleton<BuildingObjectData>
     {
         foreach(var obj in ObjData)
         {
-            AddBuildingObject(obj);
+            AddBuildingObject(obj); 
         }
     }
 
