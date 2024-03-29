@@ -8,7 +8,8 @@ public enum Category
 {
     Walls,
     Tiles,
-    Obstacles
+    Obstacles,
+    Delete
 }
 
 [CreateAssetMenu(fileName = "Buildable", menuName = "BuildingObjects/Create Buildable")]
@@ -41,6 +42,4 @@ public class BuildingObjectBase : ScriptableObject
             return category;
         }
     }
-
-
 }

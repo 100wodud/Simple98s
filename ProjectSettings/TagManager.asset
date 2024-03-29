@@ -13,6 +13,7 @@ TagManager:
   - Star3
   - Star2
   - Star1
+  - RandomObstacle
   layers:
   - Default
   - TransparentFX

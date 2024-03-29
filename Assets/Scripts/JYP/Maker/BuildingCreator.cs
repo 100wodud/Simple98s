@@ -100,6 +100,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
         SelectedObj = obj;
     }
 
+
     private void UpdatePreview()
     {
         // 전 타일 삭제
@@ -118,7 +119,24 @@ public class BuildingCreator : Singleton<BuildingCreator>
         StageData stage = new StageData(currentGridPosition.x, -currentGridPosition.y, selectedObj.Index);
         //리스트 안 중복 좌표 제거
         makeStage.RemoveAll(s => (s.x == currentGridPosition.x & s.y == -currentGridPosition.y));
+        if (selectedObj.Index != 10000)
+        {
+            makeStage.Add(stage);
+        }
+    }
+
+    public void LoadDrawItem(StageData stage)
+    {
+        Vector3Int position = new Vector3Int(stage.x, stage.y, 0);
+        BuildingObjectBase tileObject = BuildingObjectData.Instance.GetBuildingObject(stage.tile);
+
+        defaultMap.SetTile(position, tileObject.TileBase);
         makeStage.Add(stage);
+    }
+
+    public void ResetItem()
+    {
+        defaultMap.ClearAllTiles();
     }
 
 }
