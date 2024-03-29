@@ -10,13 +10,11 @@ public class SaveStageData
     public int stageIndex;
     public int star;
     public int coin;
-    public bool clearStage;
 
-    public SaveStageData(int stageIndex,int star, int coin, bool clearStage)
+    public SaveStageData(int stageIndex)
     {
         this.stageIndex = stageIndex;
-        this.star = star;
-        this.coin = coin;
-        this.clearStage = clearStage;
+        //this.star = star;
+        //this.coin = coin;
     }   
 }

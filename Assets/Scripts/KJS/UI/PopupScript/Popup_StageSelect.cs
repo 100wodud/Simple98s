@@ -12,7 +12,7 @@ public class Popup_StageSelect : UIPopup
     }
     private void Refresh()
     {
-        StarManager.Instance.StarArrayLoad();
+        //StarManager.Instance.StarArrayLoad();
     }
 
     public void StageSceneMove()

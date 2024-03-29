@@ -32,9 +32,6 @@ public class UIPopup : MonoBehaviour
 
     private void PopDestroy()
     {
-        if (gameObject != null)
-        {
-          Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
