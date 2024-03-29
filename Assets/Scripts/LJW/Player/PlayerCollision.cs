@@ -51,9 +51,11 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Debug.Log("Clear");
             IsClear();
-            StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, lv.star);
+            StarManager.Instance.SetStarsForStage(StageIndex.stageindex - 1, lv.star);
+            StarManager.Instance.stageStarDataArray[StageIndex.stageindex-1].isClear = true;
             popup_StageClear.UpdateStar(lv.star);
             coinStar_UI.UpdateAllStars();
+            SaveStageJson.Instance.SaveStageData(StageIndex.stageindex, StarManager.Instance.stageStarDataArray[StageIndex.stageindex - 1]);
         }
 
         if (collision.tag == "Coin")
@@ -98,14 +100,14 @@ public class PlayerCollision : MonoBehaviour
         {
             popup_StageClear = UIManager.Instance.ShowPopup<Popup_StageClear>();
             popup_StageClear.Initialize();
-            popup_StageClear.UpdateStar(StageManager.Instance.stageindex-1);
+            popup_StageClear.UpdateStar(StageIndex.stageindex-1);
         }
     }
 
     private void IsGameOver()
     {
         PlayerHealth.health = 5;
-        StarManager.Instance.SetStarsForStage(StageManager.Instance.stageindex - 1, 0);
+        StarManager.Instance.SetStarsForStage(StageIndex.stageindex - 1, 0);
         coinStar_UI.UpdateCoin(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

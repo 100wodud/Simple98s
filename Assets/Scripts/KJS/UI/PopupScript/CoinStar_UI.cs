@@ -18,7 +18,7 @@ public class CoinStar_UI : UIPopup
     }
     private void Refresh()
     {
-        StarManager.Instance.StarArrayLoad();
+        //StarManager.Instance.StarArrayLoad();
         StarManager.Instance.GetAllStars();
     }
 

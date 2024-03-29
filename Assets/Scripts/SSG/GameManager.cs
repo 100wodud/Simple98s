@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     void Awake()
     {
         DataManager.Instance.Initialize();
-        //MapManager.Instance.MakeStage(StageManager.Instance.stageindex);
-        //MapManager.Instance.MakeStage(3);
+        StarManager.Instance.StarArrayLoad();
+        StarManager.Instance.ResetStageStar();
     }
 }

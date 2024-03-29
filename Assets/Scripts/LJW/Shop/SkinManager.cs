@@ -14,42 +14,42 @@ public class SkinManager : MonoBehaviour
     [SerializeField] private ShopItemSO[] allskins;
     private const string skinPref = "skinPref";
 
-    //[SerializeField] private Transform skinsInShopPanelsParent;
-    //[SerializeField] private List<SkinInShop> skinsInShopPanels = new List<SkinInShop>();
+    [SerializeField] private Transform skinsInShopPanelsParent;
+    [SerializeField] private List<SkinInShop> skinsInShopPanels = new List<SkinInShop>();
 
-    //private Button currentlyEquippedSkinButton;
+    private Button currentlyEquippedSkinButton;
 
     private void Awake()
     {
         instance = this;
-
-        //foreach (Transform s in skinsInShopPanelsParent)
-        //{
-        //    if (s.TryGetComponent(out SkinInShop skinInShop))
-        //        skinsInShopPanels.Add(skinInShop);
-        //}
+        
+        foreach (Transform s in skinsInShopPanelsParent)
+        {
+            if (s.TryGetComponent(out SkinInShop skinInShop))
+                skinsInShopPanels.Add(skinInShop);
+        }
 
         EquipPreviousSkin();
 
-        //SkinInShop skinEquippedPanel = Array.Find(skinsInShopPanels.ToArray(), dummyFind => dummyFind._skinInfo._skinSprite == equippedSkin);
-        //currentlyEquippedSkinButton = skinEquippedPanel.GetComponentInChildren<Button>();
-        //currentlyEquippedSkinButton.interactable = false;
+        SkinInShop skinEquippedPanel = Array.Find(skinsInShopPanels.ToArray(), dummyFind => dummyFind._skinInfo._skinSprite == equippedSkin);
+        currentlyEquippedSkinButton = skinEquippedPanel.GetComponentInChildren<Button>();
+        currentlyEquippedSkinButton.interactable = false;
     }
     private void EquipPreviousSkin()
     {
         string lastSkinused = PlayerPrefs.GetString(skinPref, ShopItemSO.SkinIDs.red.ToString());
-        ShopItemSO skinUsedLastTime = Array.Find(allskins, dummyFind => dummyFind._skinID.ToString() == lastSkinused);
-        EquipSkin(skinUsedLastTime);
+        SkinInShop skinEquippedPanel = Array.Find(skinsInShopPanels.ToArray(), dummyFind => dummyFind._skinInfo._skinID.ToString() == lastSkinused);
+        EquipSkin(skinEquippedPanel);
     }
 
-    public void EquipSkin(ShopItemSO skinInfo)
+    public void EquipSkin(SkinInShop skinInfoInShop)
     {
-        equippedSkin = skinInfo._skinSprite;
-        PlayerPrefs.SetString(skinPref, skinInfo._skinID.ToString());
+        equippedSkin = skinInfoInShop._skinInfo._skinSprite;
+        PlayerPrefs.SetString(skinPref, skinInfoInShop._skinInfo._skinID.ToString());
 
-        //if (currentlyEquippedSkinButton != null)
-        //    currentlyEquippedSkinButton.interactable = true;
-        //currentlyEquippedSkinButton = skinInfoShop.GetComponentInChildren<Button>();
-        //currentlyEquippedSkinButton.interactable = false;
+        if (currentlyEquippedSkinButton != null)
+            currentlyEquippedSkinButton.interactable = true;
+        currentlyEquippedSkinButton = skinInfoInShop.GetComponentInChildren<Button>();
+        currentlyEquippedSkinButton.interactable = false;
     }
 }
