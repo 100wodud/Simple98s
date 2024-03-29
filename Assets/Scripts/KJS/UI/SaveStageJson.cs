@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SaveStageJson : MonoBehaviour
+public class SaveStageJson
 {
     public StageStarData stageStarData;
 
@@ -20,9 +20,9 @@ public class SaveStageJson : MonoBehaviour
             return _instance;
         }
     }
-    public string basePath = "Assets/Data/";
-    public string fileExtension = ".json";
-
+    private string basePath = "Assets/Data/";
+    private string fileExtension = ".json";
+    //path = Application.persistentDataPath; 나중에 경로 바꿀용
     public void SaveStageData(int stageIndex, StageStarData stageData)
     {
         string fileName = "StageStarData" + stageIndex.ToString() + fileExtension;

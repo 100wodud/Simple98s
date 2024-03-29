@@ -63,4 +63,16 @@ public class StarManager
             starCount += stageStarDataArray[i].starsEarned;
         }
     }
+
+    public void ResetStageStar()
+    {
+        for (int i = 0; i < stageStarDataArray.Length; i++)
+        {
+            stageStarDataArray[i].starsEarned = 0;
+            stageStarDataArray[i].bestStar = 0;
+            stageStarDataArray[i].isClear = false;
+            SaveStageJson.Instance.LoadStageData(i+1, stageStarDataArray[i]);
+        }
+
+    }
 }

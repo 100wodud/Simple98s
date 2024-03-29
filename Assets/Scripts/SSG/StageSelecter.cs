@@ -13,15 +13,11 @@ public class StageSelecter : MonoBehaviour
     }
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {       
-        StageManager.Instance.stageindex = selectStageIndex;
+        StageIndex.stageindex = selectStageIndex;
         OnSelectStage();
-        JsonDataManager.Instance.IndexSave(StageManager.Instance.stageindex);
-        SaveStageJson.Instance.LoadStageData(StageManager.Instance.stageindex, StarManager.Instance.stageStarDataArray[StageManager.Instance.stageindex - 1]);
+        //JsonDataManager.Instance.IndexSave(StageIndex.Instance.stageindex);
+        //SaveStageJson.Instance.LoadStageData(StageIndex.stageindex, StarManager.Instance.stageStarDataArray[StageIndex.stageindex - 1]);
         popup_StageSelect.UpdateStarImage(selectStageIndex - 1);
-        //스테이지 매니저에서 값을 가져가고
-        //이걸 스테이지 큐브마다 다르게 할 수 있는 인덱스라...
-        //원하는 것: 스테이지 번호값을 가지게 하고 스테이지 매니저가
-        //그 다음 씬을 변경하게 하기
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -45,7 +41,11 @@ public class StageSelecter : MonoBehaviour
     }
     private void ExitSelectStage()
     {
-        popup_StageSelect.Destroy();
+        if (popup_StageSelect != null)
+        {
+            popup_StageSelect.Destroy();
+            popup_StageSelect = null;
+        } 
     }
 
 }

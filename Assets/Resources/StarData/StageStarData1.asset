@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad55a7607992ee34e8a1a37d20da9791, type: 3}
   m_Name: StageStarData1
   m_EditorClassIdentifier: 
+  stageIndex: 1
   maxStars: 3
   starsEarned: 3
   bestStar: 3
