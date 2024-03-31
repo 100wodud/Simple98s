@@ -14,19 +14,30 @@ public class SkinInShop : MonoBehaviour
     [SerializeField] private bool isSkinUnlocked;
     [SerializeField] private bool isFreeSkin;
 
+    private PlayerStar playerStar;
+
     private void Awake()
     {
         skinImage.sprite = skinInfo._skinSprite;
 
-        if (isFreeSkin)
+        // StarManager 인스턴스가 유효한지 확인합니다.
+        if (StarManager.Instance != null)
         {
-            if (PlayerMoney.instance.TryRemoveMoney(0)) // fix - 항상 true 
+            if (isFreeSkin)
             {
-                PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
+                // PlayerStar 인스턴스가 유효한지 확인하고, TryRemoveStars(0)를 호출하기 전에 NullReferenceException을 피하기 위해 확인합니다.
+                if (PlayerStar.instance != null && PlayerStar.instance.TryRemoveStars(0))
+                {
+                    PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
+                }
             }
-        }
 
-        IsSkinUnlocked();
+            IsSkinUnlocked();
+        }
+        else
+        {
+            Debug.LogError("StarManager 인스턴스가 null입니다.");
+        }
     }
 
     private void IsSkinUnlocked()
@@ -47,15 +58,29 @@ public class SkinInShop : MonoBehaviour
         if (isSkinUnlocked)
         {
             //equip
-            SkinManager.instance.EquipSkin(this);
+            if (SkinManager.instance != null)
+            {
+                SkinManager.instance.EquipSkin(this);
+            }
+            else
+            {
+                Debug.LogError("SkinManager 인스턴스가 null입니다.");
+            }
         }
         else
         {
             //buy
-            if (PlayerMoney.instance.TryRemoveMoney(skinInfo._skinPrice))
+            if (StarManager.Instance != null)
             {
-                PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
-                IsSkinUnlocked();
+                if (PlayerStar.instance != null && PlayerStar.instance.TryRemoveStars(skinInfo._skinPrice))
+                {
+                    PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
+                    IsSkinUnlocked();
+                }
+            }
+            else
+            {
+                Debug.LogError("StarManager 인스턴스가 null입니다.");
             }
         }
     }

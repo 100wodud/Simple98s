@@ -47,7 +47,7 @@ public class StarManager
     }
 
     // 저장된 별 개수를 불러오는 함수
-    private void SaveStars()
+    public void SaveStars()
     {
         for (int i = 0; i < stageStarDataArray.Length; i++)
         {
