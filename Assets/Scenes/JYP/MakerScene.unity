@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 8654605}
   - component: {fileID: 8654604}
   - component: {fileID: 8654603}
-  - component: {fileID: 8654602}
   m_Layer: 5
   m_Name: Tiles
   m_TagString: Untagged
@@ -165,33 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8654602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8654600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &8654603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1574,6 @@ GameObject:
   - component: {fileID: 264614739}
   - component: {fileID: 264614738}
   - component: {fileID: 264614737}
-  - component: {fileID: 264614736}
   m_Layer: 5
   m_Name: Walls
   m_TagString: Untagged
@@ -1632,33 +1603,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &264614736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264614734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &264614737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9821,7 +9765,6 @@ GameObject:
   - component: {fileID: 1511064758}
   - component: {fileID: 1511064757}
   - component: {fileID: 1511064756}
-  - component: {fileID: 1511064755}
   m_Layer: 5
   m_Name: Obstcles
   m_TagString: Untagged
@@ -9851,33 +9794,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1511064755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511064753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1511064756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12037,7 +11953,6 @@ GameObject:
   - component: {fileID: 1892194016}
   - component: {fileID: 1892194015}
   - component: {fileID: 1892194014}
-  - component: {fileID: 1892194013}
   m_Layer: 5
   m_Name: Other
   m_TagString: Untagged
@@ -12067,33 +11982,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1892194013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892194011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb897a8623de4bb6916d06b5a4a096f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.PixelEnvironments.Scripts.Inventory, Assembly-CSharp
-        m_MethodName: SwitchTab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1892194014
 MonoBehaviour:
   m_ObjectHideFlags: 0
