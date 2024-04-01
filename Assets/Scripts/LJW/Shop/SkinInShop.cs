@@ -20,24 +20,15 @@ public class SkinInShop : MonoBehaviour
     {
         skinImage.sprite = skinInfo._skinSprite;
 
-        // StarManager 인스턴스가 유효한지 확인합니다.
-        if (StarManager.Instance != null)
+        if (isFreeSkin)
         {
-            if (isFreeSkin)
+            if (PlayerStar.instance.TryRemoveStars(0))
             {
-                // PlayerStar 인스턴스가 유효한지 확인하고, TryRemoveStars(0)를 호출하기 전에 NullReferenceException을 피하기 위해 확인합니다.
-                if (PlayerStar.instance != null && PlayerStar.instance.TryRemoveStars(0))
-                {
-                    PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
-                }
+                PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
             }
+        }
 
-            IsSkinUnlocked();
-        }
-        else
-        {
-            Debug.LogError("StarManager 인스턴스가 null입니다.");
-        }
+        IsSkinUnlocked();
     }
 
     private void IsSkinUnlocked()
