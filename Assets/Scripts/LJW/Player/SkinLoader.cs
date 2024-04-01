@@ -8,6 +8,9 @@ public class SkinLoader : MonoBehaviour
 
     private void Awake()
     {
+        if (SkinManager.equippedSkin == null)
+            return;
+
         playerSR.sprite = SkinManager.equippedSkin;
     }
 }
