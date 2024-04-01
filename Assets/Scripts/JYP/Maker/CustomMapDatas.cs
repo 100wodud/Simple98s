@@ -2,6 +2,8 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Enumeration;
+using System.Security.Cryptography.X509Certificates;
+using UGS;
 using UnityEngine;
 
 public class CustomMapDatas
@@ -33,6 +35,14 @@ public class CustomMapDatas
         File.WriteAllText($"{filePath}/{stageName}/{stageName}.json", custom);
         ScreenCapture.CaptureScreenshot($"{filePath}/{stageName}/{stageName}.png");
         SceneLoader.Instance.GotoCustomScene();
+    }
+
+
+    public void SaveDevStage()
+    {
+        string path = Application.dataPath+ "/DevStage";
+        string custom = JsonConvert.SerializeObject(BuildingCreator.Instance.makeStage);
+        File.WriteAllText($"{path}/DevStage.json", custom);
     }
 
     public List<StageData> GetCustomStage(string stageName)

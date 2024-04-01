@@ -39,6 +39,11 @@ public class SaveCustomMap : MonoBehaviour
         
     }
 
+    public void SaveDevButton()
+    {
+        DataManager.Instance.CustomMapData.SaveDevStage();
+    }
+
     public void InputCustomStageName()
     {
 
@@ -64,10 +69,10 @@ public class SaveCustomMap : MonoBehaviour
 
     public void LoadCustomButton()
     {
-        BuildingCreator.Instance.ResetItem();
         List<StageData> stages = OpenFileStage();
-        if (stages != null && stages.Count > 0)
+        if (stages != null & stages.Count > 0)
         {
+            BuildingCreator.Instance.ResetItem();
             foreach (var stage in stages)
             {
                 BuildingCreator.Instance.LoadDrawItem(stage);
@@ -85,7 +90,6 @@ public class SaveCustomMap : MonoBehaviour
         try
         {
             stages = JsonConvert.DeserializeObject<List<StageData>>(File.ReadAllText(path));
-            Debug.Log(stages.Count);
         } catch
         {
             Debug.Log("맞지않는 JSON");
