@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using System;
+using TMPro;
 
 public class Health_UI : UIPopup
 {
-    [SerializeField] private Image[] hearts;
+    [SerializeField] private TextMeshProUGUI _hpText;
     [SerializeField] private int _maxHp;
-    [SerializeField] private SpriteAtlas _heartSprite;
+
+    private Color yellow = new Color32(255, 216, 85, 255);
+    private Color orange = new Color32(255, 137, 62, 255);
+    private Color red = new Color32(255, 90, 90, 255);
 
     public void Initialize() //초기화 메서드
     {
@@ -17,8 +22,7 @@ public class Health_UI : UIPopup
 
     private void Refresh()
     {
-        _heartSprite = Resources.Load<SpriteAtlas>("Sprites/HP");
-        _maxHp = hearts.Length;
+        _maxHp = 5;
         PlayerHealth.health = _maxHp;
     }
     public void Damage()  //체력풀이거나 0이하면 고정
@@ -36,30 +40,21 @@ public class Health_UI : UIPopup
     }
     public void HpImage(int hp)  //체력 계산후 이미지 출력
     {
-        for (int i = 0; i < hearts.Length; i++)
+        if(hp == 1)
         {
-            if (i < PlayerHealth.health)
-            {
-                hearts[i].sprite = GetSprite("Heart_Full");
-            }
-            else
-            {
-                hearts[i].sprite = GetSprite("Heart_Empty");
-            }
-            if (i < _maxHp)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            _hpText.color = red;
         }
+        else if(hp == 2)
+        {
+            _hpText.color = orange;
+        }
+        else if(hp == 3)
+        {
+            _hpText.color = yellow;
+        }
+        _hpText.text = hp.ToString();
+        
     }
 
-    private Sprite GetSprite(string name)
-    {
-        return _heartSprite.GetSprite(name);
-    }
 }
 
