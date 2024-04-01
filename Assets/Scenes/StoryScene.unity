@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69bb332674a7a04a9d02e85ab1c1bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectStageIndex: 2
+  stageIndex: 2
 --- !u!1 &339313864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69bb332674a7a04a9d02e85ab1c1bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectStageIndex: 1
+  stageIndex: 1
 --- !u!61 &661207378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3573,7 +3573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69bb332674a7a04a9d02e85ab1c1bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectStageIndex: 3
+  stageIndex: 3
 --- !u!1 &1533179615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1562777202414588306, guid: e737893a7cd20ac4e94622e0d8da8e3f, type: 3}

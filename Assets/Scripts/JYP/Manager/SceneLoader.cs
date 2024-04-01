@@ -56,4 +56,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("ShopScene");
     }
+
+    public void SceneReload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

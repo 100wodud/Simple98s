@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Popup_StageClear : UIPopup
@@ -53,5 +54,10 @@ public class Popup_StageClear : UIPopup
     public void BackStage()
     {
         SceneLoader.Instance.GotoStoryScene();
+    }
+
+    public void RetryBtn()
+    {
+        SceneLoader.Instance.SceneReload();
     }
 }

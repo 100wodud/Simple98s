@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StageSelecter : MonoBehaviour
 {
-    [SerializeField] private int selectStageIndex = 0;
+    [SerializeField] private int stageIndex = 1;
+    public static int selectStageIndex;
     private Popup_StageSelect popup_StageSelect;
     
     private void Start()
@@ -12,8 +13,8 @@ public class StageSelecter : MonoBehaviour
         popup_StageSelect = FindObjectOfType<Popup_StageSelect>();
     }
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
-    {       
-        StageIndex.stageindex = selectStageIndex;
+    {
+        selectStageIndex = stageIndex;
         OnSelectStage();
         //JsonDataManager.Instance.IndexSave(StageIndex.Instance.stageindex);
         //SaveStageJson.Instance.LoadStageData(StageIndex.stageindex, StarManager.Instance.stageStarDataArray[StageIndex.stageindex - 1]);

@@ -25,8 +25,6 @@ public class Popup_Option : UIPopup
     private Button _masterBtn;
     private Button _bgmBtn;
     private Button _sfxBtn;
-    private Button _displayBtn;
-    private Button _audioBtn;
     private Button _exitBtn;
 
     private AudioSource _bgmSource;
@@ -58,8 +56,6 @@ public class Popup_Option : UIPopup
         _masterBtn = icon.transform.GetChild(0).GetComponent<Button>();
         _bgmBtn = icon.transform.GetChild(1).GetComponent<Button>();
         _sfxBtn = icon.transform.GetChild(2).GetComponent<Button>();
-        _displayBtn = select.transform.GetChild(0).GetComponent<Button>();
-        _audioBtn = select.transform.GetChild(1).GetComponent<Button>();
         _exitBtn = op.transform.GetChild(2).GetComponent<Button>();
         PopBtnSet();
     }
@@ -68,8 +64,6 @@ public class Popup_Option : UIPopup
         _masterBtn.onClick.AddListener(_sfxSource.Play);
         _bgmBtn.onClick.AddListener(_sfxSource.Play);
         _sfxBtn.onClick.AddListener(_sfxSource.Play);
-        _displayBtn.onClick.AddListener(_sfxSource.Play);
-        _audioBtn.onClick.AddListener(_sfxSource.Play);
         _exitBtn.onClick.AddListener(_sfxSource.Play);
     }
     //=====================오디오 설정=============================
