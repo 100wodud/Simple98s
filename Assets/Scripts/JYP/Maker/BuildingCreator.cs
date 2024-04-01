@@ -84,7 +84,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void OnLeftClick(InputAction.CallbackContext ctx)
     {
-        if (selectedObj != null)
+        if (selectedObj != null & EventSystem.current.IsPointerOverGameObject() ==false)
         {
             HandleDrawing();
         }
@@ -116,9 +116,9 @@ public class BuildingCreator : Singleton<BuildingCreator>
     private void DrawItem()
     {
         defaultMap.SetTile(currentGridPosition, tileBase);
-        StageData stage = new StageData(currentGridPosition.x, -currentGridPosition.y, selectedObj.Index);
+        StageData stage = new StageData(currentGridPosition.x, currentGridPosition.y, selectedObj.Index);
         //리스트 안 중복 좌표 제거
-        makeStage.RemoveAll(s => (s.x == currentGridPosition.x & s.y == -currentGridPosition.y));
+        makeStage.RemoveAll(s => (s.x == currentGridPosition.x & s.y == currentGridPosition.y));
         if (selectedObj.Index != 10000)
         {
             makeStage.Add(stage);

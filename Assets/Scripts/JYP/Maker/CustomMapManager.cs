@@ -22,7 +22,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
         {
             if(item.tile == 48)
             {
-                playerPos = new Vector3(item.x, -item.y, 0);
+                playerPos = new Vector3(item.x, item.y, 0);
             }
             else
             {
@@ -37,7 +37,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
         //부모오브젝트로 감싸기
         const string path = "Prefabs/";
         Tiles tile = DataManager.Instance.TileData.GetTile(index);
-        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity);
+        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, y, 0), Quaternion.identity);
     }
 
     public void CustomStageList()

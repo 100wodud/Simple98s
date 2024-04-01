@@ -41,6 +41,6 @@ public class MapManager : Singleton<MapManager>
         //부모오브젝트로 감싸기
         const string path = "Prefabs/";       
         Tiles tile = DataManager.Instance.TileData.GetTile(index);
-        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, -y, 0), Quaternion.identity,ParentMap.transform);
+        Instantiate(Resources.Load($"{path + tile.Type + "/" + tile.localeID}"), new Vector3(x, y, 0), Quaternion.identity,ParentMap.transform);
     }
 }
