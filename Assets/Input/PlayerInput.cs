@@ -53,6 +53,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TabKey"",
+                    ""type"": ""Value"",
+                    ""id"": ""21929235-3db6-4236-92b2-30ec5aeae6c9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4be8d814-fc2b-4dda-9183-0fcc64fa688f"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TabKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GameMaker_MouseLeftClick = m_GameMaker.FindAction("MouseLeftClick", throwIfNotFound: true);
         m_GameMaker_MouseRightClick = m_GameMaker.FindAction("MouseRightClick", throwIfNotFound: true);
         m_GameMaker_MousePosition = m_GameMaker.FindAction("MousePosition", throwIfNotFound: true);
+        m_GameMaker_TabKey = m_GameMaker.FindAction("TabKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,6 +184,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameMaker_MouseLeftClick;
     private readonly InputAction m_GameMaker_MouseRightClick;
     private readonly InputAction m_GameMaker_MousePosition;
+    private readonly InputAction m_GameMaker_TabKey;
     public struct GameMakerActions
     {
         private @PlayerInput m_Wrapper;
@@ -170,6 +192,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @MouseLeftClick => m_Wrapper.m_GameMaker_MouseLeftClick;
         public InputAction @MouseRightClick => m_Wrapper.m_GameMaker_MouseRightClick;
         public InputAction @MousePosition => m_Wrapper.m_GameMaker_MousePosition;
+        public InputAction @TabKey => m_Wrapper.m_GameMaker_TabKey;
         public InputActionMap Get() { return m_Wrapper.m_GameMaker; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @TabKey.started += instance.OnTabKey;
+            @TabKey.performed += instance.OnTabKey;
+            @TabKey.canceled += instance.OnTabKey;
         }
 
         private void UnregisterCallbacks(IGameMakerActions instance)
@@ -201,6 +227,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @TabKey.started -= instance.OnTabKey;
+            @TabKey.performed -= instance.OnTabKey;
+            @TabKey.canceled -= instance.OnTabKey;
         }
 
         public void RemoveCallbacks(IGameMakerActions instance)
@@ -223,5 +252,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMouseLeftClick(InputAction.CallbackContext context);
         void OnMouseRightClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnTabKey(InputAction.CallbackContext context);
     }
 }

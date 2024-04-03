@@ -56,7 +56,6 @@ namespace Simple98Dev
 
 /* Fields. */
 
-		public System.Int32 index;
 		public System.Int32 Row;
 		public System.Int32 Column;
 		public System.Int32 Tile;
@@ -177,7 +176,7 @@ namespace Simple98Dev
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.index, instance);
+                            Map.Add(instance.Row, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
