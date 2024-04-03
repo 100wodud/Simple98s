@@ -26,17 +26,24 @@ public class StarManager
     // 스테이지에서 얻은 별 개수를 설정하는 함수
     public void SetStarsForStage(int stageIndex, int stars)
     {
-        if(stars > stageStarDataArray[stageIndex].bestStar)
+        if (!stageStarDataArray[stageIndex].isClear) // 스테이지가 이미 클리어되지 않았는지 확인
         {
-            stageStarDataArray[stageIndex].bestStar = stars;
-            // 얻은 별 개수 저장
-            stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars);
-            // 저장
-            SaveStars();
+            if (stars > stageStarDataArray[stageIndex].bestStar)
+            {
+                stageStarDataArray[stageIndex].bestStar = stars;
+                // 얻은 별 개수 저장
+                stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars);
+                // 저장
+                SaveStars();
+            }
+            else
+            {
+                return;
+            }
         }
         else
         {
-            return;
+            Debug.Log("이 스테이지는 이미 클리어되었습니다. 별을 다시 획득할 수 없습니다.");
         }
     }
 

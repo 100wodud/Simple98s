@@ -2886,6 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraSpeed: 5
+  cameraLimit: {x: 26, y: 3.3}
 --- !u!1 &428860917
 GameObject:
   m_ObjectHideFlags: 0

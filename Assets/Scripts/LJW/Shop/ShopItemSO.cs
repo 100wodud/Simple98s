@@ -11,7 +11,7 @@ public class ShopItemSO : ScriptableObject
     //{
     //    UnityGoogleSheet.Load<Shop>();
     //}
-    public enum SkinIDs { red, blue, green }
+    public enum SkinIDs { red, blue, green, orange, purple }
     [SerializeField] private SkinIDs skinID;
     public SkinIDs _skinID { get { return skinID; } }
 

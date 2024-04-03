@@ -248,7 +248,6 @@ MonoBehaviour:
   - {fileID: 1686215587}
   - {fileID: 1303091342}
   - {fileID: 2095421397}
-  skinManager: {fileID: 0}
 --- !u!1001 &133446258
 PrefabInstance:
   m_ObjectHideFlags: 0
