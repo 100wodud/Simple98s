@@ -7,21 +7,17 @@ public class MainCameraController : MonoBehaviour
     Transform player;
 
     public float CameraSpeed = 5.0f;
+    public Vector2 cameraLimit = new Vector2(26f, 3.3f);
 
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector3 targetPos;
-        if (player.position.y >= 3)
-        {
-            targetPos = new Vector3(player.position.x, 3f, -10f);
-        } else if(player.position.y <= -3)
-        {
-            targetPos = new Vector3(player.position.x, -3f, -10f);
-        } else
-        {
-            targetPos = new Vector3(player.position.x, player.position.y, -10f);
-        }
+
+        float clampedX = Mathf.Clamp(player.position.x, -cameraLimit.x, cameraLimit.x);
+        float clampedY = Mathf.Clamp(player.position.y, -cameraLimit.y, cameraLimit.y);
+
+        targetPos = new Vector3(clampedX, clampedY, -10f);
 
         transform.position = targetPos;
     }

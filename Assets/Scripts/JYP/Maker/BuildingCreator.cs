@@ -20,6 +20,9 @@ public class BuildingCreator : Singleton<BuildingCreator>
     Vector3Int currentGridPosition;
     Vector3Int lastGridPosition;
 
+    bool showUI = true;
+    public GameObject UIObject;
+
     public List<StageData> makeStage = new List<StageData>();
 
     private void Awake()
@@ -36,6 +39,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
         playerInput.GameMaker.MousePosition.performed += OnMouseMove;
         playerInput.GameMaker.MouseLeftClick.performed += OnLeftClick;
         playerInput.GameMaker.MouseRightClick.performed += OnRightClick;
+        playerInput.GameMaker.TabKey.performed += OnPressTab;
     }
 
     private void OnDisable()
@@ -45,6 +49,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
         playerInput.GameMaker.MousePosition.performed -= OnMouseMove;
         playerInput.GameMaker.MouseLeftClick.performed -= OnLeftClick;
         playerInput.GameMaker.MouseRightClick.performed -= OnRightClick;
+        playerInput.GameMaker.TabKey.performed -= OnPressTab;
     }
 
     private BuildingObjectBase SelectedObj
@@ -88,6 +93,12 @@ public class BuildingCreator : Singleton<BuildingCreator>
         {
             HandleDrawing();
         }
+    }
+
+    private void OnPressTab(InputAction.CallbackContext ctx)
+    {
+        showUI = !showUI;
+        UIObject.SetActive(showUI);
     }
 
     private void OnRightClick(InputAction.CallbackContext ctx)
