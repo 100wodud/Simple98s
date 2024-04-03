@@ -14,6 +14,8 @@ TagManager:
   - Star2
   - Star1
   - RandomObstacle
+  - Leftstop
+  - Rightstop
   layers:
   - Default
   - TransparentFX

@@ -64,16 +64,7 @@ public class PlusStar : MonoBehaviour
             popup_StageClear.UpdateStar(_stageLevel);
         }
     }
-    public void PlusCoin()
-    {
-        _coin++;
-        coinStar_UI.UpdateCoin(_coin);
-    }
-    public void MinusCoin()
-    {
-        _coin--;
-        coinStar_UI.UpdateCoin(_coin);
-    }
+    
     public void ExitBtn()
     {
         popup_StageClear.Destroy();

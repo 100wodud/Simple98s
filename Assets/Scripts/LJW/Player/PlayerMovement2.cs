@@ -116,6 +116,19 @@ public class PlayerMovement2 : MonoBehaviour
             case Direction.Left:
                 rb.velocity = new Vector2(-speed * Time.fixedDeltaTime, 0);
                 break;
+            case Direction.Stop:
+                rb.velocity = Vector2.zero;
+                break;
+           default:
+                rb.velocity = Vector2.zero;
+                break;
+
         }
+    }
+
+    public void StopMoving()
+    {
+        movingDir = Direction.Stop;
+        rb.velocity = Vector2.zero;
     }
 }
