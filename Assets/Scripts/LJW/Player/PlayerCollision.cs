@@ -25,28 +25,8 @@ public class PlayerCollision : MonoBehaviour
             {
                 IsGameOver();
             }
-        } else if (collision.transform.tag == "RandomObstacle")
-        {
-            int num = Random.Range(-1, 1);
-            PlayerHealth.health += num;
-            Debug.Log("Player health: " + PlayerHealth.health);
-            Debug.Log(num);
-
-            switch (num)
-            {
-                case -1: 
-                    hpControll.HpMinus();
-                    if (PlayerHealth.health <= 0)
-                    {
-                        IsGameOver();
-                    }
-                    break;
-                case 0:
-                    break;
-            }
-
-        }
-        else if(collision.transform.tag == "Clear")
+        } 
+        if(collision.transform.tag == "Clear")
         {
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Debug.Log("Clear");
