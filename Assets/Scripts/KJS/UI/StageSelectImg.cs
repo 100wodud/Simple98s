@@ -11,7 +11,7 @@ public class StageSelectImg : MonoBehaviour
     [SerializeField] private GameObject[] _stageObject;
     [SerializeField] private Sprite defaultStage;
     [SerializeField] private Sprite clearStage;
-    [SerializeField] private Sprite unlockStage;
+    [SerializeField] private Sprite lockStage;
     private void Start()
     {
         Refresh();
@@ -24,7 +24,6 @@ public class StageSelectImg : MonoBehaviour
         {
             GameObject stage = _stageObject[i];
             GameObject stageStar = stage.transform.GetChild(1).gameObject;
-            Debug.Log($"Stage{i}");
             if (StarManager.Instance.stageStarDataArray[i].isClear)
             {
                 stage.transform.GetChild(0).transform.Translate(new Vector2(0, 27));
@@ -48,8 +47,16 @@ public class StageSelectImg : MonoBehaviour
                     stageStar.transform.GetChild(j).gameObject.SetActive(false);
                 }
             }
-            
-            
+            if(StarManager.Instance.starCount < StarManager.Instance.stageStarDataArray[i].unlockStar)
+            {
+                stage.transform.GetChild(0).gameObject.SetActive(false);
+                stage.transform.GetChild(2).gameObject.SetActive(true);
+            }
+            else
+            {
+                stage.transform.GetChild(0).gameObject.SetActive(true);
+                stage.transform.GetChild(2).gameObject.SetActive(false);
+            }
         }
         
     }
@@ -57,13 +64,21 @@ public class StageSelectImg : MonoBehaviour
     {
         for (int i = 0; i < StarManager.Instance.stageStarDataArray.Length; i++)
         {
+
             if (StarManager.Instance.stageStarDataArray[i].isClear)
             {
                 _stageImg[i].sprite = clearStage;
             }
             else
             {
-                _stageImg[i].sprite = defaultStage;
+                if(StarManager.Instance.starCount < StarManager.Instance.stageStarDataArray[i].unlockStar)
+                {
+                    _stageImg[i].sprite = lockStage;
+                }
+                else
+                {
+                    _stageImg[i].sprite = defaultStage;
+                }
             }
         }
     }
