@@ -32,7 +32,7 @@ public class StarManager
             // 얻은 별 개수 저장
             stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars);
             // 저장
-            SaveStars();
+            //SaveStars();
         }
         else
         {

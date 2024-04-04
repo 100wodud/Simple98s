@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Popup_StageClear : UIPopup
 {
     [SerializeField] private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
-    public StageStarData[] stageStarDataArray; // 각 스테이지의 별 정보를 담을 배열
+    //public StageStarData[] stageStarDataArray; // 각 스테이지의 별 정보를 담을 배열
     public void Initialize() //초기화 메서드
     {
         Refresh();
@@ -16,27 +16,27 @@ public class Popup_StageClear : UIPopup
     {
 
     }
-    public void SetStarsForStage(int stageIndex, int stars)
-    {
-        stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars); // 최대 별 개수를 초과하지 않도록 제한
-        SaveStars(); // 저장
-    }
+    //public void SetStarsForStage(int stageIndex, int stars)
+    //{
+    //    stageStarDataArray[stageIndex].starsEarned = Mathf.Clamp(stars, 0, stageStarDataArray[stageIndex].maxStars); // 최대 별 개수를 초과하지 않도록 제한
+    //    SaveStars(); // 저장
+    //}
 
-    // 스테이지에서 얻은 별 개수를 불러오는 함수
-    public int GetStarsForStage(int stageIndex)
-    {
-        return stageStarDataArray[stageIndex].starsEarned;
-    }
+    //// 스테이지에서 얻은 별 개수를 불러오는 함수
+    //public int GetStarsForStage(int stageIndex)
+    //{
+    //    return stageStarDataArray[stageIndex].starsEarned;
+    //}
 
-    // 저장된 별 개수를 불러오는 함수
-    private void SaveStars()
-    {
-        for (int i = 0; i < stageStarDataArray.Length; i++)
-        {
-            PlayerPrefs.SetInt("StarsForStage_" + i, stageStarDataArray[i].starsEarned);
-        }
-        PlayerPrefs.Save(); // 변경 사항 저장
-    }
+    //// 저장된 별 개수를 불러오는 함수
+    //private void SaveStars()
+    //{
+    //    for (int i = 0; i < stageStarDataArray.Length; i++)
+    //    {
+    //        PlayerPrefs.SetInt("StarsForStage_" + i, stageStarDataArray[i].starsEarned);
+    //    }
+    //    PlayerPrefs.Save(); // 변경 사항 저장
+    //}
     public void UpdateStar(int s)
     {
         UpdateStarsUI(s); // 스테이지 1에 대한 별 정보를 가져와서 UI에 표시
