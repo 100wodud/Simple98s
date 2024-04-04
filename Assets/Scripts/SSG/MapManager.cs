@@ -6,10 +6,11 @@ using UGS;
 using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
-{             
+{
+    public int maxX = -33;
     //맵을 생성하는 기능을 담당하는 매니저
     //데이터 매니저에 데이터를 저장시켜주기
-    
+
     private void Start()
     {
         
@@ -30,6 +31,10 @@ public class MapManager : Singleton<MapManager>
         const string path = "Prefabs/Player/Player";
         foreach (var item in DataManager.Instance.MapData.GetStageList(mapStage))
         {
+            if(maxX < item.x)
+            {
+                maxX = item.x;
+            }
             InstantiateTile(item.tile, item.x, item.y, Map);
         }
         Vector3 playerPos = DataManager.Instance.MapData.GetStageData(mapStage).PlayerPos;

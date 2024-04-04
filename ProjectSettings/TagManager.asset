@@ -16,6 +16,7 @@ TagManager:
   - RandomObstacle
   - Leftstop
   - Rightstop
+  - DeathObstacle
   layers:
   - Default
   - TransparentFX

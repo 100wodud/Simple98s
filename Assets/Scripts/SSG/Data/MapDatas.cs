@@ -13,7 +13,11 @@ public class MapDatas
         UnityGoogleSheet.Load<Maps>();
         UnityGoogleSheet.Load<Stage1>();
         UnityGoogleSheet.Load<Stage2>();
-        UnityGoogleSheet.Load<Stage3>();        
+        UnityGoogleSheet.Load<Stage3>();
+        UnityGoogleSheet.Load<Stage4>();
+        UnityGoogleSheet.Load<Stage5>();
+        UnityGoogleSheet.Load<Stage6>();
+        UnityGoogleSheet.Load<Stage7>();
         LoadStage();              
     }
 
@@ -43,6 +47,34 @@ public class MapDatas
             stage3.Add(stage);
         }
         stageDct.Add(maps[3].index, stage3);
+        List<StageData> stage4 = new List<StageData>();
+        foreach (var item in Stage4.Stage4List)
+        {
+            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage4.Add(stage);
+        }
+        stageDct.Add(maps[4].index, stage4);
+        List<StageData> stage5 = new List<StageData>();
+        foreach (var item in Stage5.Stage5List)
+        {
+            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage5.Add(stage);
+        }
+        stageDct.Add(maps[5].index, stage5);
+        List<StageData> stage6 = new List<StageData>();
+        foreach (var item in Stage6.Stage6List)
+        {
+            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage6.Add(stage);
+        }
+        stageDct.Add(maps[6].index, stage6);
+        List<StageData> stage7 = new List<StageData>();
+        foreach (var item in Stage7.Stage7List)
+        {
+            stage = new StageData(item.Row, item.Column, item.Tile);
+            stage7.Add(stage);
+        }
+        stageDct.Add(maps[7].index, stage7);
     }
     public List<StageData> GetStageList(int StageIndex)//저장된 데이터를 얻을 수 있는시스템
     {

@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad55a7607992ee34e8a1a37d20da9791, type: 3}
-  m_Name: StageStarData3
+  m_Script: {fileID: 11500000, guid: 1c5c73b8b0bfdcc4ab08b62b82ee761c, type: 3}
+  m_Name: 29Obstacle
   m_EditorClassIdentifier: 
-  maxStars: 3
-  starsEarned: 0
-  bestStar: 0
-  isClear: 0
+  index: 129
+  category: 2
+  tileBase: {fileID: 11400000, guid: d376f2a2cb2b2b14e9687e0640de727e, type: 2}
