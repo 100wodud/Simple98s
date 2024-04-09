@@ -49,6 +49,16 @@ public class PlayerObsCollision : MonoBehaviour
             {
                 IsGameOver();
             }
+        } else if(collision.transform.tag == "RemoveObstacle")
+        {
+            PlayerHealth.health--;
+            hpControll.HpMinus();
+            Debug.Log("Player health: " + PlayerHealth.health);
+            if (PlayerHealth.health <= 0)
+            {
+                IsGameOver();
+            }
+            Destroy(collision.gameObject);
         }
 
     }

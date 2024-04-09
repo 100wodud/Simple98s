@@ -18,6 +18,7 @@ public class BuildingObjectBase : ScriptableObject
     [SerializeField] int index;
     [SerializeField] Category category;
     [SerializeField] TileBase tileBase;
+    [SerializeField] string description;
 
     public int Index
     {
@@ -40,6 +41,13 @@ public class BuildingObjectBase : ScriptableObject
         get
         {
             return category;
+        }
+    }
+    public string Description
+    {
+        get
+        {
+            return description;
         }
     }
 }
