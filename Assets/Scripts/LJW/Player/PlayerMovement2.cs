@@ -97,6 +97,9 @@ public class PlayerMovement2 : MonoBehaviour
             case Direction.Left:
                 surface.rotation = Quaternion.Euler(0, 0, 90);
                 break;
+            case Direction.Stop:
+                surface.rotation = Quaternion.Euler(0, 0, 180);
+                break;
         }
     }
 

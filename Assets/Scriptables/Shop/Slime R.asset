@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Slime R
   m_EditorClassIdentifier: 
   skinID: 0
-  skinSprite: {fileID: 21300000, guid: 408c5ca1000c50b4b810dd89b1beaf44, type: 3}
+  skinSprite: {fileID: -711156743, guid: ef92131f1c9f343438e2d7a924faad60, type: 3}
   skinPrice: 0
