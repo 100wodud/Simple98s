@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 1772190150044322210}
   - component: {fileID: 1110516152782678354}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: PlayerCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +353,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.97, y: 0.97}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1110516152782678354
 MonoBehaviour:
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 8087084518867837661}
   - component: {fileID: 16484445483572746}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 3604531573911118278}
   - component: {fileID: 4812112480388946699}
   m_Layer: 0
-  m_Name: Square
+  m_Name: ObstacleCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,7 +591,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.44827148}
+  m_Offset: {x: 0, y: 0.44484794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -602,7 +602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.10345703}
+  m_Size: {x: 0.1, y: 0.11030412}
   m_EdgeRadius: 0
 --- !u!114 &4812112480388946699
 MonoBehaviour:
