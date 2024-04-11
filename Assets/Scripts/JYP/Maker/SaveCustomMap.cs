@@ -13,11 +13,24 @@ using UnityEngine.SceneManagement;
 public class SaveCustomMap : MonoBehaviour
 {
     public TMP_InputField inputName;
+    public GameObject errorPopup;
     public GameObject SaveButton;
     public GameObject Canvas;
+    public GameObject existName;
 
     private string StageName;
 
+
+    public void ErrorPopup()
+    {
+        Time.timeScale = 0;
+        errorPopup.SetActive(true);
+    }
+    public void ErrorPopupClose()
+    {
+        Time.timeScale = 1;
+        errorPopup.SetActive(false);
+    }
     public void InputName()
     {
         StageName = inputName.text;
@@ -29,12 +42,13 @@ public class SaveCustomMap : MonoBehaviour
         InputName();
         if (!File.Exists($"{filePath}/{StageName}.png"))
         {
+            existName.SetActive(false);
             Canvas.SetActive(false);
             DataManager.Instance.CustomMapData.SaveCustomStage(StageName);
         }
         else
         {
-            Debug.Log("있는 이름입니다.");
+            existName.SetActive(true);
         }
         
     }
@@ -46,25 +60,44 @@ public class SaveCustomMap : MonoBehaviour
 
     public void InputCustomStageName()
     {
-
         bool canSave = true;
         int playerTile = BuildingCreator.Instance.makeStage.FindAll(item => item.tile == 48).Count;
+        int goalTile = BuildingCreator.Instance.makeStage.FindAll(item => item.tile == 49).Count;
 
         if (playerTile == 0)
         {
-            Debug.Log("플레이어 타일을 하나 이상 넣으시오");
+            ErrorPopup();
             canSave = false;
         }
         else if (playerTile > 1)
         {
-            Debug.Log("플레이어 타일을 하나만 넣으시오");
+            ErrorPopup();
+            canSave = false;
+        }
+
+        if (goalTile == 0)
+        {
+            ErrorPopup();
+            canSave = false;
+        }
+        else if (goalTile > 1)
+        {
+            ErrorPopup();
             canSave = false;
         }
 
         if (canSave)
         {
+            Time.timeScale = 0;
             SaveButton.SetActive(true);
         }
+    }
+
+    public void CancelSave()
+    {
+        inputName.text = "";
+        Time.timeScale = 1;
+        SaveButton.SetActive(false);
     }
 
     public void LoadCustomButton()
