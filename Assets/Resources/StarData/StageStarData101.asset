@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: StageStarData101
   m_EditorClassIdentifier: 
   maxStars: 3
-  starsEarned: 2
+  starsEarned: 3
   unlockStar: 0
-  bestStar: 2
+  bestStar: 3
   isClear: 1
+  stageInfo: "\uC2AC\uB77C\uC784\uC744 \uC774\uB3D9\uC2DC\uCF1C \uBCF4\uC790!"
