@@ -1919,8 +1919,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u3147\u3147\u3147"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9fd6a4d8a9387764bbe504d104b8ebd1, type: 2}
-  m_sharedMaterial: {fileID: 2091172312642221760, guid: 9fd6a4d8a9387764bbe504d104b8ebd1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16dbb7b8cef8fa94497745de798a0784, type: 2}
+  m_sharedMaterial: {fileID: 2091172312642221760, guid: 16dbb7b8cef8fa94497745de798a0784, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
