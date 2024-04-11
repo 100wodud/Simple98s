@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Popup_ExitStage : UIPopup
@@ -30,7 +31,15 @@ public class Popup_ExitStage : UIPopup
     public void isExitYes()
     {
         Resume();
-        SceneLoader.Instance.GotoStoryScene();
+        if(SceneManager.GetActiveScene().name == "CustomStageScene")
+        {
+            SceneLoader.Instance.GotoCustomMapListScene();
+        }
+        else
+        {
+            SceneLoader.Instance.GotoStoryScene();
+        }
+       
     }
     public override void Destroy()
     {
