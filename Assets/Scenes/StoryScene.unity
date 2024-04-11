@@ -1335,11 +1335,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1533179622}
   m_SourcePrefab: {fileID: 100100000, guid: e737893a7cd20ac4e94622e0d8da8e3f, type: 3}
---- !u!212 &146675658 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7549690887802644241, guid: e737893a7cd20ac4e94622e0d8da8e3f, type: 3}
-  m_PrefabInstance: {fileID: 146675657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &163197209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2446960083033545434, guid: 6c31d99d5314d1e408aaafa71687fd40, type: 3}
@@ -4798,7 +4793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 664480639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 664480641}
+        m_TargetAssemblyTypeName: StageSelecter, Assembly-CSharp
+        m_MethodName: OnClickStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &664480639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5479,7 +5486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ccbb29016a8ee4ba4e8305b4b1d16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSR: {fileID: 146675658}
+  playerSR: {fileID: 0}
 --- !u!4 &989884723
 Transform:
   m_ObjectHideFlags: 0
@@ -6040,7 +6047,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096204490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1096204492}
+        m_TargetAssemblyTypeName: StageSelecter, Assembly-CSharp
+        m_MethodName: OnClickStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1096204490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6958,7 +6977,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430320506}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1430320508}
+        m_TargetAssemblyTypeName: StageSelecter, Assembly-CSharp
+        m_MethodName: OnClickStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1430320506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7829,7 +7860,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1525792004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1525792006}
+        m_TargetAssemblyTypeName: StageSelecter, Assembly-CSharp
+        m_MethodName: OnClickStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1525792004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8558,7 +8601,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1654864049}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1654864051}
+        m_TargetAssemblyTypeName: StageSelecter, Assembly-CSharp
+        m_MethodName: OnClickStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1654864049
 MonoBehaviour:
   m_ObjectHideFlags: 0
