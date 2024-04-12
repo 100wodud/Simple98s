@@ -11,7 +11,6 @@ public class Popup_StageClear : UIPopup
     [SerializeField] private GameObject nextBtn1;
     [SerializeField] private GameObject nextBtn2;
     [SerializeField] private GameObject reBtn1;
-    [SerializeField] private GameObject reBtn2;
     //public StageStarData[] stageStarDataArray; // 각 스테이지의 별 정보를 담을 배열
     public void Initialize() //초기화 메서드
     {
@@ -25,7 +24,6 @@ public class Popup_StageClear : UIPopup
             nextBtn1.SetActive(false);
             reBtn1.SetActive(false);
             nextBtn2.SetActive(true);
-            reBtn2.SetActive(true);
         }
         else
         {
@@ -33,7 +31,6 @@ public class Popup_StageClear : UIPopup
             nextBtn1.SetActive(true);
             reBtn1.SetActive(true);
             nextBtn2.SetActive(false);
-            reBtn2.SetActive(false);
         }
     }
     //public void SetStarsForStage(int stageIndex, int stars)
