@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd77cd6dfc9355438afcbc7890a3d60, type: 3}
-  m_Name: Slime O
+  m_Name: Slime Br
   m_EditorClassIdentifier: 
-  skinID: 3
-  skinSprite: {fileID: -1946287161, guid: d8ef80dbbd67a4445bc7c83b8ec5ae7f, type: 3}
-  skinPrice: 9
+  skinID: 6
+  skinSprite: {fileID: 909239439, guid: bed1203224d548443b120b853207860f, type: 3}
+  skinPrice: 12
