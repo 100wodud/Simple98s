@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class SkinInShop : MonoBehaviour
 {
@@ -22,43 +23,30 @@ public class SkinInShop : MonoBehaviour
         skinImage.sprite = skinInfo._skinSprite;
 
         starManager = StarManager.Instance;
-        PlayerPrefs.DeleteAll(); //PlayerPrefs 초기화 메서드 ( 상점 구매 정보 Json으로 변경하기)
-        // 스킨이 잠금 해제되었는지 확인
-        if (PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1)
-        {
-            isSkinUnlocked = true;
-            buttonText.text = "Equip";
-            buttonText.color = new Color32(60, 155, 165, 255);
-            staricon.gameObject.SetActive(false);
-        }
-        else if (isFreeSkin) // 무료 스킨은 게임 시작 시 자동으로 장착
-        {
-            isSkinUnlocked = true;
-            buttonText.text = "Equip";
-            buttonText.color = new Color32(60, 155, 165, 255);
-            staricon.gameObject.SetActive(false);
-            PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1); // 잠금 해제된 것으로 표시
-        }
-        else
-        {
-            buttonText.text = ": " + skinInfo._skinPrice;
-        }
+        LoadSkinData();
+        IsSkinUnlocked();
     }
 
     private void IsSkinUnlocked()
     {
-        if (PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1)
+        if (isSkinUnlocked)
         {
-            isSkinUnlocked = true;
-            buttonText.text = "Equip";
+            buttonText.text = "Equip"; // 스킨이 잠금 해제되어 있으면 "장착"으로 텍스트 설정
+            buttonText.color = new Color32(60, 155, 165, 255);
+            staricon.gameObject.SetActive(false);
+        }
+        else if (isFreeSkin)
+        {
+            buttonText.text = "Equip"; // 무료 스킨은 "장착"으로 텍스트 설정
             buttonText.color = new Color32(60, 155, 165, 255);
             staricon.gameObject.SetActive(false);
         }
         else
         {
-            buttonText.text = "Star : " + skinInfo._skinPrice;
+            buttonText.text = "      : " + skinInfo._skinPrice; // 그 외에는 가격 표시
         }
     }
+
     public void OnButtonPress()
     {
         if (isSkinUnlocked)
@@ -78,14 +66,53 @@ public class SkinInShop : MonoBehaviour
             // 총 별의 수가 스킨 가격보다 크거나 같은지 확인
             if (starManager != null && starManager.starCount >= skinInfo._skinPrice)
             {
-                // 총 별의 수에서 스킨 가격을 차감하고 스킨을 잠금 해제
-                starManager.starCount -= skinInfo._skinPrice;
                 staricon.gameObject.SetActive(false);
-                PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
-                PlayerPrefs.Save();
                 isSkinUnlocked = true;
                 buttonText.text = "Equip";
+
+                SaveSkinData();
+
+                IsSkinUnlocked();
             }
         }
     }
+    private void SaveSkinData()
+    {
+        string fileName = "SkinData" + skinInfo._skinID.ToString() + ".json";
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+
+        SkinData data = new SkinData();
+        data.isSkinUnlocked = isSkinUnlocked;
+        data.skinID = skinInfo._skinID;
+
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(filePath, json);
+    }
+
+    private void LoadSkinData()
+    {
+        string fileName = "SkinData" + skinInfo._skinID.ToString() + ".json";
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            SkinData data = JsonUtility.FromJson<SkinData>(json);
+
+            isSkinUnlocked = data.isSkinUnlocked;
+            if (isSkinUnlocked)
+            {
+                buttonText.text = "Equip";
+                buttonText.color = new Color32(60, 155, 165, 255);
+                staricon.gameObject.SetActive(false);
+            }
+        }
+    }
+}
+
+[System.Serializable]
+public class SkinData
+{
+    public bool isSkinUnlocked;
+    public ShopItemSO.SkinIDs skinID;
 }
