@@ -118,8 +118,13 @@ public class SaveCustomMap : MonoBehaviour
     {
         string filePath = Application.persistentDataPath;
         string extension = ".json";
-        var path = UnityEditor.EditorUtility.OpenFilePanel("Open Stage JSON", filePath, extension.Replace(".", ""));
+        var path = "";
         List<StageData> stages = new List<StageData>();
+#if UNITY_EDITOR
+        path = UnityEditor.EditorUtility.OpenFilePanel("Open Stage JSON", filePath, extension.Replace(".", ""));
+#else
+        path = Path.Combine(Application.streamingAssetsPath, "YourFileName.json");
+#endif
         try
         {
             stages = JsonConvert.DeserializeObject<List<StageData>>(File.ReadAllText(path));

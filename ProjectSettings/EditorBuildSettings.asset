@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 28bffe721ab6d8f4b937f310c19c3239
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartMenuScene.unity
     guid: 3da277ec9dcf4a9419abf2a9a009f8ae
   - enabled: 1
@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Resources/Scenes/MapScene.unity
     guid: 5542379d1e7cff54c9560866bb34bfa5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuScene 1.unity
     guid: f24d138cdf432d74aaf3a45db80d7d78
   - enabled: 1
