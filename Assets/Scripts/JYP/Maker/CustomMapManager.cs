@@ -56,7 +56,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
             instance.transform.SetParent(contents.transform, false);
 
             string stageKey = stage.Key;
-            Image image = instance.GetComponentInChildren<Image>();
+            Image image = instance.transform.Find("stageImage").GetComponent<Image>();
 
             if (File.Exists($"{filePath}/{stageKey}/{stageKey}.png"))
             {
