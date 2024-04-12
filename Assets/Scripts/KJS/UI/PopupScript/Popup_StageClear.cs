@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class Popup_StageClear : UIPopup
 {
     [SerializeField] private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
+    [SerializeField] private GameObject stars;
+    [SerializeField] private GameObject nextBtn1;
+    [SerializeField] private GameObject nextBtn2;
+    [SerializeField] private GameObject reBtn1;
+    [SerializeField] private GameObject reBtn2;
     //public StageStarData[] stageStarDataArray; // 각 스테이지의 별 정보를 담을 배열
     public void Initialize() //초기화 메서드
     {
@@ -14,7 +19,22 @@ public class Popup_StageClear : UIPopup
     }
     private void Refresh()
     {
-
+        if(SceneManager.GetActiveScene().name == "CustomStageScene")
+        {
+            stars.SetActive(false);
+            nextBtn1.SetActive(false);
+            reBtn1.SetActive(false);
+            nextBtn2.SetActive(true);
+            reBtn2.SetActive(true);
+        }
+        else
+        {
+            stars.SetActive(true);
+            nextBtn1.SetActive(true);
+            reBtn1.SetActive(true);
+            nextBtn2.SetActive(false);
+            reBtn2.SetActive(false);
+        }
     }
     //public void SetStarsForStage(int stageIndex, int stars)
     //{

@@ -20,8 +20,9 @@ public class SaveStageJson
             return _instance;
         }
     }
-    private string basePath = "Assets/Data/";
+    private string basePath = Application.persistentDataPath; // 저장경로: C:\Users\[user name]\AppData\LocalLow\[company name]\[product name]
     private string fileExtension = ".json";
+    //"Assets/Data/"; 에디터전용 세이브 경로
     //path = Application.persistentDataPath; 나중에 경로 바꿀용
     public void SaveStageData(int stageIndex, StageStarData stageData)
     {
