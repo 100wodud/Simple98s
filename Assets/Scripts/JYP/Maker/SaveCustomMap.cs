@@ -40,7 +40,7 @@ public class SaveCustomMap : MonoBehaviour
     {
         string filePath = Application.persistentDataPath;
         InputName();
-        if (!File.Exists($"{filePath}/{StageName}.png"))
+        if (!File.Exists($"{filePath}/{StageName +"/"+StageName}.png"))
         {
             existName.SetActive(false);
             Canvas.SetActive(false);
