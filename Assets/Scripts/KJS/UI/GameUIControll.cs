@@ -16,7 +16,7 @@ public class GameUIControll : MonoBehaviour
 
     public void Start()
     {
-        if (SceneManager.GetActiveScene().name == "StageScene")
+        if (SceneManager.GetActiveScene().name == "StageScene" || SceneManager.GetActiveScene().name == "CustomStageScene")
         {
             SpawnHp();
             coinStar_UI = FindObjectOfType<CoinStar_UI>();

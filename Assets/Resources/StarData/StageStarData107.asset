@@ -17,3 +17,4 @@ MonoBehaviour:
   unlockStar: 12
   bestStar: 0
   isClear: 0
+  stageInfo: "\uC5BC\uC74C\uC740 \uCC28\uAC00\uC6CC!                         \uBE14\uB799\uD640\uC740...?"
