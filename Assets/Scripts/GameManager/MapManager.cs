@@ -11,11 +11,6 @@ public class MapManager : Singleton<MapManager>
     //맵을 생성하는 기능을 담당하는 매니저
     //데이터 매니저에 데이터를 저장시켜주기
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         if(Input.GetKey(KeyCode.Space))
