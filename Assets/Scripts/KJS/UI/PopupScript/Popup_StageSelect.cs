@@ -8,6 +8,7 @@ public class Popup_StageSelect : UIPopup
 {
     [SerializeField]private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
     [SerializeField] private TextMeshProUGUI _stageName;
+    [SerializeField] private TextMeshProUGUI _stageInfo;
     public void Initialize() //초기화 메서드
     {
         Refresh();
@@ -15,6 +16,7 @@ public class Popup_StageSelect : UIPopup
     private void Refresh()
     {
         _stageName.text = "Stage: " + StageSelecter.selectStageIndex;
+        _stageInfo.text = StarManager.Instance.stageStarDataArray[StageSelecter.selectStageIndex - 1].stageInfo;
     }
 
     public void StageSceneMove()

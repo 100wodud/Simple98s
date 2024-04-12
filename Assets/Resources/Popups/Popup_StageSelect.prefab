@@ -1917,10 +1917,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asdf
+  m_text: "\u3147\u3147\u3147"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
-  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16dbb7b8cef8fa94497745de798a0784, type: 2}
+  m_sharedMaterial: {fileID: 2091172312642221760, guid: 16dbb7b8cef8fa94497745de798a0784, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2184,6 +2184,7 @@ MonoBehaviour:
   - {fileID: 6269124810728617347}
   - {fileID: 383097368908034662}
   _stageName: {fileID: 8725810695299177752}
+  _stageInfo: {fileID: 4181124118305472131}
 --- !u!1 &6548248139698394952
 GameObject:
   m_ObjectHideFlags: 0
