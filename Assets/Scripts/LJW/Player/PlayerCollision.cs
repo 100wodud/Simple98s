@@ -51,7 +51,6 @@ public class PlayerCollision : MonoBehaviour
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
             lv.star++;
-            Debug.Log("º°È¹µæ");
             coinStar_UI.UpdateStageStar(lv.star);
         }
 

@@ -85,23 +85,4 @@ public class MapDatas
     {
         return maps[StageIndex];
     }    
-
-    //private void SetStage<T>(int stageId,List<T> stageList)
-    //{
-    //    List<Stages> stage = new List<Stages>();
-    //    Stages stageValue;
-    //    int row;
-    //    int column;
-    //    int tile;
-    //    foreach(var item in stageList)
-    //    {
-    //        stage1 = new Stages(item.Row, item.Column, item.Tile);
-    //        stage.Add(stage1);
-    //    }
-    //    stages.Add(stageId, stage);
-    //}
-
-
-
-
 }

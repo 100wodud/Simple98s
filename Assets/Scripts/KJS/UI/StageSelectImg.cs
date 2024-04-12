@@ -27,7 +27,7 @@ public class StageSelectImg : MonoBehaviour
             if (StarManager.Instance.stageStarDataArray[i].isClear)
             {
                 stage.transform.GetChild(0).transform.Translate(new Vector2(0, 27));
-                Debug.Log("실행");
+                //Debug.Log("실행");
                 stageStar.gameObject.SetActive(true);
 
             }
