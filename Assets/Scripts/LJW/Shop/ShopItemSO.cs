@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     public enum SkinIDs { red, blue, green, orange, purple }
-    [SerializeField] private SkinIDs skinID;
+    [SerializeField] public SkinIDs skinID;
     public SkinIDs _skinID { get { return skinID; } }
 
     [SerializeField] private Sprite skinSprite;

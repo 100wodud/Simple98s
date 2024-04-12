@@ -20,33 +20,26 @@ public class SkinInShop : MonoBehaviour
     [SerializeField] private bool isFreeSkin;
 
     private StarManager starManager;
-    private string basePath = "Assets/Data/";
-    private string fileName = "ShopSkinData.json";
-    private List<SkinData> skinDataList = new List<SkinData>();
 
+    int skinIndex;
 
     private void Awake()
     {
-        LoadSkinData();
-        skinImage.sprite = skinInfo._skinSprite;
-
         starManager = StarManager.Instance;
+        skinIndex = (int)skinInfo._skinID;
+        skinImage.sprite = skinInfo._skinSprite;
+        SkinDataHandler.instance.LoadShopSkinData((int)skinInfo._skinID, skinInfo);
 
-        // 스킨이 잠금 해제되었는지 확인
-        if (IsSkinUnlocked(skinInfo._skinID.ToString()))
+        if (SkinDataHandler.instance.IsSkinUnlocked(skinIndex))
         {
             isSkinUnlocked = true;
-            buttonText.text = "Equip";
-            buttonText.color = new Color32(60, 155, 165, 255);
-            staricon.gameObject.SetActive(false);
+            UpdateButtonText();
         }
-        else if (isFreeSkin) // 무료 스킨은 게임 시작 시 자동으로 장착
+        else if (isFreeSkin)
         {
             isSkinUnlocked = true;
-            buttonText.text = "Equip";
-            buttonText.color = new Color32(60, 155, 165, 255);
-            staricon.gameObject.SetActive(false);
-            SaveSkinData(skinInfo._skinID.ToString());
+            UpdateButtonText();
+            SkinDataHandler.instance.SaveShopSkinData(skinIndex, skinInfo);
         }
         else
         {
@@ -54,56 +47,19 @@ public class SkinInShop : MonoBehaviour
         }
     }
 
-    private void LoadSkinData()
+    private void UpdateButtonText()
     {
-        string filePath = Path.Combine(basePath, fileName);
-        if (File.Exists(filePath))
-        {
-            string jsonData = File.ReadAllText(filePath);
-            skinDataList = JsonUtility.FromJson<List<SkinData>>(jsonData);
-        }
-        else
-        {
-            CreateNewSkinDataFile();
-        }
-    }
-    private void CreateNewSkinDataFile()
-    {
-        skinDataList = new List<SkinData>();
-        SaveSkinData(""); // 초기화 데이터를 저장합니다.
-    }
-
-    private void SaveSkinData(string skinID)
-    {
-        // 새 스킨 데이터를 추가하여 저장합니다.
-        skinDataList.Add(new SkinData
-        {
-            skinID = skinID,
-            isUnlocked = true
-        });
-
-        string filePath = Path.Combine(basePath, fileName);
-        string json = JsonUtility.ToJson(skinDataList);
-        File.WriteAllText(filePath, json);
-    }
-    
-    private bool IsSkinUnlocked(string skinID)
-    {
-        foreach (SkinData data in skinDataList)
-        {
-            if (data.skinID == skinID && data.isUnlocked)
-            {
-                return true;
-            }
-        }
-        return false;
+        isSkinUnlocked = true;
+        buttonText.text = "Equip"; // 잠금 해제된 스킨의 버튼 텍스트를 "Equip"으로 설정
+        buttonText.color = new Color32(60, 155, 165, 255);
+        staricon.gameObject.SetActive(false);
     }
 
     public void OnButtonPress()
     {
         if (starManager == null || staricon == null)
         {
-            Debug.LogError("starManager or staricon is null.");
+            Debug.LogError("starManager 또는 staricon이 null입니다.");
             return;
         }
         if (isSkinUnlocked)
@@ -124,15 +80,14 @@ public class SkinInShop : MonoBehaviour
             if (starManager != null && starManager.starCount >= skinInfo._skinPrice && staricon != null)
             {
                 staricon.gameObject.SetActive(false);
-                skinDataList.Find(data => data.skinID == skinInfo._skinID.ToString()).isUnlocked = true;
 
                 isSkinUnlocked = true;
-                buttonText.text = "Equip";
-                SaveSkinData(skinInfo._skinID.ToString());
+                UpdateButtonText(); // 잠금 해제 후 버튼 텍스트 업데이트
+                SkinDataHandler.instance.SaveShopSkinData(skinIndex, skinInfo);
             }
             else
             {
-                Debug.LogError("starManager or staricon is null.");
+                Debug.LogError("starManager 또는 staricon이 null입니다.");
             }
         }
     }
