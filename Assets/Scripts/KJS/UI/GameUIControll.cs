@@ -16,11 +16,17 @@ public class GameUIControll : MonoBehaviour
 
     public void Start()
     {
-        if (SceneManager.GetActiveScene().name == "StageScene" || SceneManager.GetActiveScene().name == "CustomStageScene")
+        if (SceneManager.GetActiveScene().name == "StageScene")
         {
             SpawnHp();
             coinStar_UI = FindObjectOfType<CoinStar_UI>();
             CoinUI();
+            SpawnPauseBtn();
+        }
+        else if (SceneManager.GetActiveScene().name == "CustomStageScene")
+        {
+            SpawnHp();
+            SpawnPauseBtn();
         }
         SpawnPauseBtn();
     }
