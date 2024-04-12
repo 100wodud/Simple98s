@@ -17,6 +17,8 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] LayerMask obstacleMask;
     public Transform surface;
 
+    public ParticleSystem dust;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -109,15 +111,19 @@ public class PlayerMovement2 : MonoBehaviour
         {
             case Direction.Up:
                 rb.velocity = new Vector2(0, speed * Time.fixedDeltaTime);
+                CreateDust();
                 break;
             case Direction.Down:
                 rb.velocity = new Vector2(0, -speed * Time.fixedDeltaTime);
+                CreateDust();
                 break;
             case Direction.Right:
                 rb.velocity = new Vector2(speed * Time.fixedDeltaTime, 0);
+                CreateDust();
                 break;
             case Direction.Left:
                 rb.velocity = new Vector2(-speed * Time.fixedDeltaTime, 0);
+                CreateDust();
                 break;
             case Direction.Stop:
                 rb.velocity = Vector2.zero;
@@ -133,5 +139,13 @@ public class PlayerMovement2 : MonoBehaviour
     {
         movingDir = Direction.Stop;
         rb.velocity = Vector2.zero;
+    }
+
+    void CreateDust()
+    {
+        if (rb.velocity.magnitude > 0) // 속도가 0보다 클 때만 먼지 효과 발생
+        {
+            dust.Play();
+        }
     }
 }
