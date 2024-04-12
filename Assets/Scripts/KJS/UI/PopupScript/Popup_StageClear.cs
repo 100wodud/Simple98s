@@ -73,7 +73,14 @@ public class Popup_StageClear : UIPopup
 
     public void BackStage()
     {
-        SceneLoader.Instance.GotoStoryScene();
+        if (SceneManager.GetActiveScene().name == "CustomStageScene")
+        {
+            SceneLoader.Instance.GotoCustomMapListScene();
+        }
+        else
+        {
+            SceneLoader.Instance.GotoStoryScene();
+        }
     }
 
     public void RetryBtn()
