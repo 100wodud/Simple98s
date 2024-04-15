@@ -45,6 +45,24 @@ public class SaveStageJson
             //Debug.Log("File not Found" + fileName);
         }
     }
+
+    public void DeleteStageData()
+    {
+        for(int i = 1; i < 8; i++)
+        {
+            string fileName = "StageStarData" + i.ToString() + fileExtension;
+            string filePath = basePath + fileName;
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                Debug.Log(fileName + " deleted successfully.");
+            }
+            else
+            {
+                //Debug.Log("File not Found: " + fileName);
+            }
+        }
+    }
     //public void SaveToJson(int index)
     //{
     //    string fileName = "StageStarData" + index.ToString()+".json";

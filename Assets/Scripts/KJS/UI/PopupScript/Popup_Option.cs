@@ -50,7 +50,7 @@ public class Popup_Option : UIPopup
         _sfxObject = GameObject.Find("SfxAudio");
         _bgmSource = _bgmObject.GetComponent<AudioSource>();
         _sfxSource = _sfxObject.GetComponent<AudioSource>();
-        GameObject icon = GameObject.Find("Icon");
+        GameObject icon = GameObject.Find("SoundIcon");
         GameObject select = GameObject.Find("SelectOption");
         GameObject op = GameObject.Find("Option");
         _masterBtn = icon.transform.GetChild(0).GetComponent<Button>();
