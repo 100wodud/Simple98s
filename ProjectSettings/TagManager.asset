@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pop
+  - Obstacle
+  - Clear
+  - Coin
+  - LvGen
+  - Star
+  - Star3
+  - Star2
+  - Star1
+  - RandomObstacle
+  - Leftstop
+  - Rightstop
+  - DeathObstacle
+  - StopObstacle
+  - RemoveObstacle
   layers:
   - Default
   - TransparentFX
@@ -11,8 +26,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Obstacle
   - 
   - 
   - 
