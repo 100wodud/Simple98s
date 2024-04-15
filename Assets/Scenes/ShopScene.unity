@@ -1099,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6c9f4ff109a68304ba286f39bd5b747d, type: 2}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isFreeSkin
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isSkinUnlocked
@@ -1155,8 +1155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020646386, y: 0.2062268}
   m_AnchorMax: {x: 0.96982515, y: 0.7765155}
-  m_AnchoredPosition: {x: -863.00525, y: 0.37921143}
-  m_SizeDelta: {x: -1730.8547, y: 0.18}
+  m_AnchoredPosition: {x: 1.2109, y: 0.37921143}
+  m_SizeDelta: {x: -2.4224, y: 0.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138432042
 MonoBehaviour:
@@ -1408,7 +1408,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b965fa625c9478f4989fbdec606d32d3, type: 2}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isFreeSkin
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isSkinUnlocked
@@ -2715,7 +2715,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6e83c8a054afbb44fa055bdba20ca161, type: 2}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isFreeSkin
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512634627304644703, guid: f448f5c5f7060254e91f19b00a9a2f94, type: 3}
       propertyPath: isSkinUnlocked
@@ -3201,7 +3201,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3915.1729, y: 704.6}
+  m_SizeDelta: {x: 1259.3013, y: 704.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &6361413313954981349
 RectTransform:
