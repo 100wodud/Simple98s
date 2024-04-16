@@ -21,6 +21,7 @@ public class Popup_StageClear : UIPopup
     }
     private void Refresh()
     {
+
         popup_StageSelect = FindObjectOfType<Popup_StageSelect>();
         if (SceneManager.GetActiveScene().name == "CustomStageScene")
         {
@@ -36,6 +37,10 @@ public class Popup_StageClear : UIPopup
             stageBtn1.SetActive(true);
             reBtn1.SetActive(true);
             stageBtn2.SetActive(false);
+        }
+        if(StageSelecter.selectStageIndex >= 7)
+        {
+            nextBtn.SetActive(false);
         }
     }
     public void UpdateStar(int s)
