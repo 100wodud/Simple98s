@@ -19,6 +19,7 @@ TagManager:
   - DeathObstacle
   - StopObstacle
   - RemoveObstacle
+  - CustomImage
   layers:
   - Default
   - TransparentFX
