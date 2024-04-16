@@ -11,10 +11,15 @@ public class GameUIControll : MonoBehaviour
     private Health_UI _hp;
     private Popup_PauseBtn _pause;
     private CoinStar_UI coinStar_UI;
-
+    private Animator anim;
 
     public void Start()
     {
+        anim = GetComponent<Animator>();
+        if (anim == null)
+        {
+            Debug.LogWarning("Animator component not found on the GameObject.");
+        }
         if (SceneManager.GetActiveScene().name == "StageScene")
         {
             SpawnHp();
@@ -28,6 +33,7 @@ public class GameUIControll : MonoBehaviour
             SpawnPauseBtn();
         }
     }
+
     private void CoinUI()
     {
         if (coinStar_UI != null)
@@ -86,8 +92,20 @@ public class GameUIControll : MonoBehaviour
             Debug.LogWarning("hp is not initialized.");
             return;
         }
+
         _hp.Damage();
+        
+        if (anim != null)
+        {
+            anim.SetBool("isDamaged", true);
+            StartCoroutine(ResetDamageAnimation());
+        }
     }
 
+    private IEnumerator ResetDamageAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool("isDamaged", false);
+    }
 
 }
