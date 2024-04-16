@@ -25,13 +25,14 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     public List<StageData> makeStage = new List<StageData>();
 
+    private bool isDragging = false;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
         _camera = Camera.main;
         DataManager.Instance.Initialize();
     }
-
     private void OnEnable()
     {
         playerInput.Enable();
@@ -80,20 +81,39 @@ public class BuildingCreator : Singleton<BuildingCreator>
                 UpdatePreview();
             }
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+        }
     }
 
     private void OnMouseMove(InputAction.CallbackContext ctx)
     {
         mousePos = ctx.ReadValue<Vector2>();
+        if (isDragging && selectedObj != null && ctx.phase == InputActionPhase.Performed)
+        {
+            HandleDrawing();
+        }
     }
 
     private void OnLeftClick(InputAction.CallbackContext ctx)
     {
         if (selectedObj != null & EventSystem.current.IsPointerOverGameObject() ==false)
         {
+            float clickValue = ctx.ReadValue<float>();
+            if (clickValue > 0) // 버튼이 눌린 상태
+            {
+                isDragging = true;
+            }
+            else // 버튼이 떼어진 상태
+            {
+                isDragging = false;
+            }
+
             HandleDrawing();
         }
     }
+
 
     private void OnPressTab(InputAction.CallbackContext ctx)
     {

@@ -2,6 +2,7 @@ using Simple98;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class CustomMapManager : Singleton<CustomMapManager>
     private string CustomStageName;
     Vector3 playerPos;
     string filePath;
+
+    CustomData data;
+
     public void MakeCustomStage(string mapStage)
     {
         //플레이어 생성 함수
@@ -56,7 +60,8 @@ public class CustomMapManager : Singleton<CustomMapManager>
             instance.transform.SetParent(contents.transform, false);
 
             string stageKey = stage.Key;
-            Image image = instance.GetComponentInChildren<Image>();
+            Image image = instance.transform.Find("CustomImage").GetComponent<Image>();
+            TMP_Text text = instance.transform.Find("Text").GetComponent<TextMeshProUGUI>();
 
             if (File.Exists($"{filePath}/{stageKey}/{stageKey}.png"))
             {
@@ -65,6 +70,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
                 texture.LoadImage(byteTexture);
                 Rect rect = new Rect(0, 0, texture.width, texture.height);
                 image.sprite = Sprite.Create(texture, rect, new Vector2(0, 0));
+                text.text = stageKey;
             }
 
             Button button = instance.GetComponent<Button>(); // 버튼 컴포넌트 가져오기
@@ -73,6 +79,7 @@ public class CustomMapManager : Singleton<CustomMapManager>
                 CustomStageName = stage.Key;
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 SceneManager.LoadScene("CustomStageScene");
+                Time.timeScale = 1.0f;
             }
             );
         }
