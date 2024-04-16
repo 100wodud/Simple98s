@@ -11,7 +11,7 @@ public class Popup_StageSelect : UIPopup
     [SerializeField] private TextMeshProUGUI _stageName;
     [SerializeField] private TextMeshProUGUI _stageInfo;
     private string[] stageInfo = new string[7] {"슬라임을 이동시켜 보자!           이동: WASD, 재시작: 스페이스", "좀 더 복잡해진 길을 나아가자!", "불덩이를 조심해!", "번개구름은 아프다!", ""
-    , "꽃은 피해 범위가 넓으니 조심!","가끔은 손해를 감수해야한다.     즉사 블랙홀을 주의!"};
+    , "꽃은 피해 범위가 넓으니 조심!","즉사 블랙홀을 주의!"};
     public void Initialize() //초기화 메서드
     {
         Refresh();
