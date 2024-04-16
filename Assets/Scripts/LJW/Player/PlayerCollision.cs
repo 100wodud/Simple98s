@@ -42,8 +42,6 @@ public class PlayerCollision : MonoBehaviour
         {
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
-            lv.coin++;
-            coinStar_UI.UpdateCoin(lv.coin);
         }
 
         if (collision.tag == "Star")
@@ -86,7 +84,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void IsGameOver()
     {
-        coinStar_UI.UpdateCoin(0);
         if(SceneManager.GetActiveScene().name != "CustomStageScene")
         {
             PlayerHealth.health = 5;

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static int health = 5;
+    public static int health = 3;
 }

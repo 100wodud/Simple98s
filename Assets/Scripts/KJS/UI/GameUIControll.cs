@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class GameUIControll : MonoBehaviour
 {
-    [SerializeField] private int _coin = 0;
     private Health_UI _hp;
     private Popup_PauseBtn _pause;
     private CoinStar_UI coinStar_UI;
@@ -28,7 +27,6 @@ public class GameUIControll : MonoBehaviour
             SpawnHp();
             SpawnPauseBtn();
         }
-        SpawnPauseBtn();
     }
     private void CoinUI()
     {
@@ -40,7 +38,6 @@ public class GameUIControll : MonoBehaviour
         {
             coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
             coinStar_UI.Initialize();
-            coinStar_UI.UpdateCoin(_coin);
             coinStar_UI.UpdateAllStars();
         }
     }

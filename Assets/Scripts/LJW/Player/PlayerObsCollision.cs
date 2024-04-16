@@ -69,7 +69,6 @@ public class PlayerObsCollision : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "CustomStageScene")
         {
             StarManager.Instance.SetStarsForStage(StageSelecter.selectStageIndex - 1, 0);
-            coinStar_UI.UpdateCoin(0);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else

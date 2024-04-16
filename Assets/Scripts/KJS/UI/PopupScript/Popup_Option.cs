@@ -177,6 +177,11 @@ public class Popup_Option : UIPopup
         }
         SetResolution();
     }
+
+    public void DeleteData()
+    {
+        SaveStageJson.Instance.DeleteStageData();
+    }
     public override void Hide() //Á¾·á
     {
         base.Hide();

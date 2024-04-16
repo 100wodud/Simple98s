@@ -22,7 +22,7 @@ public class Health_UI : UIPopup
 
     private void Refresh()
     {
-        _maxHp = 5;
+        _maxHp = 3;
         PlayerHealth.health = _maxHp;
     }
     public void Damage()  //체력풀이거나 0이하면 고정

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Popup_StageSelect : UIPopup
 {
     [SerializeField]private Image[] _starImages; // 스테이지 선택 화면 UI에서 별을 표시할 이미지 배열
     [SerializeField] private TextMeshProUGUI _stageName;
     [SerializeField] private TextMeshProUGUI _stageInfo;
+    private string[] stageInfo = new string[7] {"슬라임을 이동시켜 보자!           이동: WASD, 재시작: 스페이스", "좀더 복잡해진 길을 나아가자!", "불덩이를 조심해!", "번개구름은 아프다!", "나뭇잎에 부딫히지 않도록 조심!"
+    , "지나가기만해도 아픈 꽃을 조심하자","얼음을 조심하자                        블랙홀은 더 조심!"};
     public void Initialize() //초기화 메서드
     {
         Refresh();
@@ -16,7 +19,7 @@ public class Popup_StageSelect : UIPopup
     private void Refresh()
     {
         _stageName.text = "Stage: " + StageSelecter.selectStageIndex;
-        _stageInfo.text = StarManager.Instance.stageStarDataArray[StageSelecter.selectStageIndex - 1].stageInfo;
+        _stageInfo.text = stageInfo[StageSelecter.selectStageIndex - 1];
     }
 
     public void StageSceneMove()
@@ -38,5 +41,14 @@ public class Popup_StageSelect : UIPopup
         {
             _starImages[i].gameObject.SetActive(i < stars); // 별 개수에 따라 이미지 활성화/비활성화
         }
+    }
+
+    public override void Destroy()
+    {
+        if(SceneManager.GetActiveScene().name == "StageScene")
+        {
+            StageSelecter.selectStageIndex--;
+        }
+        Destroy(gameObject);
     }
 }

@@ -9,7 +9,6 @@ public class PlusStar : MonoBehaviour
     private Popup_StageSelect popup_StageSelect;
     private Popup_StageClear popup_StageClear;
     private CoinStar_UI coinStar_UI;
-    [SerializeField] private int _coin = 0;
     private int _stageLevel = 0;
 
     
@@ -30,7 +29,6 @@ public class PlusStar : MonoBehaviour
         {
             coinStar_UI = UIManager.Instance.ShowPopup<CoinStar_UI>();
             coinStar_UI.Initialize();
-            coinStar_UI.UpdateCoin(_coin);
             coinStar_UI.UpdateAllStars();
         }
     }

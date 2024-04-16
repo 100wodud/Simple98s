@@ -10,6 +10,5 @@ public class StageStarData : ScriptableObject
     public int unlockStar; //해금 별개수
     public int bestStar;
     public bool isClear;
-    public string stageInfo;
 }
 
