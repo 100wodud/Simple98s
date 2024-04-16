@@ -13,13 +13,16 @@ public class Popup_StageClear : UIPopup
     [SerializeField] private GameObject reBtn1;
     [SerializeField] private GameObject nextBtn;
     [SerializeField] private GameObject noNext;
+
+    private Popup_StageSelect popup_StageSelect;
     public void Initialize() //초기화 메서드
     {
         Refresh();
     }
     private void Refresh()
     {
-        if(SceneManager.GetActiveScene().name == "CustomStageScene")
+        popup_StageSelect = FindObjectOfType<Popup_StageSelect>();
+        if (SceneManager.GetActiveScene().name == "CustomStageScene")
         {
             stars.SetActive(false);
             stageBtn1.SetActive(false);
@@ -72,14 +75,30 @@ public class Popup_StageClear : UIPopup
         {
             StageSelecter.selectStageIndex++;
             Debug.Log(StageSelecter.selectStageIndex);
-            SceneLoader.Instance.SceneReload();
+            isSelectStage();
+            popup_StageSelect.UpdateStarImage(StageSelecter.selectStageIndex - 1);
+            //SceneLoader.Instance.SceneReload();
         }
         else
         {
             StartCoroutine(ErrorMassage(0.5f, noNext));
         }
     }
+    private void isSelectStage()
+    {
+        if (popup_StageSelect != null)
+        {
+            popup_StageSelect.Destroy();
+            popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
+            popup_StageSelect.Initialize();
+        }
+        else
+        {
+            popup_StageSelect = UIManager.Instance.ShowPopup<Popup_StageSelect>();
+            popup_StageSelect.Initialize();
+        }
 
+    }
     IEnumerator ErrorMassage(float delay, GameObject obj)
     {
         obj.SetActive(true);

@@ -9,9 +9,6 @@ public class Popup_Pause : UIPopup
     private Popup_Option _option;
     private Popup_Exit _exit;
     private Popup_ExitStage _exitStage;
-    [SerializeField] private RectTransform _rect;
-
-    [SerializeField]private GameObject stageBtn;
     private GameObject _sfxObject;
     private AudioSource _btnSound;
     private Button _resumeBtn;
@@ -25,15 +22,6 @@ public class Popup_Pause : UIPopup
     }
     private void Refresh()
     {
-        _rect = GetComponent<RectTransform>();
-        if (SceneManager.GetActiveScene().name == "StoryScene")
-        {
-            stageBtn.SetActive(false);
-            Vector2 position = _rect.anchoredPosition;
-            position.x = 0f;
-            _rect.anchoredPosition = position;
-
-        }
         _sfxObject = GameObject.Find("SfxAudio");
         _btnSound = _sfxObject.GetComponent<AudioSource>();
         GameObject pop = GameObject.Find("Group_Buttons");
@@ -91,10 +79,7 @@ public class Popup_Pause : UIPopup
         }
     }
 
-    public void DeleteData()
-    {
-        SaveStageJson.Instance.DeleteStageData();
-    }
+    
 
     public void Resume()
     {

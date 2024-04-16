@@ -7,8 +7,6 @@ using Unity.VisualScripting;
 
 public class CoinStar_UI : UIPopup
 {
-    [SerializeField] private TextMeshProUGUI _coinTxt;
-    [SerializeField] private TextMeshProUGUI _starTxt;
     [SerializeField] private Image[] _starImages;
 
 
@@ -22,26 +20,13 @@ public class CoinStar_UI : UIPopup
         //StarManager.Instance.GetAllStars();
     }
 
-    public void UpdateCoin(int c)
-    {
-        RefreshCoin(c);
-    }
     public void UpdateAllStars()
     {
         StarManager.Instance.GetAllStars();
-        RefreshStars(StarManager.Instance.starCount);
     }
     public void UpdateStageStar(int star)
     {
         RefreshStarsIcon(star);
-    }
-    private void RefreshCoin(int coin)
-    {
-        _coinTxt.text = coin.ToString();
-    }
-    private void RefreshStars(int star)
-    {
-        _starTxt.text = star.ToString();
     }
     private void RefreshStarsIcon(int star)
     {
