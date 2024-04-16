@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UGS;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapManager : Singleton<MapManager>
 {
@@ -13,9 +14,12 @@ public class MapManager : Singleton<MapManager>
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(SceneManager.GetActiveScene().name == "StageScene")
         {
-            SceneLoader.Instance.GotoStageScene();
+            if (Input.GetKey(KeyCode.Space))
+            {
+                SceneLoader.Instance.GotoStageScene();
+            }
         }
     }
     public void MakeStage(int mapStage)
