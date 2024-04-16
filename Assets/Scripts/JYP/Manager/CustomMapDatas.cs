@@ -54,4 +54,12 @@ public class CustomMapDatas
     {
         return customMaps;
     }
+
+    public void RemoveCustomStage(string stageName)
+    {
+        customMaps.Remove(stageName);
+        string customDatas = JsonConvert.SerializeObject(customMaps);
+        string custom = JsonConvert.SerializeObject(BuildingCreator.Instance.makeStage);
+        File.WriteAllText($"{filePath}/CustomMapDatas.json", customDatas);
+    }
 }
