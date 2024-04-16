@@ -42,13 +42,9 @@ public class Health_UI : UIPopup
     {
         if(hp == 1)
         {
-            _hpText.color = red;
-        }
-        else if(hp == 2)
-        {
             _hpText.color = orange;
         }
-        else if(hp == 3)
+        else if(hp == 2)
         {
             _hpText.color = yellow;
         }
