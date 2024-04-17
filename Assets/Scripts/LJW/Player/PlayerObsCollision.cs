@@ -65,7 +65,7 @@ public class PlayerObsCollision : MonoBehaviour
 
     private void IsGameOver()
     {
-        PlayerHealth.health = 5;
+        PlayerHealth.health = 3;
         if (SceneManager.GetActiveScene().name != "CustomStageScene")
         {
             StarManager.Instance.SetStarsForStage(StageSelecter.selectStageIndex - 1, 0);
