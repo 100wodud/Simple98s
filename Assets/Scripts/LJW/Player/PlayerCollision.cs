@@ -8,7 +8,8 @@ public class PlayerCollision : MonoBehaviour
     private GameUIControll hpControll;
     private Popup_StageClear popup_StageClear;
     private CoinStar_UI coinStar_UI;
-
+    [SerializeField] private AudioSource star;
+    [SerializeField] private AudioSource clear;
     private void Start()
     {
         hpControll = FindObjectOfType<GameUIControll>();
@@ -48,6 +49,8 @@ public class PlayerCollision : MonoBehaviour
         {
             LevelVariable lv = GameObject.FindGameObjectWithTag("LvGen").GetComponent<LevelVariable>();
             Destroy(collision.gameObject);
+            star.Play();
+            Debug.Log("star");
             lv.star++;
             coinStar_UI.UpdateStageStar(lv.star);
         }
@@ -76,6 +79,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else
         {
+            clear.Play();
             popup_StageClear = UIManager.Instance.ShowPopup<Popup_StageClear>();
             popup_StageClear.Initialize();
             popup_StageClear.UpdateStar(StageSelecter.selectStageIndex -1);

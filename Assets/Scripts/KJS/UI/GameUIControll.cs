@@ -85,6 +85,7 @@ public class GameUIControll : MonoBehaviour
         _hp.Damage();
     }
 
+    [SerializeField] private AudioSource player_Hit;
     public void HpMinus()  //체력감소하면 Damage 불러오기
     {
         if (_hp == null)
@@ -98,6 +99,7 @@ public class GameUIControll : MonoBehaviour
         if (anim != null)
         {
             anim.SetBool("isDamaged", true);
+            player_Hit.Play();
             StartCoroutine(ResetDamageAnimation());
         }
     }
