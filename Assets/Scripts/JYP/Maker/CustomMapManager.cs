@@ -73,17 +73,38 @@ public class CustomMapManager : Singleton<CustomMapManager>
                 text.text = stageKey;
             }
 
-            Button button = instance.GetComponent<Button>(); // 버튼 컴포넌트 가져오기
+            Button button = instance.transform.Find("CustomImage").GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
                 CustomStageName = stage.Key;
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 SceneManager.LoadScene("CustomStageScene");
                 Time.timeScale = 1.0f;
-            }
-            );
+            });
+
+            Button delete = instance.transform.Find("Delete").GetComponent<Button>();
+            delete.onClick.AddListener(() =>
+            {
+                DeleteFolderOnClick(stageKey);
+            });
         }
     }
+    public void DeleteFolderOnClick(string path)
+    {
+        string folderPath = $"{filePath}/{path}"; 
+        try
+        {
+            // 폴더 삭제
+            Directory.Delete(folderPath, true);
+            DataManager.Instance.CustomMapData.RemoveCustomStage(path);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("폴더 삭제 실패: " + e.Message);
+        }
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;

@@ -40,7 +40,7 @@ public class SaveCustomMap : MonoBehaviour
     {
         string filePath = Application.persistentDataPath;
         InputName();
-        if (!File.Exists($"{filePath}/{StageName}.png"))
+        if (!File.Exists($"{filePath}/{StageName}/{StageName}.json"))
         {
             existName.SetActive(false);
             Canvas.SetActive(false);
@@ -64,23 +64,13 @@ public class SaveCustomMap : MonoBehaviour
         int playerTile = BuildingCreator.Instance.makeStage.FindAll(item => item.tile == 48).Count;
         int goalTile = BuildingCreator.Instance.makeStage.FindAll(item => item.tile == 49).Count;
 
-        if (playerTile == 0)
-        {
-            ErrorPopup();
-            canSave = false;
-        }
-        else if (playerTile > 1)
+        if (playerTile != 1)
         {
             ErrorPopup();
             canSave = false;
         }
 
-        if (goalTile == 0)
-        {
-            ErrorPopup();
-            canSave = false;
-        }
-        else if (goalTile > 1)
+        if (goalTile != 1)
         {
             ErrorPopup();
             canSave = false;
