@@ -123,7 +123,13 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void OnRightClick(InputAction.CallbackContext ctx)
     {
-        SelectedObj = null;
+        //SelectedObj = null;
+        if (selectedObj != null)
+        {
+            // 그리드 위치의 타일을 null로 설정
+            defaultMap.SetTile(currentGridPosition, null);
+            makeStage.RemoveAll(s => (s.x == currentGridPosition.x && s.y == currentGridPosition.y));
+        }
     }
 
     public void ObjectSelected(BuildingObjectBase obj)
