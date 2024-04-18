@@ -6,6 +6,12 @@ public class TitleMenu : MonoBehaviour
 {
     private Popup_Option _option;
 
+    private void Start()
+    {
+        _option = UIManager.Instance.ShowPopup<Popup_Option>();
+        _option.Initialize();
+        _option.Destroy();
+    }
     public void OnClickOption()
     {
         if(_option != null)
