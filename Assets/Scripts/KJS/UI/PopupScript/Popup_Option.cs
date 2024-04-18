@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.IO;
 
 public class Popup_Option : UIPopup
 {
     public AudioMixer mixer;
+    private static Popup_Option _instance;
+    public static Popup_Option Instance
+    {
+        get
+        {
+            if (null == _instance)
+            {
+                _instance = new Popup_Option();
+            }
+            return _instance;
+        }
+    }
 
     //각오디오 이미지
     [SerializeField] private Image _masterImg;
@@ -15,6 +28,14 @@ public class Popup_Option : UIPopup
     [SerializeField] private int _setWidth = 1920; //가로
     [SerializeField] private int _setHeight = 1080; //세로
     [SerializeField] private bool _isWindow = true; //전체화면 여부
+    
+    private SoundSetting _soundSetting;
+    private string savePath;
+
+    //슬라이더
+    public Slider masterSlider;
+    public Slider bgmSlider;
+    public Slider sfxSlider;
     //변경할 스프라이트
     private Sprite _onAudio;
     private Sprite _offAudio;
@@ -37,6 +58,11 @@ public class Popup_Option : UIPopup
     private bool _isBgmMute = false; //전체음소거 체크
     private bool _isSfxMute = false;
 
+    private void Awake()
+    {
+        savePath = Path.Combine(Application.persistentDataPath, "soundSettings.json");
+        LoadSettings();
+    }
     public void Initialize() //초기화 메서드
     {
         Refresh();
@@ -44,6 +70,7 @@ public class Popup_Option : UIPopup
 
     private void Refresh()
     {
+        
         _onAudio = Resources.Load<Sprite>(_onResource);
         _offAudio = Resources.Load<Sprite>(_offResource);
         _bgmObject = GameObject.Find("BgmAudio");
@@ -116,14 +143,51 @@ public class Popup_Option : UIPopup
     public void MasterControl(float sliderVal)
     {
         mixer.SetFloat("MASTER", Mathf.Log10(sliderVal) * 20);
+        _soundSetting.masterVolume = sliderVal; 
+        SaveSettings();
     }
     public void BgmControl(float sliderVal)
     {
         mixer.SetFloat("BGM", Mathf.Log10(sliderVal) * 20);
+        _soundSetting.bgmVolume = sliderVal;
+        SaveSettings();
     }
     public void SfxControl(float sliderVal)
     {
         mixer.SetFloat("SFX", Mathf.Log10(sliderVal) * 20);
+        _soundSetting.sfxVolume = sliderVal;
+        SaveSettings();
+    }
+    private void SaveSettings()
+    {
+        string jsonData = JsonUtility.ToJson(_soundSetting);
+        File.WriteAllText(savePath, jsonData);
+
+        masterSlider.value = _soundSetting.masterVolume;
+        bgmSlider.value = _soundSetting.bgmVolume;
+        sfxSlider.value = _soundSetting.sfxVolume;
+    }
+
+    public void LoadSettings()
+    {
+        if(File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            _soundSetting = JsonUtility.FromJson<SoundSetting>(jsonData);
+
+            mixer.SetFloat("MASTER", Mathf.Log10(_soundSetting.masterVolume) * 20);
+            mixer.SetFloat("BGM", Mathf.Log10(_soundSetting.bgmVolume) * 20);
+            mixer.SetFloat("SFX", Mathf.Log10(_soundSetting.sfxVolume) * 20);
+
+            masterSlider.value = _soundSetting.masterVolume;
+            bgmSlider.value = _soundSetting.bgmVolume;
+            sfxSlider.value = _soundSetting.sfxVolume;
+        }
+        else
+        {
+            _soundSetting = new SoundSetting(1f, 1f, 1f); // 기본값 설정
+            SaveSettings();
+        }
     }
 
     //=====================디스플레이 설정=============================

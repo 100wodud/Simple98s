@@ -5523,6 +5523,9 @@ MonoBehaviour:
   _setWidth: 1920
   _setHeight: 1080
   _isWindow: 1
+  masterSlider: {fileID: 917314689658944047}
+  bgmSlider: {fileID: 5918164556258871185}
+  sfxSlider: {fileID: 5261969980900602116}
 --- !u!1 &8213437725571450503
 GameObject:
   m_ObjectHideFlags: 0
