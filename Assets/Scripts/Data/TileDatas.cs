@@ -46,9 +46,4 @@ public class TileDatas
         return typeTiles;
     }
 
-    //타일 생성(인덱스값,x,y축 필요)
-    /*
-
-    
-    */
 }
